@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Systore.Services", "src\Sys
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Systore.Api", "src\Systore.Api\Systore.Api.csproj", "{F778AF36-6009-48A1-AFBA-A46451027366}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Systore.Report", "src\Systore.FastReport\Systore.Report.csproj", "{7FCB9042-13BC-4033-B8BA-E1D4471134CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Systore.Report", "src\Systore.Report\Systore.Report.csproj", "{7FCB9042-13BC-4033-B8BA-E1D4471134CD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FastReport.OpenSource.Export.PdfSimple", "src\FastReport.OpenSource.Export.PdfSimple\FastReport.OpenSource.Export.PdfSimple.csproj", "{9E77B4CA-6B06-4F41-BD87-D254003958CF}"
 EndProject
