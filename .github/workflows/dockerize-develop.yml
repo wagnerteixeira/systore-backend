@@ -1,0 +1,26 @@
+name: CI - develop
+
+on:
+  push:
+    branches:
+      - develop
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Login to Docker Registry
+      run: docker login  https://index.docker.io/v1/ --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+    
+    - name: Build Docker image 
+      run: docker build . --file docker/Dockerfile --tag ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend:develop
+    
+    - name: Push images
+      run: docker push ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend
+  
