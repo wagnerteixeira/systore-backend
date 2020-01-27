@@ -22,7 +22,7 @@ jobs:
       run: docker build . --file docker/Dockerfile --tag ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend:latest
 
     - name: Create tag image
-      run: docker tag ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend:latest ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend:$(date +%s)
+      run: docker tag ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend:latest ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend:$(date +%d-%m-%Y-%H-%M-%S)
     
     - name: Push images
       run: docker push ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend
