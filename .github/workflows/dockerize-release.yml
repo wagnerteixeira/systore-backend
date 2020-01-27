@@ -17,9 +17,13 @@ jobs:
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-        
-    - name: Build and Push the Docker image
-      run: |
-        docker build . --file docker/Dockerfile --tag ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend:latest        
-        docker tag ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend:latest ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend:$(date +%s)
+    
+    - name: Build the Docker image
+      run: docker build . --file docker/Dockerfile --tag ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend:latest
+
+    - name: Crete tag image
+      run: docker tag ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend:latest ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend:$(date +%s)
+    
+    - name: Push to registry
+      run: docker push ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend
   
