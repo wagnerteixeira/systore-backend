@@ -18,12 +18,12 @@ jobs:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
     
-    - name: Build the Docker image
+    - name: Build Docker image
       run: docker build . --file docker/Dockerfile --tag ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend:latest
 
-    - name: Crete tag image
+    - name: Create tag image
       run: docker tag ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend:latest ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend:$(date +%s)
     
-    - name: Push to registry
+    - name: Push images
       run: docker push ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend
   
