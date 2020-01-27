@@ -11,12 +11,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    
-    - name: Check folders
-      run: |
-        ls .        
-        pwd
-    
+
     - name: Login to Docker Registry
       run: docker login  https://index.docker.io/v1/ --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
       env:
@@ -26,4 +21,5 @@ jobs:
     - name: Build and Push the Docker image
       run: |
         docker build . --file docker/Dockerfile --tag ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend:latest        
+        docker push ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend:   
   
