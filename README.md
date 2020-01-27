@@ -5,13 +5,29 @@ for run printer in linux debian based run
 
 build docker image
 
-### `docker build . -f DockerFile -t systore:dev`
+### `docker build . -f docker\Dockerfile --tag wagnerteixeira/systore-backend:latest`
 
-execute detached
-docker run -d -p 8085:80 --name systoreapi systore:dev
+tag docker image on windows
+### `docker tag wagnerteixeira/systore-backend:latest wagnerteixeira/systore-backend:%date:~0,2%%date:~3,2%%date:~6,4%`
 
-execute interative
-docker run -it -p 8085:80 --name systoreapi systore:dev
+tag docker image on linux
+### `docker tag wagnerteixeira/systore-backend:latest wagnerteixeira/systore-backend:$(date +%s)`
+
+push docker image
+### `docker push wagnerteixeira/systore-backend`
+
+pull docker image
+### `docker pull wagnerteixeira/systore-backend`
+
+for run pass connectonstring
+
+### `docker run -it -p 8085:80 --rm --name systoreapi -e ConnectionStrings__Systore="Server=host.docker.internal;User Id=root;Password=12345678;Database=systore" -e ConnectionStrings__SystoreAudit="Server=host.docker.internal;User Id=root;Password=12345678;Database=systoreAudit" wagnerteixeira/systore-backend`
+
+for run detached
+### `docker run -d -p 8085:80 --name systoreapi wagnerteixeira/systore-backend`
+
+for run interative
+### `docker run -it -p 8085:80 --name systoreapi wagnerteixeira/systore-backend`
 
 stop container
 docker stop systoreapi
@@ -46,3 +62,5 @@ MYSQL_DATABASE=db
       MYSQL_USERuser'
       MYSQL_PASSWORD: 'pass'
       MYSQL_ROOT_HOST=%
+
+        

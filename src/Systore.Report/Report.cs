@@ -5,6 +5,7 @@ using FastReport.Export.PdfSimple;
 using System.IO;
 using Systore.Domain;
 using System.Collections.Generic;
+using Microsoft.Extensions.Configuration;
 
 namespace Systore.Report
 {
@@ -12,10 +13,12 @@ namespace Systore.Report
     {
 
         private readonly AppSettings _appSettings;
+        private readonly IConfiguration _configuration;
 
-        public Report(AppSettings appSettings)
+        public Report(AppSettings appSettings, IConfiguration configuration)
         {
             _appSettings = appSettings;
+            _configuration = configuration;
         }
 
         public async Task<byte[]> GenerateReport(string reportFile, Dictionary<string, string> parameters)
@@ -27,11 +30,11 @@ namespace Systore.Report
         {
             FastReport.Report report = new FastReport.Report();
             report.Load(Path.Combine("Reports", reportFile));
-            if (string.IsNullOrWhiteSpace(_appSettings.ConnectionString)){
+            if (string.IsNullOrWhiteSpace(_configuration.GetConnectionString("Systore"))){
                 throw new NotSupportedException("Connectionstring não informada");
             }
             
-            report.Dictionary.Connections[0].ConnectionString = _appSettings.ConnectionString;
+            report.Dictionary.Connections[0].ConnectionString = _configuration.GetConnectionString("Systore");
             //report.SetParameterValue("initialDate", "2019-01-01");
             //report.SetParameterValue("finalDate", "2019-01-07");
 

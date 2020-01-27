@@ -19,15 +19,12 @@ namespace Systore.Data.Repositories
 {
     public class HeaderAuditRepository : IHeaderAuditRepository
     {
-        private static AuditContext _context = null;
+        private readonly IAuditContext _context;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly DbSet<HeaderAudit> _entities;
-        public HeaderAuditRepository(IOptions<AppSettings> options, IHttpContextAccessor httpContextAccessor)
+        public HeaderAuditRepository(IOptions<AppSettings> options, IHttpContextAccessor httpContextAccessor, IAuditContext context)
         {
-            if (_context == null)
-            {
-                _context = new AuditContextFactory().CreateDbContext(options);
-            }
+            _context = context;            
             _httpContextAccessor = httpContextAccessor;
             _entities = _context.Instance.Set<HeaderAudit>();
         }
