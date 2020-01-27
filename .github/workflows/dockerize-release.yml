@@ -12,6 +12,9 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     
+    - name: Check folders
+      run: ls .        
+    
     - name: Login to Docker Registry
       run: docker login  https://index.docker.io/v1/ --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
       env:
