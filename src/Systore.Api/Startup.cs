@@ -47,21 +47,6 @@ namespace Systore.Api
             _env = env;
             _appSettingsSection = Configuration.GetSection("AppSettings");
             _appSettings = _appSettingsSection.Get<AppSettings>();
-
-
-            string conSystore = Configuration.GetConnectionString("SystoreContext");
-            Console.WriteLine(conSystore);
-            string conAudit = Configuration.GetConnectionString("AuditContext");
-            Console.WriteLine(conAudit);
-
-            var section = Configuration.GetSection("ConnectionStrings");
-            var a = section.GetValue<string>("SystoreContext");
-            Console.WriteLine(a);
-            var b = Configuration["ConnectionStrings:Redis"];
-            Console.WriteLine(b);
-
-
-
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -77,36 +62,38 @@ namespace Systore.Api
                 .UseAutoMapper()
                 .UseMetrics(Configuration, _env)
                 .AddCors()
-                .UseReport(_appSettings);
+                .UseReport(_appSettings, Configuration);
 
 
 
             services.AddDbContext<SystoreContext>(options =>
              {
                  if (_appSettings.DatabaseType == "MySql")
-                     options.UseMySql(_appSettings.ConnectionString);
+                     options.UseMySql(Configuration.GetConnectionString("Systore"));
                  else if (_appSettings.DatabaseType == "InMem")
                      options.UseInMemoryDatabase("systore");
                  options.EnableSensitiveDataLogging();
              }).AddDbContext<AuditContext>(options =>
              {
                  if (_appSettings.DatabaseType == "MySql")
-                     options.UseMySql(_appSettings.AuditConnectionString);
+                     options.UseMySql(Configuration.GetConnectionString("SystoreAudit"));
                  else if (_appSettings.DatabaseType == "InMem")
                      options.UseInMemoryDatabase("systoreAudit");
                  options.EnableSensitiveDataLogging();
              });
 
+            // TODO unify this lines
+            Log.Logger.Information($"Enviroment {_env.EnvironmentName} debug: {_env.IsDevelopment()}");
+            Console.WriteLine($"Enviroment {_env.EnvironmentName} debug: {_env.IsDevelopment()}");
 
-            Log.Logger.Information($"Ambiente de {_env.EnvironmentName} debug: {_env.IsDevelopment()}");
-            Console.WriteLine($"Ambiente de {_env.EnvironmentName} debug: {_env.IsDevelopment()}");
+            Log.Logger.Information($"Systore ConnectionString: {Configuration.GetConnectionString("Systore")}");
+            Console.WriteLine($"Systore ConnectionString: {Configuration.GetConnectionString("Systore")}");
 
+            Log.Logger.Information($"SystoreAudit ConnectionString: {Configuration.GetConnectionString("SystoreAudit")}");
+            Console.WriteLine($"SystoreAudit ConnectionString: {Configuration.GetConnectionString("SystoreAudit")}");
 
-            services.Configure<AppSettings>(_appSettingsSection);            
-
-            // configure jwt authentication
-            Console.WriteLine($"ConnectionString: {_appSettings.ConnectionString}");
-            var n = DateTime.UtcNow;
+            services.Configure<AppSettings>(_appSettingsSection);                                    
+            
             if (_env.IsDevelopment())
             {                
                 services.AddMvc(opts =>

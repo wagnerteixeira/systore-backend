@@ -27,16 +27,16 @@ namespace Systore.Infra
             settingsSection.Bind(appSettings);
 
             var optionsBuilder = new DbContextOptionsBuilder<AuditContext>();
-            optionsBuilder.UseMySql(appSettings.AuditConnectionString);            
+            optionsBuilder.UseMySql(Configuration.GetConnectionString("SystoreAudit"));            
             IOptions<AppSettings> options = Options.Create(appSettings);
-            return new AuditContext(optionsBuilder.Options, options);
+            return new AuditContext(optionsBuilder.Options, options, Configuration);
         }
 
         public AuditContext CreateDbContext(IOptions<AppSettings> options)
         {
             var optionsBuilder = new DbContextOptionsBuilder<AuditContext>();
-            optionsBuilder.UseMySql(options.Value.AuditConnectionString);           
-            return new AuditContext(optionsBuilder.Options, options);
+            optionsBuilder.UseMySql(Configuration.GetConnectionString("SystoreAudit"));           
+            return new AuditContext(optionsBuilder.Options, options, Configuration);
         }
     }
 }

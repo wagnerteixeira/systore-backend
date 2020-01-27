@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
@@ -15,21 +16,14 @@ namespace Systore.Infra.Context
 
         private AppSettings _appSettings { get; set; }
 
-        public AuditContext(DbContextOptions<AuditContext> options, IOptions<AppSettings> settings)
+        private readonly IConfiguration _configuration;
+
+        public AuditContext(DbContextOptions<AuditContext> options, IOptions<AppSettings> settings, IConfiguration configuration)
             : base(options)
         {
             _appSettings = settings.Value;
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            Console.WriteLine($"Configure audit database with {_appSettings.DatabaseType}");
-            if (!optionsBuilder.IsConfigured)
-            {
-                if (_appSettings.DatabaseType == "MySql")
-                    optionsBuilder.UseMySql(_appSettings.AuditConnectionString);                
-            }
-        }
+            _configuration = configuration;
+        }       
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

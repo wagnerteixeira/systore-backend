@@ -21,6 +21,8 @@
       "commandName": "Project",
       "launchUrl": "swagger",
       "environmentVariables": {
+        "ConnectionStrings__Systore": "Server=localhost;User Id=root;Password=12345678;Database=systore",
+        "ConnectionStrings__SystoreAudit": "Server=localhost;User Id=root;Password=12345678;Database=systoreAudit",
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "applicationUrl": "http://localhost:5000"

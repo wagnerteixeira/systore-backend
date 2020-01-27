@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Systore.Domain;
 using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Configuration;
 
 namespace Systore.Infra.Context
 {
@@ -15,20 +16,16 @@ namespace Systore.Infra.Context
 
         private AppSettings _appSettings { get; set; }
 
-        public SystoreContext(DbContextOptions<SystoreContext> options, IOptions<AppSettings> settings)
+        private readonly IConfiguration _configuration;
+
+        public SystoreContext(
+            DbContextOptions<SystoreContext> options,
+            IOptions<AppSettings> settings,
+            IConfiguration configuration)
             : base(options)
         {
-          _appSettings = settings.Value;
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            Console.WriteLine($"Configure database with {_appSettings.DatabaseType}");
-            if (!optionsBuilder.IsConfigured)
-            {
-              if (_appSettings.DatabaseType == "MySql")
-                optionsBuilder.UseMySql(_appSettings.ConnectionString);
-            }
+            _appSettings = settings.Value;
+            _configuration = configuration;
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -41,6 +38,6 @@ namespace Systore.Infra.Context
         public DbSet<BillReceive> BillReceives { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Sale> Sales { get; set; }
-        public DbSet<ItemSale> ItemSales { get; set; }        
+        public DbSet<ItemSale> ItemSales { get; set; }
     }
 }

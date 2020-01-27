@@ -25,9 +25,9 @@ namespace Systore.Infra
             settingsSection.Bind(appSettings);
 
             var optionsBuilder = new DbContextOptionsBuilder<SystoreContext>();
-            optionsBuilder.UseMySql(appSettings.ConnectionString);           
+            optionsBuilder.UseMySql(Configuration.GetConnectionString("Systore"));           
             IOptions<AppSettings> options = Options.Create(appSettings);
-            return new SystoreContext(optionsBuilder.Options, options);
+            return new SystoreContext(optionsBuilder.Options, options, Configuration);
         }
     }
 }
