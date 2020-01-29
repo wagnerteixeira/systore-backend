@@ -64,7 +64,7 @@ namespace Systore.Api
                 .AddCors()
                 .UseReport(_appSettings, Configuration);
 
-
+a
 
             services.AddDbContext<SystoreContext>(options =>
              {
