@@ -1,3 +1,5 @@
+![CI - release](https://github.com/wagnerteixeira/systore-backend/workflows/CI%20-%20release/badge.svg?branch=master) ![CI - develop](https://github.com/wagnerteixeira/systore-backend/workflows/CI%20-%20develop/badge.svg?branch=develop) 
+
 for run printer in linux debian based run 
 
 ### `sudo apt install libc6-dev`
