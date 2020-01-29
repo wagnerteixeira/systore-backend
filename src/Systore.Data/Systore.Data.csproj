@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
     <ProjectReference Include="..\Systore.Domain\Systore.Domain.csproj" />
@@ -6,13 +6,13 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
   
  <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.6" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
-    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.2.0" />    
-	<PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.1" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.0" />    
   </ItemGroup>
 </Project>

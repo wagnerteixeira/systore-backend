@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net40;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -24,7 +24,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FastReport.OpenSource" Version="2019.4.0" />
+    <PackageReference Include="FastReport.OpenSource" Version="2020.1.0" />
   </ItemGroup>
 
 </Project>

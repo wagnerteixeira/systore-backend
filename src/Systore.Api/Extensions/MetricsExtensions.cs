@@ -21,7 +21,7 @@ namespace Systore.Api.Extensions
         public static IServiceCollection UseMetrics(
             this IServiceCollection services,
             Microsoft.Extensions.Configuration.IConfiguration configuration,
-            IHostingEnvironment env)
+            IWebHostEnvironment env)
         {
             _metricsSettings = new MetricsSettings();
             configuration.GetSection("MetricsSettings").Bind(_metricsSettings);

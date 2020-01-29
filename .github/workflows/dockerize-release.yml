@@ -12,8 +12,8 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - name: Login to Docker Registry
-      run: docker login  https://index.docker.io/v1/ --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
+    - name: Login to Docker Registry      
+      run: echo -n $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin https://index.docker.io/v1/
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}

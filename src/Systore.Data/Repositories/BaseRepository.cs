@@ -167,7 +167,7 @@ namespace Systore.Data.Repositories
 
         public virtual async Task<int> ExecuteCommandAsync(string command, params object[] parameters)
         {
-            return await _context.Instance.Database.ExecuteSqlCommandAsync(command, parameters);
+            return await _context.Instance.Database.ExecuteSqlRawAsync(command, parameters);
         }
 
         private AuditOperation GetAuditOperation(EntityState entityState)
@@ -197,7 +197,7 @@ namespace Systore.Data.Repositories
 
                 AuditEntry auditEntry = new AuditEntry();
 
-                auditEntry.HeaderAudit.TableName = entry.Metadata.Relational().TableName;
+                auditEntry.HeaderAudit.TableName = entry.Metadata.DisplayName();
                 auditEntry.HeaderAudit.Date = DateTime.Now;
                 auditEntry.HeaderAudit.UserName = "?";
                 auditEntry.HeaderAudit.Operation = GetAuditOperation(entry.State);
