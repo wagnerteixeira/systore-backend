@@ -30,18 +30,20 @@ using System.Globalization;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Hosting;
+
 
 namespace Systore.Api
 {
     public class Startup
     {
-        private readonly IHostingEnvironment _env;
+        private readonly IWebHostEnvironment _env;
         private readonly AppSettings _appSettings;
         private readonly IConfigurationSection _appSettingsSection;
 
         public IConfiguration Configuration { get; }
 
-        public Startup(IConfiguration configuration, IHostingEnvironment env)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
             _env = env;
@@ -62,7 +64,9 @@ namespace Systore.Api
                 .UseAutoMapper()
                 .UseMetrics(Configuration, _env)
                 .AddCors()
-                .UseReport(_appSettings, Configuration);
+                .UseReport(_appSettings, Configuration)
+                .AddControllers();
+
 
 
 
@@ -83,8 +87,8 @@ namespace Systore.Api
              });
 
             // TODO unify this lines
-            Log.Logger.Information($"Enviroment {_env.EnvironmentName} debug: {_env.IsDevelopment()}");
-            Console.WriteLine($"Enviroment {_env.EnvironmentName} debug: {_env.IsDevelopment()}");
+            Log.Logger.Information($"Enviroment {_env.EnvironmentName}");
+            Console.WriteLine($"Enviroment {_env.EnvironmentName}");
 
             Log.Logger.Information($"Systore ConnectionString: {Configuration.GetConnectionString("Systore")}");
             Console.WriteLine($"Systore ConnectionString: {Configuration.GetConnectionString("Systore")}");
@@ -92,34 +96,34 @@ namespace Systore.Api
             Log.Logger.Information($"SystoreAudit ConnectionString: {Configuration.GetConnectionString("SystoreAudit")}");
             Console.WriteLine($"SystoreAudit ConnectionString: {Configuration.GetConnectionString("SystoreAudit")}");
 
-            services.Configure<AppSettings>(_appSettingsSection);                                    
-            
+            services.Configure<AppSettings>(_appSettingsSection);
+
             if (_env.IsDevelopment())
-            {                
+            {
                 services.AddMvc(opts =>
                 {
                     opts.Filters.Add(new AllowAnonymousFilter());
-                }).AddJsonOptions(options =>
-                { 
+                }).AddNewtonsoftJson(options =>
+                {
                     options.SerializerSettings.Formatting = Formatting.Indented;
                     options.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
                     options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
                     options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
-                }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-        }
+                }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            }
             else
                 services.AddMvc()
-                    .AddJsonOptions(options =>
+                    .AddNewtonsoftJson(options =>
                     {
                         options.SerializerSettings.Formatting = Formatting.Indented;
                         options.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
                         options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
                         options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
-                    }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+                    }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
 
 
-            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);           
 
             services.AddAuthentication(x =>
             {
@@ -171,8 +175,8 @@ namespace Systore.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IApplicationLifetime lifetime)
-        {
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -207,24 +211,32 @@ namespace Systore.Api
             }
             });
 
-            //app.UseHttpsRedirection();
+            app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+
+
             app.UseCors(builder =>
                 builder.AllowAnyOrigin()
                       .AllowAnyMethod()
                       .AllowAnyHeader()
             )
-            .UseAuthentication()
             .UseSwagger()// Enable middleware to serve generated Swagger as a JSON endpoint.
             .UseSwaggerUI(c =>
             {                                                             // specifying the Swagger JSON endpoint.
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Systore");// Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),                                                                         
             })
-            .UseMvc()
-            .UseMetrics(lifetime)            
+            //.UseMetrics()
             .UseReport();
-            
+
             Console.WriteLine($"Current culture: {CultureInfo.CurrentCulture}");
-            Console.WriteLine($"Local timezone {TimeZoneInfo.Local} Utc {TimeZoneInfo.Utc}");          
+            Console.WriteLine($"Local timezone {TimeZoneInfo.Local} Utc {TimeZoneInfo.Utc}");
 
             // uncoment for automatic migration            
             InitializeDatabase(app);
