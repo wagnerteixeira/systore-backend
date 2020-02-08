@@ -20,7 +20,7 @@ jobs:
       run: dotnet build ./src/Systore.Api --configuration Release
       
     - name: Publish
-      run: dotnet publish ./src/Systore.Api -c Release -o app
+      run: dotnet publish ./src/Systore.Api -c Release -o ./app
     
     - name: Archive production artifacts
       uses: actions/upload-artifact@v1
