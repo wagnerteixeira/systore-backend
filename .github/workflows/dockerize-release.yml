@@ -36,18 +36,3 @@ jobs:
       with:
         dotnet-version: 2.2.110
         
-    - name: Build with dotnet      
-      run: dotnet build ./src/Systore.Api --configuration Release
-    
-    - name: Build with dotnet      
-      run: dotnet build ./src/Systore.Api --configuration Release
-      
-    - name: Publish
-      run: dotnet publish ./src/Systore.Api -c Release -o app
-    
-    - name: Archive production artifacts
-      uses: actions/upload-artifact@v1
-      with:
-        name: SystoreApi
-        path: app
-    
