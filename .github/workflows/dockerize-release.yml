@@ -9,9 +9,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
 
     - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v1.4.0
       with:
         dotnet-version: 2.2.110
+    
+    - name: Build with dotnet      
+      run: dotnet build ./src/Systore.Api --configuration Release
+      
+    - name: Publish
+      run: dotnet publish ./src/Systore.Api -c Release -o app
+    
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v1
+      with:
+        name: SystoreApi
+        path: app
