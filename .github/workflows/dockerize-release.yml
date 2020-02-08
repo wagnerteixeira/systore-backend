@@ -4,28 +4,7 @@ on:
   push:
     branches:
       - master
-jobs:
-  build_docker:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v1
-
-    - name: Login to Docker Registry      
-      run: echo -n $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin https://index.docker.io/v1/
-      env:
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-    
-    - name: Build Docker image
-      run: docker build . --file docker/Dockerfile --tag ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend:latest
-
-    - name: Create tag image
-      run: docker tag ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend:latest ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend:$(date +%d-%m-%Y-%H-%M-%S)
-    
-    - name: Push images
-      run: docker push ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend  
+jobs:  
   build:
     runs-on: ubuntu-latest
 
@@ -35,4 +14,4 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.0.101
+        dotnet-version: 2.2.110
