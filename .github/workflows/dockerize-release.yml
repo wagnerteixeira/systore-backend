@@ -22,11 +22,11 @@ jobs:
     - name: Publish
       run: dotnet publish ./src/Systore.Api -c Release -o $GITHUB_WORKSPACE/app
       
-    - name: Teste
-      run: ls    
+    - name: Get date
+      run: export CURRENT_DATE=$(date +%d-%m-%Y-%H-%M-%S)
     
     - name: Archive production artifacts
       uses: actions/upload-artifact@v1
       with:
-        name: SystoreApi_$(date +%d-%m-%Y-%H-%M-%S)
+        name: SystoreApi_$CURRENT_DATE
         path: app
