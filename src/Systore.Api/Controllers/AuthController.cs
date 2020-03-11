@@ -14,7 +14,7 @@ namespace Systore.Api.Controllers
     [Route("oapi")]
     public class AuthController : ControllerBase, IDisposable
     {
-        private readonly string _urlRelease = "https://us-central1-teste-b6236.cloudfunctions.net/checkRelease";
+        private readonly string _urlRelease = "https://us-central1-check-release-265504.cloudfunctions.net/checkRelease";
         private readonly string _clientId = "santo-pecado-systore";
         private readonly IAuthService _authService;
         private IConfiguration _config;
@@ -59,6 +59,17 @@ namespace Systore.Api.Controllers
         {
             try
             {
+                var validationRelease = await VerifyRelease();
+
+                if (!validationRelease.Release)
+                {
+                    return StatusCode(402, new LoginResponseDto()
+                    {
+                        Valid = false,
+                        Relese = false
+                    });
+                }
+
                 var result = await Task.Run(() => _authService.ValidateToken(token));
                 return Ok(result);
             }
