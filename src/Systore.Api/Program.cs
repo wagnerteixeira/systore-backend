@@ -20,7 +20,7 @@ namespace Systore.Api
 
         private static bool isProduction => Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production";
         private static IConfiguration _configuration;
-
+        private static int fileSizeLimitBytes = 1024 * 1024 * 512; //512mb
 
         public static int Main(string[] args)
         {
@@ -34,16 +34,14 @@ namespace Systore.Api
             .Build();
 
             Log.Logger = new LoggerConfiguration()
-            .MinimumLevel.Debug()
-            .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-            .Enrich.FromLogContext()
+            .ReadFrom.Configuration(_configuration)
             .WriteTo.Console(
                 outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj} " +
                     "{Properties:j}{NewLine}{Exception}"
             )
             .WriteTo.File(
                 "Log\\log.txt",
-                fileSizeLimitBytes: 1_000_000,
+                fileSizeLimitBytes: fileSizeLimitBytes,
                 rollOnFileSizeLimit: true,
                 shared: true,
                 rollingInterval: RollingInterval.Day,

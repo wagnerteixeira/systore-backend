@@ -13,6 +13,7 @@ using Systore.Infra.Context;
 using Systore.Domain.Entities;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Systore.Domain.Abstractions;
+using System.Threading;
 
 namespace Systore.Data.Repositories
 {
@@ -23,6 +24,7 @@ namespace Systore.Data.Repositories
         protected readonly IHeaderAuditRepository _headerAuditRepository;
         private bool _inTransaction;
         public bool IsConversion { get; set; }
+        private static SemaphoreSlim semaphore = new SemaphoreSlim(1, 1);
 
         public BaseRepository(IDbContext context, IHeaderAuditRepository headerAuditRepository)
         {
@@ -258,45 +260,53 @@ namespace Systore.Data.Repositories
             return auditEntries;
         }
 
-        private Task OnAfterSaveChanges(ListAuditEntry auditEntries)
+        private async Task OnAfterSaveChanges(ListAuditEntry auditEntries)
         {
-            foreach (var auditEntry in auditEntries.AuditEntries)
+            await semaphore.WaitAsync();
+            try
             {
-                // Get the final value of the temporary properties
-                foreach (var prop in auditEntry.TemporaryProperties)
+                foreach (var auditEntry in auditEntries.AuditEntries)
                 {
-                    if (prop.Metadata.IsPrimaryKey())
+                    // Get the final value of the temporary properties
+                    foreach (var prop in auditEntry.TemporaryProperties)
                     {
-                        auditEntry.HeaderAudit.ItemAudits.Add(new ItemAudit
-                        {
-                            FieldName = prop.Metadata.Name,
-
-                            NewValue = prop.CurrentValue.ToString()
-                        });
-                        auditEntry.PrimaryKeys.Add(prop.CurrentValue.ToString());
-                    }
-                    else
-                    {
-                        if (!string.IsNullOrWhiteSpace((prop.CurrentValue ?? "").ToString()))
+                        if (prop.Metadata.IsPrimaryKey())
                         {
                             auditEntry.HeaderAudit.ItemAudits.Add(new ItemAudit
                             {
                                 FieldName = prop.Metadata.Name,
+
                                 NewValue = prop.CurrentValue.ToString()
                             });
+                            auditEntry.PrimaryKeys.Add(prop.CurrentValue.ToString());
                         }
-                    }
+                        else
+                        {
+                            if (!string.IsNullOrWhiteSpace((prop.CurrentValue ?? "").ToString()))
+                            {
+                                auditEntry.HeaderAudit.ItemAudits.Add(new ItemAudit
+                                {
+                                    FieldName = prop.Metadata.Name,
+                                    NewValue = prop.CurrentValue.ToString()
+                                });
+                            }
+                        }
 
+                    }
+                    string pk = string.Join('|', auditEntry.PrimaryKeys);
+                    auditEntry.HeaderAudit.ItemAudits = auditEntry.HeaderAudit.ItemAudits.Select(c =>
+                    {
+                        c.PrimaryKey = pk;
+                        return c;
+                    }).ToList();
+                    await _headerAuditRepository.AddAsync(auditEntry.HeaderAudit);
                 }
-                string pk = string.Join('|', auditEntry.PrimaryKeys);
-                auditEntry.HeaderAudit.ItemAudits = auditEntry.HeaderAudit.ItemAudits.Select(c => 
-                {
-                    c.PrimaryKey = pk;
-                    return c;
-                }).ToList();
-                _headerAuditRepository.AddAsync(auditEntry.HeaderAudit);
             }
-            return Task.CompletedTask;
+            finally
+            {
+                semaphore.Release();
+            }
+            return;
         }
 
 

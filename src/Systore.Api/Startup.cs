@@ -53,8 +53,6 @@ namespace Systore.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services
-                .AddScoped<ISystoreContext, SystoreContext>()
-                .AddScoped<IAuditContext, AuditContext>()
                 .AddSingleton<IHttpContextAccessor, HttpContextAccessor>()
                 .UseSerilog()
                 .UseRepositories()
@@ -66,20 +64,22 @@ namespace Systore.Api
 
 
 
-            services.AddDbContext<SystoreContext>(options =>
+            services.AddDbContext<ISystoreContext, SystoreContext>(options =>
              {
                  if (_appSettings.DatabaseType == "MySql")
                      options.UseMySql(Configuration.GetConnectionString("Systore"));
                  else if (_appSettings.DatabaseType == "InMem")
                      options.UseInMemoryDatabase("systore");
-                 options.EnableSensitiveDataLogging();
-             }).AddDbContext<AuditContext>(options =>
+                 if (_env.IsDevelopment())
+                     options.EnableSensitiveDataLogging();
+             }).AddDbContext<IAuditContext, AuditContext>(options =>
              {
                  if (_appSettings.DatabaseType == "MySql")
                      options.UseMySql(Configuration.GetConnectionString("SystoreAudit"));
                  else if (_appSettings.DatabaseType == "InMem")
                      options.UseInMemoryDatabase("systoreAudit");
-                 options.EnableSensitiveDataLogging();
+                 if (_env.IsDevelopment())
+                     options.EnableSensitiveDataLogging();
              });
 
             // TODO unify this lines

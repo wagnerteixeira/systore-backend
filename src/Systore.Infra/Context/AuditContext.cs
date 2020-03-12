@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Systore.Domain;
+using Systore.Domain.Entities;
 
 namespace Systore.Infra.Context
 {
@@ -28,6 +29,9 @@ namespace Systore.Infra.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(AuditContext).Assembly, c => c.Name.Contains(_appSettings.DatabaseType) && c.Name.Contains("Audit"));
-        }        
+        }
+
+        public DbSet<HeaderAudit> HeaderAudits { get; set; }
+        public DbSet<ItemAudit> ItemAudits { get; set; }
     }
 }

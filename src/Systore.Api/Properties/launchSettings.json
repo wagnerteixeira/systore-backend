@@ -22,18 +22,19 @@
       "launchUrl": "swagger",
       "environmentVariables": {
         "ConnectionStrings__Systore": "Server=localhost;User Id=root;Password=12345678;Database=systore",
+        "ASPNETCORE_URLS": "http://*:5000",
         "ConnectionStrings__SystoreAudit": "Server=localhost;User Id=root;Password=12345678;Database=systoreAudit",
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "http://localhost:5000"
+        
+      }
     },
     "Prod": {
       "commandName": "Project",
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Production"
-      },
-      "applicationUrl": "http://localhost:8080"
+        "ASPNETCORE_ENVIRONMENT": "Production",
+        "ASPNETCORE_URLS": "http://*:5000"
+      }
     }
   }
 }
