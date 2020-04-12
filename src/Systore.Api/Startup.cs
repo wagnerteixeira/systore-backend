@@ -216,12 +216,6 @@ namespace Systore.Api
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
-
-
             app.UseCors(builder =>
                 builder.AllowAnyOrigin()
                       .AllowAnyMethod()
@@ -234,6 +228,11 @@ namespace Systore.Api
             })
             //.UseMetrics()
             .UseReport();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
 
             Console.WriteLine($"Current culture: {CultureInfo.CurrentCulture}");
             Console.WriteLine($"Local timezone {TimeZoneInfo.Local} Utc {TimeZoneInfo.Utc}");
