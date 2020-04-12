@@ -19,9 +19,9 @@ namespace Systore.Api.Controllers
     [Route("api/[controller]")]
     public class ProductController : BaseController<Product>
     {
-        private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly IWebHostEnvironment _hostingEnvironment;
 
-        public ProductController(IProductService Service, ILogger<ProductController> logger, IHostingEnvironment hostingEnvironment)
+        public ProductController(IProductService Service, ILogger<ProductController> logger, IWebHostEnvironment hostingEnvironment)
             : base(Service, logger)
         {
             _hostingEnvironment = hostingEnvironment;
