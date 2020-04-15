@@ -1,6 +1,10 @@
 ![CI - release](https://github.com/wagnerteixeira/systore-backend/workflows/CI%20-%20release/badge.svg?branch=master) ![CI - develop](https://github.com/wagnerteixeira/systore-backend/workflows/CI%20-%20develop/badge.svg?branch=develop)
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=wagnerteixeira_test-actions&metric=alert_status)](https://sonarcloud.io/dashboard?id=wagnerteixeira_test-actions) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=wagnerteixeira_test-actions&metric=coverage)](https://sonarcloud.io/dashboard?id=wagnerteixeira_test-actions)
+Line%20Coverage%20Status
+[![Line Coverage Status](./coverage-badge-line.svg)](https://github.com/wagnerteixeira/systore-backend/)
+
+[![Branch Coverage Status](./coverage-badge-branch.svg)](https://github.com/wagnerteixeira/systore-backend/)
 
 for run printer in linux debian based run
 
