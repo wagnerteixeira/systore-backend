@@ -12,6 +12,7 @@ using Systore.Data.Abstractions;
 using Systore.Domain.Entities;
 using Systore.Tests.Common.Factories;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Systore.Tests.Unit.Services
 {
@@ -107,7 +108,8 @@ namespace Systore.Tests.Unit.Services
 
             // Assert 
             Assert.NotNull(exception);
-            Assert.Contains("A data da venda não pode ser inferior a 01/01/1900", exception.Message);            
+            var expect = Encoding.Convert(Encoding.UTF8, Encoding.Default, Encoding.UTF8.GetBytes("A data da venda nÃ£o pode ser inferior a 01/01/1900"));
+            Assert.Contains(Encoding.Default.GetString(expect), exception.Message);
             _billReceiveRepositoryMock.Verify(v => v.NextCode(), Times.Exactly(1));
             _billReceiveRepositoryMock.Verify(v => v.AddAsync(It.IsAny<BillReceive>()), Times.Exactly(0));
         }
@@ -148,8 +150,8 @@ namespace Systore.Tests.Unit.Services
             // Assert 
             Assert.NotNull(exception);
             Assert.StartsWith("A data do vencimento ", exception.Message);
-            Assert.Contains("|A data do vencimento", exception.Message);            
-            Assert.Contains("é menor que a data da compra", exception.Message);
+            Assert.Contains("|A data do vencimento", exception.Message);
+            Assert.Contains("Ã© menor que a data da compra", exception.Message);
             _billReceiveRepositoryMock.Verify(v => v.NextCode(), Times.Exactly(0));
             _billReceiveRepositoryMock.Verify(v => v.AddAsync(It.IsAny<BillReceive>()), Times.Exactly(0));
         }
@@ -164,13 +166,13 @@ namespace Systore.Tests.Unit.Services
             billReceivesDto.BillReceives[0].Interest = 0;
             billReceivesDto.BillReceives[0].OriginalValue = 36.0M;
             billReceivesDto.BillReceives[0].FinalValue = 36.0M;
-            billReceivesDto.BillReceives[0].DaysDelay = 0;            
+            billReceivesDto.BillReceives[0].DaysDelay = 0;
 
             billReceivesDto.BillReceives[1].Situation = Domain.Enums.BillReceiveSituation.Open;
             billReceivesDto.BillReceives[1].Interest = 0;
             billReceivesDto.BillReceives[1].OriginalValue = 25.0M;
             billReceivesDto.BillReceives[1].FinalValue = 25.0M;
-            billReceivesDto.BillReceives[1].DaysDelay = 0;            
+            billReceivesDto.BillReceives[1].DaysDelay = 0;
 
             billReceivesDto.BillReceives[2].Situation = Domain.Enums.BillReceiveSituation.Open;
             billReceivesDto.BillReceives[2].Interest = 0;
@@ -187,8 +189,8 @@ namespace Systore.Tests.Unit.Services
 
             // Assert 
             Assert.NotNull(exception);
-            Assert.Contains("A soma das parcelas (R$", exception.Message);            
-            Assert.Contains("difere do valor do título (R$", exception.Message);
+            Assert.Contains("A soma das parcelas (R$", exception.Message);
+            Assert.Contains("difere do valor do tÃ­tulo (R$", exception.Message);
             _billReceiveRepositoryMock.Verify(v => v.NextCode(), Times.Exactly(0));
             _billReceiveRepositoryMock.Verify(v => v.AddAsync(It.IsAny<BillReceive>()), Times.Exactly(0));
         }
