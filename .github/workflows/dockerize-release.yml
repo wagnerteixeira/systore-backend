@@ -19,11 +19,6 @@ jobs:
     - name: Build      
       run: dotnet build ./src/Systore.Api --configuration Release
         
-    - name: Info
-      run: |
-        ls 
-        pwd
-        
     - name: Test      
       run: dotnet test /p:CollectCoverage=true /p:CoverletOutput=../TestResults/ /p:CoverletOutputFormat=opencover
   
@@ -48,6 +43,9 @@ jobs:
         targetdir: BuildReports
         # The output formats and scope (separated by semicolon) Values: Badges, Clover, Cobertura, CsvSummary, Html, HtmlChart, HtmlInline, HtmlInline_AzurePipelines, HtmlInline_AzurePipelines_Dark, HtmlSummary, JsonSummary, Latex, LatexSummary, lcov, MHtml, PngChart, SonarQube, TeamCitySummary, TextSummary, Xml, XmlSummary
         reporttypes: HTML;HTMLSummary   
+        assemblyfilters: -*Tests*
+        classfilters: +*
+        filefilters: +*
 
     - name: Archive Coverage Report
       uses: actions/upload-artifact@v1
