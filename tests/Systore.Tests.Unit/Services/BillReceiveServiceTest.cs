@@ -110,7 +110,7 @@ namespace Systore.Tests.Unit.Services
             Assert.NotNull(exception);
             var expect = Encoding.Convert(Encoding.UTF8, Encoding.Default, Encoding.UTF8.GetBytes("A data da venda não pode ser inferior a 01/01/1900"));
             Assert.Contains(Encoding.Default.GetString(expect), exception.Message);
-            _billReceiveRepositoryMock.Verify(v => v.NextCode(), Times.Exactly(1));
+            _billReceiveRepositoryMock.Verify(v => v.NextCode(), Times.Exactly(0));
             _billReceiveRepositoryMock.Verify(v => v.AddAsync(It.IsAny<BillReceive>()), Times.Exactly(0));
         }
 
