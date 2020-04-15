@@ -1,0 +1,95 @@
+name: CI - release
+
+on:
+  push:
+    branches:
+      - feature/create-tests
+jobs:  
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1.4.0
+      with:
+        dotnet-version: ${{ secrets.DOTNET_VERSION }}
+    
+    - name: Build      
+      run: dotnet build ./src/Systore.Api --configuration Release
+        
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:      
+      - name: Info
+        run: |
+          ls 
+          pwd
+          
+      - name: Test      
+        run: dotnet test /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=opencover Systore.sln
+        
+      - name: OpenCover Badge Generator
+        uses: danpetitt/open-cover-badge-generator-action@v1.0.9
+        with:
+          # Path to the open cover xml file
+          path-to-opencover-xml: TestResults/coverage.opencover.xml          
+          # Path where the line and branch coverage svgs would be saved; these will be saved with the names coverage-badge-line.svg and coverage-badge-branch.svg; if not specified the files will be saved into the project root
+          path-to-badges: ./
+          # Threshold percentage at which a red badge would appear:  
+          minimum-coverage: 75
+          # Github repo token so that the changed file can be committed, like secrets.GITHUB_TOKEN:  
+          repo-token: ${{ secrets.CI_TOKEN }}
+
+      - name: ReportGenerator
+        uses: danielpalme/ReportGenerator-GitHub-Action@4.5.6
+        with:
+          # The coverage reports that should be parsed (separated by semicolon). Globbing is supported.
+          reports: TestResults/coverage.opencover.xml
+          # The directory where the generated report should be saved.
+          targetdir: BuildReports
+          # The output formats and scope (separated by semicolon) Values: Badges, Clover, Cobertura, CsvSummary, Html, HtmlChart, HtmlInline, HtmlInline_AzurePipelines, HtmlInline_AzurePipelines_Dark, HtmlSummary, JsonSummary, Latex, LatexSummary, lcov, MHtml, PngChart, SonarQube, TeamCitySummary, TextSummary, Xml, XmlSummary
+          reporttypes: HTML;HTMLSummary   
+          
+      - name: Archive Coverage Report
+        uses: actions/upload-artifact@v1
+        with:
+          name: Coverage Report
+          path: BuildReports                
+             
+  publish_artifacts:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Publish
+      run: dotnet publish ./src/Systore.Api -c Release -o ${{ github.workspace }}/app
+      
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v1
+      with:
+        name: SystoreApi
+        path: app
+      
+  publish_container:
+    needs: test
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Login to Docker Registry      
+      run: echo -n $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin https://index.docker.io/v1/
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+    
+    - name: Build Docker image
+      run: docker build . --file docker/Dockerfile --tag ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend:latest
+
+    - name: Create tag image
+      run: docker tag ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend:latest ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend:$(date +%d-%m-%Y-%H-%M-%S)
+    
+    - name: Push images
+      run: docker push ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend  
