@@ -4,7 +4,7 @@
 Line%20Coverage%20Status
 [![Line Coverage Status](./coverage-badge-line.svg)](https://github.com/wagnerteixeira/systore-backend/)
 
-[![Branch Coverage Status](./coverage-badge-branch.svg)](https://github.com/wagnerteixeira/systore-backend/)
+[![Line Coverage Status](./coverage-badge-line.svg)](https://github.com/wagnerteixeira/systore-backend/) [![Branch Coverage Status](./coverage-badge-branch.svg)](https://github.com/wagnerteixeira/systore-backend/)
 
 for run printer in linux debian based run
 
