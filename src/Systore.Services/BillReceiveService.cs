@@ -12,9 +12,20 @@ namespace Systore.Services
 {
     public class BillReceiveService : BaseService<BillReceive>, IBillReceiveService
     {
-        public BillReceiveService(IBillReceiveRepository repository) : base(repository)
+        private readonly ICalculateValuesService _calculateValuesService;
+        public BillReceiveService(IBillReceiveRepository repository, ICalculateValuesService calculateValuesService) : base(repository)
         {
+            _calculateValuesService = calculateValuesService;
+        }
 
+        public async Task<List<BillReceive>> GetBillReceivesByClient(int ClientId)
+        {
+            var billReceives = await (_repository as IBillReceiveRepository).GetBillReceivesByClient(ClientId);
+            return billReceives.Select(c =>
+            {
+                _calculateValuesService.CalculateValues(c);
+                return c;
+            }).ToList();            
         }
 
         public async Task<List<BillReceive>> GetBillReceivesByClient(int ClientId)
@@ -45,11 +56,11 @@ namespace Systore.Services
             string errors = "";
             if (createBillReceivesDto.PurchaseDate < new DateTime(1900, 01, 01))
                 errors = $"A data da venda não pode ser inferior a 01/01/1900";
-            
+
             foreach (var billReceive in createBillReceivesDto.BillReceives)
             {
                 sumOriginalValue += billReceive.OriginalValue;
-                
+
                 if (billReceive.DueDate < createBillReceivesDto.PurchaseDate)
                 {
                     if (errors != "")

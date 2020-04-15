@@ -15,8 +15,6 @@ namespace Systore.Data.Repositories
 {
     public class BillReceiveRepository : BaseRepository<BillReceive>, IBillReceiveRepository
     {
-        private decimal _interestTax = 0.0023333333333333333333333333M; //(0.07M / 30.0M)
-
         public BillReceiveRepository(ISystoreContext context, IHeaderAuditRepository headerAuditRepository) : base(context, headerAuditRepository)
         {
 
@@ -39,7 +37,7 @@ namespace Systore.Data.Repositories
 
             var _billReceives = await queryOpen
               .Union(queryClose)
-              .ToListAsync();
+              .ToListAsync();            
 
             return _billReceives.Select(c =>
             {

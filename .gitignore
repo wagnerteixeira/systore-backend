@@ -35,4 +35,5 @@ global.json
 dotnet-sonarscanner
 reportgeneratortool
 .sonarqube
+BuildReports
 TestResults
