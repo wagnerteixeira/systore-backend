@@ -26,18 +26,18 @@ jobs:
         
     - name: Test      
       run: dotnet test /p:CollectCoverage=true /p:CoverletOutput=../TestResults/ /p:CoverletOutputFormat=opencover
-
+  
     - name: OpenCover Badge Generator
       uses: danpetitt/open-cover-badge-generator-action@v1.0.9
       with:
-        # Github repo token so that the changed file can be committed, like secrets.GITHUB_TOKEN:  
-        repo-token: ${{ secrets.CI_TOKEN }} 
         # Path to the open cover xml file
-        path-to-opencover-xml: ./tests/TestResults/coverage.opencover.xml          
+        path-to-opencover-xml: ./tests/TestResults/coverage.opencover.xml
         # Path where the line and branch coverage svgs would be saved; these will be saved with the names coverage-badge-line.svg and coverage-badge-branch.svg; if not specified the files will be saved into the project root
         path-to-badges: ./
-        # Threshold percentage at which a red badge would appear:  
-        minimum-coverage: 75        
+        # Threshold percentage at which a red badge would appear
+        minimum-coverage: 75
+        # Github repo token so that the changed file can be committed, like secrets.GITHUB_TOKEN
+        repo-token:  ${{ secrets.GITHUB_TOKEN }}       
 
     - name: ReportGenerator
       uses: danielpalme/ReportGenerator-GitHub-Action@4.5.6
