@@ -90,7 +90,7 @@ namespace Systore.Services
 
         public static string StringFormat(this TimeSpan value)
         {
-            return value.ToString("HHmm");
+            return value.ToString("hhmm");
         }
 
         public static string StringFormat(this DateTime? value, bool dateTime)
@@ -103,12 +103,12 @@ namespace Systore.Services
 
         public static string StringFormat(this TimeSpan? value)
         {
-            return value.HasValue ? value.Value.ToString("HHmm") : "    ";
+            return value.HasValue ? value.Value.ToString("hhmm") : "    ";
         }
 
         public static string StringFormat(this DateTime dateValue, TimeSpan hourValue)
         {
-            return $"{dateValue.ToString("yyyyMMdd")}{hourValue.ToString("HHmm")}";
+            return $"{dateValue.ToString("yyyyMMdd")}{hourValue.ToString("hhmm")}";
         }
 
         public static string StringFormat(this DateTime? dateValue, TimeSpan? hourValue)
@@ -116,12 +116,12 @@ namespace Systore.Services
             string ret = "";
 
             if (dateValue.HasValue)
-                return ret = dateValue.Value.ToString("yyyyMMdd");
+                ret+= dateValue.Value.ToString("yyyyMMdd");
             else
                 ret = "        ";
 
             if (hourValue.HasValue)
-                ret += hourValue.Value.ToString("HHmm");
+                ret += hourValue.Value.ToString("hhmm");
             else
                 ret += "    ";
 
@@ -194,7 +194,7 @@ namespace Systore.Services
             return null;
         }
 
-        public static DateTime ToDateTime(this string value)
+        public static DateTime? ToDateTime(this string value)
         {
             return TryToDateTime(value).GetValueOrDefault();
         }
