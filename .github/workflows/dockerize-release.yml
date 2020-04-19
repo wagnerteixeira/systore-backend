@@ -25,9 +25,11 @@ jobs:
     - name: SonarCloud Scan
       run: |
         dotnet tool install dotnet-sonarscanner --tool-path . --version 4.7.1
-        dotnet-sonarscanner begin /k:"wagnerteixeira_systore-backend" /n:"Systore backend" /o:"wagnerteixeira" /d:sonar.login=${{ secrets.SONAR_TOKEN }} /d:sonar.host.url=https://sonarcloud.io /d:sonar.cs.opencover.reportsPaths="./tests/TestResults/coverage.opencover.xml" /d:sonar.cs.vstest.reportsPaths="./tests/TestResults/*.trx"
-        dotnet test --configuration Release /p:CollectCoverage=true /p:CoverletOutput=../TestResults/ /p:CoverletOutputFormat=\"opencover,lcov\" /p:Exclude="[Systore.Tests*]*" --logger trx --results-directory ./tests/TestResults/
-        dotnet-sonarscanner end /d:sonar.login=${{ secrets.SONAR_TOKEN }}
+        ls
+        ls -la
+        ./dotnet-sonarscanner begin /k:"wagnerteixeira_systore-backend" /n:"Systore backend" /o:"wagnerteixeira" /d:sonar.login=${{ secrets.SONAR_TOKEN }} /d:sonar.host.url=https://sonarcloud.io /d:sonar.cs.opencover.reportsPaths="./tests/TestResults/coverage.opencover.xml" /d:sonar.cs.vstest.reportsPaths="./tests/TestResults/*.trx"        
+        dotnet test --configuration Release /p:CollectCoverage=true /p:CoverletOutput=../TestResults/ /p:CoverletOutputFormat=\"opencover,lcov\" /p:Exclude="[Systore.Tests*]*" --logger trx --results-directory ./tests/TestResults/        
+        ./dotnet-sonarscanner end /d:sonar.login=${{ secrets.SONAR_TOKEN }}
         
     #- name: SonarCloud Scan
     #  uses: SonarSource/sonarcloud-github-action@v1.1
