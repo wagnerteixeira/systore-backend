@@ -33,7 +33,7 @@ jobs:
         # Command to invoke build
         buildCommand: dotnet build ./src/Systore.Api --configuration Release
         # Command to invoke tests
-        testCommand: dotnet test /p:CollectCoverage=true /p:CoverletOutput=../TestResults/ /p:CoverletOutputFormat=\"opencover,lcov\" /p:Exclude="[Systore.Tests*]*" # optional
+        testCommand: dotnet test --configuration Release /p:CollectCoverage=true /p:CoverletOutput=../TestResults/ /p:CoverletOutputFormat=\"opencover,lcov\" /p:Exclude="[Systore.Tests*]*" --logger trx --results-directory ./tests/TestResults/
         # Specifies the key of the analyzed project in SonarQube
         projectKey: wagnerteixeira_systore-backend 
         # Specifies the name of the analyzed project in SonarQube
@@ -47,6 +47,7 @@ jobs:
           /d:sonar.verbose="true"
           /d:sonar.cs.opencover.reportsPaths='"./tests/TestResults/coverage.opencover.xml"'
           /d:sonar.coverage.exclusions='"**/*.md"'
+          /d:sonar.cs.vstest.reportsPaths="./tests/TestResults/*.trx"          
         # Arguments to append to the end command
         # endArguments: # optional
       env:
