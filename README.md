@@ -73,3 +73,27 @@ MYSQL_DATABASE=db
 MYSQL_USERuser'
 MYSQL_PASSWORD: 'pass'
 MYSQL_ROOT_HOST=%
+
+
+
+**SonarScanner with SonarCloud**
+
+Install Sonnar Scanner Cli
+
+### `dotnet tool install dotnet-sonarscanner --tool-path . --version 4.7.1`
+
+initialize sonar
+
+### `export SONAR_TOKEN=SONAR_TOKEN`
+
+### `dotnet-sonarscanner begin /k:"wagnerteixeira_systore-backend" /n:"Systore backend" /o:"wagnerteixeira" /d:sonar.login=$SONAR_TOKEN /d:sonar.host.url=https://sonarcloud.io /d:sonar.cs.opencover.reportsPaths="./tests/TestResults/coverage.opencover.xml" /d:sonar.cs.vstest.reportsPaths="./tests/TestResults/*.trx"`
+
+run tests
+
+### `dotnet test --configuration Release /p:CollectCoverage=true /p:CoverletOutput=../TestResults/ /p:CoverletOutputFormat=\"opencover,lcov\" /p:Exclude="[Systore.Tests*]*" --logger trx --results-directory ./tests/TestResults/`
+
+finalize and send report to SonarCloud
+
+### `dotnet-sonarscanner end /d:sonar.login=$SONAR_TOKEN`
+
+
