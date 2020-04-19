@@ -29,6 +29,9 @@ bld/
 global.json
 
 
+#sonar
+.scannerwork
+
 # End of https://www.gitignore.io/api/dotnetcore
 
 .store

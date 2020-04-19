@@ -1,11 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-
     <IsPackable>false</IsPackable>
+    <ProjectGuid>689B94A6-46C6-463D-AAEA-FCC6C6A8DE27</ProjectGuid>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="AutoBogus" Version="2.8.1" />
     <PackageReference Include="AutoMapper" Version="9.0.0" />
@@ -21,12 +19,10 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" />
     <PackageReference Include="XunitXml.TestLogger" Version="2.1.26" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\src\Systore.Domain\Systore.Domain.csproj" />
     <ProjectReference Include="..\..\src\Systore.Services\Systore.Services.csproj" />
     <ProjectReference Include="..\..\src\Systore.Data\Systore.Data.csproj" />
     <ProjectReference Include="..\Systore.Tests.Common\Systore.Tests.Common.csproj" />
   </ItemGroup>
-
 </Project>

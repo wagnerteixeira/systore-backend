@@ -91,7 +91,7 @@ namespace Systore.Api.Controllers
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 return JsonConvert.DeserializeObject<ValidationReleaseDto>(response.Content);
             else
-                throw new Exception($"Erro ao verificar licen�a {response.StatusCode} {response.ErrorMessage} ");
+                throw new Exception($"Erro ao verificar licença {response.StatusCode} {response.ErrorMessage} ");
         }
 
         private bool _disposed = false;
