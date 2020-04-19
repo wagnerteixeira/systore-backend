@@ -11,15 +11,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: Setup .NET Core 2.1.805
-      uses: actions/setup-dotnet@v1.4.0
-      with:
-        dotnet-version: 2.1.805
-
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1.4.0
-      with:
-        dotnet-version: ${{ secrets.DOTNET_VERSION }}
+    #- name: Setup .NET Core
+    #  uses: actions/setup-dotnet@v1.4.0
+    #  with:
+    #    dotnet-version: ${{ secrets.DOTNET_VERSION }}
     
     - name: Build      
       run: dotnet build ./src/Systore.Api --configuration Release
@@ -27,14 +22,17 @@ jobs:
    # - name: Test      
    #   run: dotnet test /p:CollectCoverage=true /p:CoverletOutput=../TestResults/ /p:CoverletOutputFormat=\"opencover,lcov\" /p:Exclude="[Systore.Tests*]*"
     
-    - name: SonarCloud Scan
-      run: |
-        dotnet tool install dotnet-sonarscanner --tool-path . --version 4.7.1
-        ls
-        ls -la
-        ./dotnet-sonarscanner begin /k:"wagnerteixeira_systore-backend" /n:"Systore backend" /o:"wagnerteixeira" /d:sonar.login=${{ secrets.SONAR_TOKEN }} /d:sonar.host.url=https://sonarcloud.io /d:sonar.cs.opencover.reportsPaths="./tests/TestResults/coverage.opencover.xml" /d:sonar.cs.vstest.reportsPaths="./tests/TestResults/*.trx"        
-        dotnet test --configuration Release /p:CollectCoverage=true /p:CoverletOutput=../TestResults/ /p:CoverletOutputFormat=\"opencover,lcov\" /p:Exclude="[Systore.Tests*]*" --logger trx --results-directory ./tests/TestResults/        
-        ./dotnet-sonarscanner end /d:sonar.login=${{ secrets.SONAR_TOKEN }}
+    - name: Install SonarScanner
+      run: dotnet tool install dotnet-sonarscanner --tool-path . --version 4.7.1        
+      
+    - name: SonarScanner Begin
+      run: ./dotnet-sonarscanner begin /d:sonar.verbose=true /k:"wagnerteixeira_systore-backend" /n:"Systore backend" /o:"wagnerteixeira" /d:sonar.login=${{ secrets.SONAR_TOKEN }} /d:sonar.host.url=https://sonarcloud.io /d:sonar.cs.opencover.reportsPaths="./tests/TestResults/coverage.opencover.xml" /d:sonar.cs.vstest.reportsPaths="./tests/TestResults/*.trx"        
+  
+    - name: Test  
+      run: dotnet test --configuration Release /p:CollectCoverage=true /p:CoverletOutput=../TestResults/ /p:CoverletOutputFormat=\"opencover,lcov\" /p:Exclude="[Systore.Tests*]*" --logger trx --results-directory ./tests/TestResults/        
+    
+    - name: SonarScanner end
+      run: ./dotnet-sonarscanner end /d:sonar.login=${{ secrets.SONAR_TOKEN }}
         
     #- name: SonarCloud Scan
     #  uses: SonarSource/sonarcloud-github-action@v1.1
