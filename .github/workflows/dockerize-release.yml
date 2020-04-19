@@ -18,9 +18,14 @@ jobs:
     
     - name: Build      
       run: dotnet build ./src/Systore.Api --configuration Release
+    
+    - name: Setup .NET Core 2.1.805
+      uses: actions/setup-dotnet@v1.4.0
+      with:
+        dotnet-version: 2.1.805
         
-    - name: Test      
-      run: dotnet test /p:CollectCoverage=true /p:CoverletOutput=../TestResults/ /p:CoverletOutputFormat=\"opencover,lcov\" /p:Exclude="[Systore.Tests*]*"
+   # - name: Test      
+   #   run: dotnet test /p:CollectCoverage=true /p:CoverletOutput=../TestResults/ /p:CoverletOutputFormat=\"opencover,lcov\" /p:Exclude="[Systore.Tests*]*"
     
     - name: SonarCloud Scan
       run: |
