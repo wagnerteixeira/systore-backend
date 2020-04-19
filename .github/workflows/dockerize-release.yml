@@ -22,6 +22,16 @@ jobs:
     - name: Test      
       run: dotnet test /p:CollectCoverage=true /p:CoverletOutput=../TestResults/ /p:CoverletOutputFormat=\"opencover,lcov\" /p:Exclude="[Systore.Tests*]*"
     
+    - name: Codecov
+      uses: codecov/codecov-action@v1.0.6
+      with:
+        # User defined upload name. Visible in Codecov UI
+        name: Systore backend # optional
+        # Repository upload token - get it from codecov.io. Required only for private repositories
+        token: ${{ secrets.CODECOV_TOKEN }} # optional
+        # Path to coverage file to upload
+        file: ./tests/TestResults/coverage.opencover.xml # optional        
+        
     - name: Coveralls GitHub Action
       uses: coverallsapp/github-action@v1.0.1
       with:
