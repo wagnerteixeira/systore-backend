@@ -22,11 +22,36 @@ jobs:
     - name: Test      
       run: dotnet test /p:CollectCoverage=true /p:CoverletOutput=../TestResults/ /p:CoverletOutputFormat=\"opencover,lcov\" /p:Exclude="[Systore.Tests*]*"
       
-    - name: SonarCloud Scan
-      uses: SonarSource/sonarcloud-github-action@v1.1
+    #- name: SonarCloud Scan
+    #  uses: SonarSource/sonarcloud-github-action@v1.1
+    #  env:
+    #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    - name: dotnet-sonarscanner
+      uses: Secbyte/dotnet-sonarscanner@v2.2
+      with:
+        # Command to invoke build
+        buildCommand: dotnet build ./src/Systore.Api --configuration Release
+        # Command to invoke tests
+        testCommand: dotnet test /p:CollectCoverage=true /p:CoverletOutput=../TestResults/ /p:CoverletOutputFormat=\"opencover,lcov\" /p:Exclude="[Systore.Tests*]*" # optional
+        # Specifies the key of the analyzed project in SonarQube
+        projectKey: wagnerteixeira_systore-backend 
+        # Specifies the name of the analyzed project in SonarQube
+        projectName: Systore backend
+        # The server URL
+        #sonarHostname: # optional, default is https://sonarcloud.io
+        # Organisation
+        sonarOrganisation: wagnerteixeira
+        # Arguments to append to the begin command
+        beginArguments: >
+          /d:sonar.verbose="true"
+          /d:sonar.cs.opencover.reportsPaths='"./tests/TestResults/coverage.opencover.xml"'
+          /d:sonar.coverage.exclusions='"**/*.md"'
+        # Arguments to append to the end command
+        # endArguments: # optional
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  
       
     - name: Codecov
       uses: codecov/codecov-action@v1.0.6
