@@ -20,8 +20,16 @@ jobs:
       run: dotnet build ./src/Systore.Api --configuration Release
         
     - name: Test      
-      run: dotnet test /p:CollectCoverage=true /p:CoverletOutput=../TestResults/ /p:CoverletOutputFormat=opencover
-  
+      run: dotnet test /p:CollectCoverage=true /p:CoverletOutput=../TestResults/ /p:CoverletOutputFormat=\"opencover,lcov\"
+    
+    - name: Coveralls GitHub Action
+      uses: coverallsapp/github-action@v1.0.1
+      with:
+        # 
+        github-token:  ${{ secrets.GITHUB_TOKEN }} 
+        # Path to lcov file
+        path-to-lcov: ./tests/TestResults/coverage.info # default is ./coverage/lcov.info  
+
     - name: OpenCover Badge Generator
       uses: danpetitt/open-cover-badge-generator-action@v1.0.9
       with:
