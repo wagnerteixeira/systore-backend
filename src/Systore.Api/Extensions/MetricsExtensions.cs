@@ -2,15 +2,11 @@
 using App.Metrics.Extensions.Reporting.InfluxDB;
 using App.Metrics.Extensions.Reporting.InfluxDB.Client;
 using App.Metrics.Reporting.Interfaces;
-using AutoMapper.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Systore.Domain;
 
 namespace Systore.Api.Extensions

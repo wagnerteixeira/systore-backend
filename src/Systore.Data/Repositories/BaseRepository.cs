@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Systore.Infra.Abstractions;
@@ -9,7 +8,6 @@ using System.Linq.Expressions;
 using Systore.Data.Abstractions;
 using Systore.Domain.Enums;
 using Systore.Domain.Dtos;
-using Systore.Infra.Context;
 using Systore.Domain.Entities;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Systore.Domain.Abstractions;
@@ -33,7 +31,7 @@ namespace Systore.Data.Repositories
             IsConversion = false;
         }
 
-        public bool BeginTransaction()
+        public virtual bool BeginTransaction()
         {
             if (_inTransaction)
                 return false;
@@ -43,19 +41,19 @@ namespace Systore.Data.Repositories
             }
             catch (Exception e)
             {
-                return false;
+                throw e;
             }
 
         }
-        public bool Commit()
+        public virtual bool Commit()
         {
             return true;
         }
 
-        public void Rollback()
+        public virtual void Rollback() 
         {
 
-        }
+        }        
 
         public virtual async Task<string> AddAsync(TEntity entity)
         {
