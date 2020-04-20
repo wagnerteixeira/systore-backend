@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Systore.Domain.Abstractions;
 using Systore.Domain.Entities;
 using Systore.Domain.Enums;
