@@ -1,0 +1,119 @@
+name: CI - Generate Version
+
+on:
+  push:
+    branches: [master, develop]  
+
+jobs:
+  build-test-generate-artifacts:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build
+        run: dotnet build ./src/Systore.Api --configuration Release
+
+      - name: Install SonarScanner
+        run: dotnet tool install dotnet-sonarscanner --tool-path . --version 4.7.1
+
+      - name: SonarScanner Begin
+        run: ./dotnet-sonarscanner begin /d:sonar.verbose=true /k:"wagnerteixeira_systore-backend" /n:"Systore backend" /o:"wagnerteixeira" /d:sonar.login=${{ secrets.SONAR_TOKEN }} /d:sonar.host.url=https://sonarcloud.io /d:sonar.cs.opencover.reportsPaths="./tests/TestResults/coverage.opencover.xml" /d:sonar.cs.vstest.reportsPaths="./tests/TestResults/*.trx"
+
+      - name: Test
+        run: dotnet test --configuration Release /p:CollectCoverage=true /p:CoverletOutput=../TestResults/ /p:CoverletOutputFormat=\"opencover,lcov\" /p:Exclude="[Systore.Tests*]*" --logger trx --results-directory ./tests/TestResults/
+
+      - name: SonarScanner end
+        run: ./dotnet-sonarscanner end /d:sonar.login=${{ secrets.SONAR_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # - name: Codecov
+      #   uses: codecov/codecov-action@v1.0.6
+      #   with:
+      #     # User defined upload name. Visible in Codecov UI
+      #     name: Systore backend # optional
+      #     # Repository upload token - get it from codecov.io. Required only for private repositories
+      #     token: ${{ secrets.CODECOV_TOKEN }} # optional
+      #     # Path to coverage file to upload
+      #     file: ./tests/TestResults/coverage.opencover.xml # optional
+
+      # - name: Coveralls GitHub Action
+      #   uses: coverallsapp/github-action@v1.0.1
+      #   with:
+      #     #
+      #     github-token:  ${{ secrets.GITHUB_TOKEN }}
+      #     # Path to lcov file
+      #     path-to-lcov: ./tests/TestResults/coverage.info # default is ./coverage/lcov.info
+
+      # - name: OpenCover Badge Generator
+      #   uses: danpetitt/open-cover-badge-generator-action@v1.0.9
+      #   with:
+      #     # Path to the open cover xml file
+      #     path-to-opencover-xml: ./tests/TestResults/coverage.opencover.xml
+      #     # Path where the line and branch coverage svgs would be saved; these will be saved with the names coverage-badge-line.svg and coverage-badge-branch.svg; if not specified the files will be saved into the project root
+      #     path-to-badges: ./
+      #     # Threshold percentage at which a red badge would appear
+      #     minimum-coverage: 75
+      #     # Github repo token so that the changed file can be committed, like secrets.GITHUB_TOKEN
+      #     repo-token:  ${{ secrets.GITHUB_TOKEN }}
+
+      - name: ReportGenerator
+        uses: danielpalme/ReportGenerator-GitHub-Action@4.5.6
+        with:
+          # The coverage reports that should be parsed (separated by semicolon). Globbing is supported.
+          reports: ./tests/TestResults/coverage.opencover.xml
+          # The directory where the generated report should be saved.
+          targetdir: BuildReports
+          # The output formats and scope (separated by semicolon) Values: Badges, Clover, Cobertura, CsvSummary, Html, HtmlChart, HtmlInline, HtmlInline_AzurePipelines, HtmlInline_AzurePipelines_Dark, HtmlSummary, JsonSummary, Latex, LatexSummary, lcov, MHtml, PngChart, SonarQube, TeamCitySummary, TextSummary, Xml, XmlSummary
+          reporttypes: HTML;HTMLSummary
+          assemblyfilters: +*
+          classfilters: +*
+          filefilters: +*
+
+      - name: Archive Coverage Report
+        uses: actions/upload-artifact@v1
+        with:
+          name: Coverage Report
+          path: BuildReports
+
+      - name: Publish
+        run: dotnet publish ./src/Systore.Api -c Release -o ${{ github.workspace }}/app
+
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: SystoreApi
+          path: app
+
+  publish_container:
+    needs: build-test-generate-artifacts
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup name of tag with latest
+        if: contains(github.ref, 'master')
+        shell: bash
+        run: echo "::set-env name=TAG_NAME::latest"
+        
+      - name: Setup name of tag with dev
+        if: contains(github.ref, 'master') == false
+        shell: bash
+        run: echo "::set-env name=TAG_NAME::dev"
+
+      - name: Login to Docker Registry
+        run: echo -n $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin https://index.docker.io/v1/
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build Docker image
+        run: docker build . --file docker/Dockerfile --tag ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend:${TAG_NAME}
+
+      - name: Create tag image
+        run: docker tag ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend:${TAG_NAME} ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend:$(date +%d-%m-%Y-%H-%M-%S)
+
+      - name: Push images
+        run: docker push ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/systore-backend
