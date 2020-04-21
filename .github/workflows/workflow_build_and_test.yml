@@ -7,7 +7,7 @@ on:
     branches: [master, develop]
 
 jobs:
-  build-test-generate-artifacts:
+  build-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,10 +17,10 @@ jobs:
         run: dotnet build ./src/Systore.Api --configuration Release
 
       - name: Install SonarScanner
-        run: dotnet tool install dotnet-sonarscanner --tool-path . --version 4.7.1
+        run: dotnet tool install dotnet-sonarscanner --tool-path . --version 4.8.0
 
       - name: SonarScanner Begin
-        run: ./dotnet-sonarscanner begin /d:sonar.verbose=true /k:"wagnerteixeira_systore-backend" /n:"Systore backend" /o:"wagnerteixeira" /d:sonar.login=${{ secrets.SONAR_TOKEN }} /d:sonar.host.url=https://sonarcloud.io /d:sonar.cs.opencover.reportsPaths="./tests/TestResults/coverage.opencover.xml" /d:sonar.cs.vstest.reportsPaths="./tests/TestResults/*.trx"
+        run: ./dotnet-sonarscanner begin /d:sonar.verbose=true /k:"wagnerteixeira_systore-backend" /n:"Systore backend" /o:"wagnerteixeira" /d:sonar.login=${{ secrets.SONAR_TOKEN }} /d:sonar.host.url=https://sonarcloud.io /d:sonar.cs.opencover.reportsPaths="./tests/TestResults/coverage.opencover.xml" /d:sonar.cs.vstest.reportsPaths="./tests/TestResults/*.trx"  /d:sonar.exclusions=./tests/*,./src/FastReport.OpenSource.Export.PdfSimple/*
 
       - name: Test
         run: dotnet test --configuration Release /p:CollectCoverage=true /p:CoverletOutput=../TestResults/ /p:CoverletOutputFormat=\"opencover,lcov\" /p:Exclude="[Systore.Tests*]*" --logger trx --results-directory ./tests/TestResults/
