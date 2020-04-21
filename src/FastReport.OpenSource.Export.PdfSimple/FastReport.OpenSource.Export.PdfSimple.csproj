@@ -4,7 +4,7 @@
     <ProjectGuid>1512D053-7B36-4A33-BC73-32B061AB4F3B</ProjectGuid>
     <SonarQubeExclude>true</SonarQubeExclude>
   </PropertyGroup>
-  <PropertyGroup>    
+  <PropertyGroup>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>../../../FastReport.Plugins.snk</AssemblyOriginatorKeyFile>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
