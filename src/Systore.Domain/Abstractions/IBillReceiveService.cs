@@ -1,5 +1,4 @@
-﻿using System;
-using Systore.Domain.Entities;
+﻿using Systore.Domain.Entities;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Systore.Domain.Dtos;

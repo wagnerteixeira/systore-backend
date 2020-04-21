@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Systore.Domain.Entities;
-using Systore.Domain.Enums;
 
 namespace Systore.Domain.Dtos
 {

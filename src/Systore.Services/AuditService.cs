@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Systore.Data.Abstractions;
 using Systore.Domain.Abstractions;
 using Systore.Domain.Dtos;
-using System.Linq;
 
 namespace Systore.Services
 {

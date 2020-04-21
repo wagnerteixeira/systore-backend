@@ -1,6 +1,5 @@
 ﻿using Systore.Domain.Entities;
 using Systore.Data.Abstractions;
-using Systore.Infra.Abstractions;
 using Systore.Infra.Context;
 using System.Threading.Tasks;
 using System.Collections.Generic;
@@ -15,13 +14,13 @@ namespace Systore.Data.Repositories
     public class ProductRepository : BaseRepository<Product>, IProductRepository
     {
         private readonly IItemSaleRepository _itemSaleRepository;
-        public ProductRepository(ISystoreContext context, IHeaderAuditRepository headerAuditRepository, IItemSaleRepository itemSaleRepository) : base(context, headerAuditRepository)
+        public ProductRepository(ISystoreContext context, IHeaderAuditRepository headerAuditRepository, IItemSaleRepository itemSaleRepository, ILogger logger) : base(context, headerAuditRepository, logger)
         {
 
             _itemSaleRepository = itemSaleRepository;
         }
 
-        private string Validate(Product entity, bool edit)
+        private string Validate(Product entity)
         {
             if (IsConversion)
                 return "";
@@ -46,9 +45,9 @@ namespace Systore.Data.Repositories
 
         public override Task<string> AddAsync(Product entity)
         {
-            string ret = Validate(entity, false);
+            string ret = Validate(entity);
             if (!string.IsNullOrWhiteSpace(ret))
-                return Task.FromResult(ret); ;
+                return Task.FromResult(ret);
             entity.ExportToBalance = true;
             return base.AddAsync(entity);
         }
@@ -63,7 +62,7 @@ namespace Systore.Data.Repositories
 
         public override Task<string> UpdateAsync(Product entity)
         {
-            string ret = Validate(entity, true);
+            string ret = Validate(entity);
             if (!string.IsNullOrWhiteSpace(ret))
                 return Task.FromResult(ret);
             entity.ExportToBalance = true;
@@ -80,7 +79,7 @@ namespace Systore.Data.Repositories
             var query = _entities.Select(x => x);
 
             if (filterProductsToBalance.TypeOfSearchProductsToBalance == TypeOfSearchProductsToBalance.OnlyModified)
-                query = query.Where(c => c.ExportToBalance == true);
+                query = query.Where(c => c.ExportToBalance);
 
             return await query.ToListAsync();
         }

@@ -1,8 +1,5 @@
-using System;
-using System.Reflection;
 using Systore.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Systore.Domain;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Configuration;
@@ -16,16 +13,13 @@ namespace Systore.Infra.Context
 
         private AppSettings _appSettings { get; set; }
 
-        private readonly IConfiguration _configuration;
-
         public SystoreContext(
             DbContextOptions<SystoreContext> options,
             IOptions<AppSettings> settings,
             IConfiguration configuration)
             : base(options)
         {
-            _appSettings = settings.Value;
-            _configuration = configuration;
+            _appSettings = settings.Value;      
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

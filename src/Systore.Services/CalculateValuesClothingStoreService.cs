@@ -7,7 +7,7 @@ namespace Systore.Services
 {
     public class CalculateValuesClothingStoreService : ICalculateValuesService
     {
-        private decimal _interestTax = 0.0023333333333333333333333333M; //(0.07M / 30.0M)
+        private static decimal _interestTax = 0.0023333333333333333333333333M; //(0.07M / 30.0M)
 
         public void CalculateValues(BillReceive billReceive)
         {

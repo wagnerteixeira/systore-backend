@@ -1,28 +1,20 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Systore.Domain;
 
 namespace Systore.Infra.Context
 {
-   
-
     public partial class AuditContext : DbContext, IAuditContext
     {
         public DbContext Instance => this;
 
         private AppSettings _appSettings { get; set; }
-
-        private readonly IConfiguration _configuration;
-
+        
         public AuditContext(DbContextOptions<AuditContext> options, IOptions<AppSettings> settings, IConfiguration configuration)
             : base(options)
         {
-            _appSettings = settings.Value;
-            _configuration = configuration;
+            _appSettings = settings.Value;            
         }       
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

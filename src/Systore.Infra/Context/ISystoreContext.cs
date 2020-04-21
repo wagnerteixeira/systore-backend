@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Systore.Infra.Abstractions;
+﻿using Systore.Infra.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using Systore.Domain.Entities;
 

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Systore.Domain.Entities;
+﻿using Systore.Domain.Entities;
 
 namespace Systore.Domain.Abstractions
 {

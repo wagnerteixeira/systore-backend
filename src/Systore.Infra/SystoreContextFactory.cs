@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 using Systore.Infra.Context;
 using Microsoft.Extensions.Options;
 using Systore.Domain;

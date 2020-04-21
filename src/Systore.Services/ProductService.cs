@@ -7,9 +7,7 @@ using Systore.Domain.Dtos;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System;
-using Microsoft.Extensions.Logging;
 using System.Text;
-using System.Text.RegularExpressions;
 
 namespace Systore.Services
 {

@@ -5,13 +5,14 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace Systore.Data.Repositories
 {
     public class ClientRepository : BaseRepository<Client>, IClientRepository
     {
         
-        public ClientRepository(ISystoreContext context, IHeaderAuditRepository headerAuditRepository) : base(context, headerAuditRepository)
+        public ClientRepository(ISystoreContext context, IHeaderAuditRepository headerAuditRepository, ILogger logger) : base(context, headerAuditRepository, logger)
         {
             
         }

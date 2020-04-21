@@ -11,6 +11,9 @@ using Systore.Domain.Dtos;
 using Systore.Domain.Entities;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Systore.Domain.Abstractions;
+using System.Runtime.InteropServices;
+using Microsoft.Win32.SafeHandles;
+using Microsoft.Extensions.Logging;
 
 namespace Systore.Data.Repositories
 {
@@ -20,14 +23,19 @@ namespace Systore.Data.Repositories
         protected readonly DbSet<TEntity> _entities;
         protected readonly IHeaderAuditRepository _headerAuditRepository;
         private bool _inTransaction;
+        private readonly ILogger _logger;
+
         public bool IsConversion { get; set; }
 
-        public BaseRepository(IDbContext context, IHeaderAuditRepository headerAuditRepository)
+        bool disposed = false;
+        SafeHandle handle = new SafeFileHandle(IntPtr.Zero, true);
+        protected BaseRepository(IDbContext context, IHeaderAuditRepository headerAuditRepository, ILogger logger)
         {
             _context = context;
             _entities = _context.Instance.Set<TEntity>();
             _headerAuditRepository = headerAuditRepository;
             _inTransaction = false;
+            _logger = logger;
             IsConversion = false;
         }
 
@@ -37,11 +45,13 @@ namespace Systore.Data.Repositories
                 return false;
             try
             {
+                _inTransaction = true;
                 return true;
             }
             catch (Exception e)
             {
-                throw e;
+                _logger.LogError(e, e.Message);
+                throw;
             }
 
         }
@@ -50,10 +60,10 @@ namespace Systore.Data.Repositories
             return true;
         }
 
-        public virtual void Rollback() 
+        public virtual void Rollback()
         {
-
-        }        
+            _inTransaction = false;
+        }
 
         public virtual async Task<string> AddAsync(TEntity entity)
         {
@@ -67,78 +77,54 @@ namespace Systore.Data.Repositories
         public virtual IQueryable<TEntity> GetAll() => _entities.Select(x => x);
 
         public virtual async Task<List<TEntity>> GetWhereAsync(Expression<Func<TEntity, bool>> predicate) => await _entities.Where(predicate).ToListAsync();
-        public virtual async Task<List<TEntity>> GetWhereAsync(FilterPaginateDto filterPaginateDto)
+
+        private IQueryable<TEntity> GetQueryWhere(IQueryable<TEntity> query, FilterPaginateDto filterPaginateDto)
         {
-            var query = _entities.Select(x => x);
             if (filterPaginateDto.filters != null)
-                query = query.Where(QueryExpressionBuilder.GetExpression<TEntity>(filterPaginateDto.filters));
+                return query.Where(QueryExpressionBuilder.GetExpression<TEntity>(filterPaginateDto.filters));
+            else
+                return query;
+        }
 
-            query = query
+        private IQueryable<TEntity> GetQueryPagination(IQueryable<TEntity> query, FilterPaginateDto filterPaginateDto)
+        {
+            return query
                 .Skip(filterPaginateDto.Skip)
-                .Take(filterPaginateDto.Limit);
+                .Take(filterPaginateDto.Limit); ;
+        }        
 
-            var param = Expression.Parameter(typeof(TEntity), "t");
-            if (string.IsNullOrEmpty(filterPaginateDto.SortPropertyName))
-            {
-                return await query.ToListAsync();
-            }
-
-            MemberExpression member = Expression.Property(param, filterPaginateDto.SortPropertyName);
+        // TODO: Test nullable sorts
+        private IQueryable<TEntity> GetQueryOrderBy(IQueryable<TEntity> query, FilterPaginateDto filterPaginateDto)
+        {            
 
             if (filterPaginateDto.Order == null)
                 filterPaginateDto.Order = Order.Asc;
 
-            switch (member.Type.Name)
-            {
-                case "Int32":
-                    var int32Expression = Expression.Lambda<Func<TEntity, Int32>>(member, param);
-                    if (filterPaginateDto.Order == Order.Asc)
-                        return await query.OrderBy(int32Expression).ToListAsync();
-                    else
-                        return await query.OrderByDescending(int32Expression).ToListAsync();
+            var param = Expression.Parameter(typeof(TEntity), "t");
+            var expression = Expression.Lambda<Func<TEntity, object>>(Expression.Property(param, filterPaginateDto.SortPropertyName), param);
 
-                case "String":
-                    var stringExpression = Expression.Lambda<Func<TEntity, string>>(member, param);
-                    if (filterPaginateDto.Order == Order.Asc)
-                        return await query.OrderBy(stringExpression).ToListAsync();
-                    else
-                        return await query.OrderByDescending(stringExpression).ToListAsync();
-                case "DateTime":
-                    var dateTimeExpression = Expression.Lambda<Func<TEntity, string>>(member, param);
-                    if (filterPaginateDto.Order == Order.Asc)
-                        return await query.OrderBy(dateTimeExpression).ToListAsync();
-                    else
-                        return await query.OrderByDescending(dateTimeExpression).ToListAsync();
-                case "Nullable`1":
-                    var nullableType = Nullable.GetUnderlyingType(member.Type);
-                    switch (nullableType.Name)
-                    {
-                        case "DateTime":
-                            var nullDateTimeExpression = Expression.Lambda<Func<TEntity, DateTime?>>(member, param);
-                            if (filterPaginateDto.Order == Order.Asc)
-                                return await query.OrderBy(nullDateTimeExpression).ToListAsync();
-                            else
-                                return await query.OrderByDescending(nullDateTimeExpression).ToListAsync();
-                        case "Int32":
-                            var nullInt32Expression = Expression.Lambda<Func<TEntity, Int32?>>(member, param);
-                            if (filterPaginateDto.Order == Order.Asc)
-                                return await query.OrderBy(nullInt32Expression).ToListAsync();
-                            else
-                                return await query.OrderByDescending(nullInt32Expression).ToListAsync();
-                        default:
-                            var nullObjExpression = Expression.Lambda<Func<TEntity, object>>(member, param);
-                            if (filterPaginateDto.Order == Order.Asc)
-                                return await query.OrderBy(nullObjExpression).ToListAsync();
-                            else
-                                return await query.OrderByDescending(nullObjExpression).ToListAsync();
-                    }
-                default:
-                    var objExpression = Expression.Lambda<Func<TEntity, object>>(member, param);
-                    if (filterPaginateDto.Order == Order.Asc)
-                        return await query.OrderBy(objExpression).ToListAsync();
-                    else
-                        return await query.OrderByDescending(objExpression).ToListAsync();
+            if (filterPaginateDto.Order == Order.Asc)
+                return query.OrderBy(expression);
+            else
+                return query.OrderByDescending(expression);
+        }
+
+        public virtual async Task<List<TEntity>> GetWhereAsync(FilterPaginateDto filterPaginateDto)
+        {
+            var query = _entities.Select(x => x);
+
+            query = GetQueryWhere(query, filterPaginateDto);
+
+            query = GetQueryPagination(query, filterPaginateDto);
+            
+            if (string.IsNullOrEmpty(filterPaginateDto.SortPropertyName))
+            {
+                return await query.ToListAsync();
             }
+            else
+            {
+                return await GetQueryOrderBy(query, filterPaginateDto).ToListAsync();
+            }            
         }
 
         public virtual async Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate) => await _entities.FirstOrDefaultAsync(predicate);
@@ -149,8 +135,7 @@ namespace Systore.Data.Repositories
 
 
         public virtual async Task<string> UpdateAsync(TEntity entity)
-        {
-            // In case AsNoTracking is used
+        {            
             await _context.Instance.Entry(entity).GetDatabaseValuesAsync();
             _context.Instance.Entry(entity).State = EntityState.Modified;
             return await SaveChangesAsync();
@@ -287,7 +272,7 @@ namespace Systore.Data.Repositories
 
                 }
                 string pk = string.Join('|', auditEntry.PrimaryKeys);
-                auditEntry.HeaderAudit.ItemAudits = auditEntry.HeaderAudit.ItemAudits.Select(c => 
+                auditEntry.HeaderAudit.ItemAudits = auditEntry.HeaderAudit.ItemAudits.Select(c =>
                 {
                     c.PrimaryKey = pk;
                     return c;
@@ -342,9 +327,23 @@ namespace Systore.Data.Repositories
             }
         }
 
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed)
+                return;
+
+            if (disposing)
+            {
+                handle.Dispose();
+            }
+
+            disposed = true;
+        }
+
         public void Dispose()
         {
-
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
     }
 

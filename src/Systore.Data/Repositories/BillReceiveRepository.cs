@@ -1,21 +1,18 @@
 using Systore.Domain.Entities;
 using Systore.Data.Abstractions;
-using Systore.Infra.Abstractions;
 using System.Threading.Tasks;
-using System.Linq.Expressions;
 using System.Collections.Generic;
 using Systore.Domain.Enums;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using System;
 using Systore.Infra.Context;
-using Systore.Infra;
+using Microsoft.Extensions.Logging;
 
 namespace Systore.Data.Repositories
 {
     public class BillReceiveRepository : BaseRepository<BillReceive>, IBillReceiveRepository
     {
-        public BillReceiveRepository(ISystoreContext context, IHeaderAuditRepository headerAuditRepository) : base(context, headerAuditRepository)
+        public BillReceiveRepository(ISystoreContext context, IHeaderAuditRepository headerAuditRepository, ILogger logger) : base(context, headerAuditRepository, logger)
         {
 
         }

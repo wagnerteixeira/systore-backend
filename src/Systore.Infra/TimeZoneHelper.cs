@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using System.Text;
 
 namespace Systore.Infra
 {
@@ -23,17 +21,6 @@ namespace Systore.Infra
             }
 
         }
-        public static DateTime ConvertTimeToUtc(DateTime value)
-        {
-            try
-            {
-                return TimeZoneInfo.ConvertTimeToUtc(value, TimeZoneInfo.FindSystemTimeZoneById(TimeZoneHelper.TimeZoneId));
-            }
-            catch
-            {
-                return DateTime.SpecifyKind(value, DateTimeKind.Utc).AddHours(3);
-            }
-        }
 
         public static DateTime? ConvertTimeFromUtc(DateTime? value)
         {
@@ -53,6 +40,19 @@ namespace Systore.Infra
             }
 
         }
+
+        public static DateTime ConvertTimeToUtc(DateTime value)
+        {
+            try
+            {
+                return TimeZoneInfo.ConvertTimeToUtc(value, TimeZoneInfo.FindSystemTimeZoneById(TimeZoneHelper.TimeZoneId));
+            }
+            catch
+            {
+                return DateTime.SpecifyKind(value, DateTimeKind.Utc).AddHours(3);
+            }
+        }
+        
         public static DateTime? ConvertTimeToUtc(DateTime? value)
         {
             try

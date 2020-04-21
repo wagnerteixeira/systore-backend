@@ -14,13 +14,12 @@ namespace Systore.Domain.Abstractions
         IQueryable<TEntity> GetAll();
         Task<IEnumerable<TEntity>> GetAllAsync();
         Task<List<TEntity>> GetWhereAsync(Expression<Func<TEntity, bool>> predicate);
+        Task<List<TEntity>> GetWhereAsync(FilterPaginateDto filterPaginateDto);
         Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate);
         Task<int> CountAllAsync();
         Task<int> CountWhereAsync(Expression<Func<TEntity, bool>> predicate);
+        Task<int> CountWhereAsync(IEnumerable<FilterDto> filters);
         Task<string> UpdateAsync(TEntity entity);
         Task<string> RemoveAsync(int id);
-        Task<List<TEntity>> GetWhereAsync(FilterPaginateDto filterPaginateDto);
-        Task<int> CountWhereAsync(IEnumerable<FilterDto> filters);
-
     }
 }

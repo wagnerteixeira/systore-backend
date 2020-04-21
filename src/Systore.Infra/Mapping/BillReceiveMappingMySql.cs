@@ -1,6 +1,5 @@
 using Systore.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace Systore.Infra.Mapping
 {

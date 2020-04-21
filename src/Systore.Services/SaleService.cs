@@ -4,7 +4,6 @@ using Systore.Data.Abstractions;
 using System.Threading.Tasks;
 using Systore.Domain.Dtos;
 using Systore.Domain.Enums;
-using Systore.Data.Repositories;
 
 namespace Systore.Services
 {

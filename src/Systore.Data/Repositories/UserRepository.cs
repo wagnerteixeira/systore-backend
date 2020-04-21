@@ -1,16 +1,16 @@
 using Systore.Domain.Entities;
 using Systore.Data.Abstractions;
-using Systore.Infra.Abstractions;
 using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Systore.Infra.Context;
+using Microsoft.Extensions.Logging;
 
 namespace Systore.Data.Repositories
 {
     public class UserRepository : BaseRepository<User>, IUserRepository
     {
-        public UserRepository(ISystoreContext context, IHeaderAuditRepository headerAuditRepository) : base(context, headerAuditRepository)
+        public UserRepository(ISystoreContext context, IHeaderAuditRepository headerAuditRepository, ILogger logger) : base(context, headerAuditRepository, logger)
         {
 
         }

@@ -1,16 +1,16 @@
 ﻿using Systore.Domain.Entities;
 using Systore.Data.Abstractions;
 using Systore.Infra.Context;
-using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace Systore.Data.Repositories
 {
     public class ItemSaleRepository : BaseRepository<ItemSale>, IItemSaleRepository
     {
-        public ItemSaleRepository(ISystoreContext context, IHeaderAuditRepository headerAuditRepository) : base(context, headerAuditRepository)
+        public ItemSaleRepository(ISystoreContext context, IHeaderAuditRepository headerAuditRepository, ILogger logger) : base(context, headerAuditRepository, logger)
         {
 
         }

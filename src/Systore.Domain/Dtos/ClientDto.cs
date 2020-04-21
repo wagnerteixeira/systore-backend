@@ -8,8 +8,7 @@ namespace Systore.Domain.Dtos
   public class ClientDto
   {    
     public int Id { get; set; }
-    public string Name { get; set; }
-    //public int Code { get; set; }
+    public string Name { get; set; }    
     public DateTime? RegistryDate { get; set; }
     public DateTime? DateOfBirth { get; set; }
     public string Address { get; set; }
