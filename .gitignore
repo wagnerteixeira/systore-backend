@@ -30,3 +30,9 @@ global.json
 
 
 # End of https://www.gitignore.io/api/dotnetcore
+
+.store
+dotnet-sonarscanner
+reportgeneratortool
+.sonarqube
+TestResults

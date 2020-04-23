@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <ProjectGuid>1512D053-7B36-4A33-BC73-32B061AB4F3B</ProjectGuid>
+    <SonarQubeExclude>true</SonarQubeExclude>
   </PropertyGroup>
-
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>../../../FastReport.Plugins.snk</AssemblyOriginatorKeyFile>
@@ -22,9 +22,7 @@
     <Description>Pdf export for FastReport.OpenSource</Description>
     <RepositoryUrl>https://github.com/FastReports/FastReport</RepositoryUrl>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="FastReport.OpenSource" Version="2020.1.0" />
   </ItemGroup>
-
 </Project>
