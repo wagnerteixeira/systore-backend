@@ -11,17 +11,17 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Build
-        run: dotnet build ./src/Systore.Api --configuration Release
-
       - name: Install SonarScanner
         run: dotnet tool install dotnet-sonarscanner --tool-path . --version 4.7.1
 
       - name: SonarScanner Begin
         run: ./dotnet-sonarscanner begin /d:sonar.verbose=true /k:"wagnerteixeira_systore-backend" /n:"Systore backend" /o:"wagnerteixeira" /d:sonar.login=${{ secrets.SONAR_TOKEN }} /d:sonar.host.url=https://sonarcloud.io /d:sonar.cs.opencover.reportsPaths="./tests/TestResults/coverage.opencover.xml" /d:sonar.cs.vstest.reportsPaths="./tests/TestResults/*.trx"
 
+      - name: Build
+        run: dotnet build -c Release
+
       - name: Test
-        run: dotnet test --configuration Release /p:CollectCoverage=true /p:CoverletOutput=../TestResults/ /p:CoverletOutputFormat=\"opencover,lcov\" /p:Exclude="[Systore.Tests*]*" --logger trx --results-directory ./tests/TestResults/
+        run: dotnet test -c Release /p:CollectCoverage=true /p:CoverletOutput=../TestResults/ /p:CoverletOutputFormat=\"opencover,lcov\" /p:Exclude=\"[Systore.Tests*]*,[FastReport.OpenSource.Export.PdfSimple*]*\" --logger trx --results-directory ./tests/TestResults/
 
       - name: SonarScanner end
         run: ./dotnet-sonarscanner end /d:sonar.login=${{ secrets.SONAR_TOKEN }}
