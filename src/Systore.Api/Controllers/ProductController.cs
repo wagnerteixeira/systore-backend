@@ -3,14 +3,11 @@ using Systore.Domain.Entities;
 using Systore.Domain.Abstractions;
 using System;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 using Systore.Domain.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using System.Text;
 using Microsoft.Extensions.Logging;
-using Serilog;
 using System.IO;
-using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.WebUtilities;
 

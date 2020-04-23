@@ -41,3 +41,6 @@ reportgeneratortool
 BuildReports
 TestResults
 tools
+reportgeneratortool
+#rider
+.idea

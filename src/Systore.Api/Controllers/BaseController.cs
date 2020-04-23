@@ -16,7 +16,7 @@ namespace Systore.Api.Controllers
         protected readonly IBaseService<TEntity> _service = null;
         protected readonly ILogger<BaseController<TEntity>> _logger;
 
-        public BaseController(IBaseService<TEntity> Service, ILogger<BaseController<TEntity>> logger)
+        protected BaseController(IBaseService<TEntity> Service, ILogger<BaseController<TEntity>> logger)
         {
             _service = Service;
             _logger = logger;

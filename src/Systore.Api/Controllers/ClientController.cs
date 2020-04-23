@@ -5,10 +5,7 @@ using System.Threading.Tasks;
 using System;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
 using Systore.Domain.Dtos;
-using Newtonsoft.Json;
-using System.Linq;
 
 namespace Systore.Api.Controllers
 {
@@ -29,7 +26,7 @@ namespace Systore.Api.Controllers
 
             if (await (_service as IClientService).ExistBillReceiveForClient(id))
             {
-                return SendBadRequest("Não é possível excluir o cliente pois ele possui títulos.");//BadRequest(new { errors = new[] { "Nao foi possivel" }  };
+                return SendBadRequest("Não é possível excluir o cliente pois ele possui títulos.");
             }
 
             return await base.Delete(id);

@@ -5,23 +5,19 @@ using System;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
 using System.Threading.Tasks;
-using Systore.Api.AutoMapperProfiles;
 using Systore.Domain.Dtos;
 using AutoMapper;
 using System.Linq;
-using Systore.Domain.Enums;
 
 namespace Systore.Api.Controllers
 {
     [Route("api/[controller]")]
     public class SaleController : BaseController<Sale>
     {
-        private readonly IMapper _mapper;
-
-        public SaleController(ISaleService Service, ILogger<SaleController> logger, IMapper mapper)
+        public SaleController(ISaleService Service, ILogger<SaleController> logger)
             : base(Service, logger)
         {
-            _mapper = mapper;
+            
         }
 
         [Authorize]

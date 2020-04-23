@@ -102,14 +102,14 @@ namespace Systore.Api.Controllers
 
         [Authorize]
         [HttpDelete("{code:int}")]                
-        public override async Task<IActionResult> Delete([FromRoute]int Code)
+        public override async Task<IActionResult> Delete([FromRoute]int id)
         {
-            if (await (_service as IBillReceiveService).CountWhereAsync(c => c.Code == Code) == 0)
+            if (await (_service as IBillReceiveService).CountWhereAsync(c => c.Code == id) == 0)
                 return SendBadRequest("Carnê não encontrado!");
-            if (await (_service as IBillReceiveService).CountWhereAsync(c => c.Code == Code && c.Situation == BillReceiveSituation.Closed) > 0)
+            if (await (_service as IBillReceiveService).CountWhereAsync(c => c.Code == id && c.Situation == BillReceiveSituation.Closed) > 0)
                 return SendBadRequest("Carnê não pode ser excluído pois existe parcela paga!");
 
-            await (_service as IBillReceiveService).RemoveBillReceivesByCode(Code);
+            await (_service as IBillReceiveService).RemoveBillReceivesByCode(id);
             return Ok();
         }
 

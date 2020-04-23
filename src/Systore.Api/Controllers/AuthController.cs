@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using RestSharp;
 using Newtonsoft.Json;
+using Systore.Api.Exceptions;
 
 namespace Systore.Api.Controllers
 {
@@ -17,13 +18,11 @@ namespace Systore.Api.Controllers
         private readonly string _urlRelease = "https://us-central1-check-release-265504.cloudfunctions.net/checkRelease";
         private readonly string _clientId = "santo-pecado-systore";
         private readonly IAuthService _authService;
-        private IConfiguration _config;
         private readonly ILogger<AuthController> _logger;
 
-        public AuthController(IAuthService authService, IConfiguration config, ILogger<AuthController> logger)
+        public AuthController(IAuthService authService, ILogger<AuthController> logger)
         {
             _authService = authService;
-            _config = config;
             _logger = logger;
         }
 
@@ -91,7 +90,7 @@ namespace Systore.Api.Controllers
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 return JsonConvert.DeserializeObject<ValidationReleaseDto>(response.Content);
             else
-                throw new Exception($"Erro ao verificar licença {response.StatusCode} {response.ErrorMessage} ");
+                throw new VerifyReleaseException($"Erro ao verificar licença {response.StatusCode} {response.ErrorMessage} ");
         }
 
         private bool _disposed = false;
