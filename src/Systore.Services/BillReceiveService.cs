@@ -50,18 +50,17 @@ namespace Systore.Services
           (_repository as IBillReceiveRepository)
           .NextCode();
 
-        private string ValidateBillReceive(BillReceive billReceive, CreateBillReceivesDto createBillReceivesDto)
+        private void ValidateBillReceive(BillReceive billReceive, CreateBillReceivesDto createBillReceivesDto, ref string errors)
         {
-            string errors = "";
             if (billReceive.DueDate < createBillReceivesDto.PurchaseDate)
             {
                 if (errors != "")
-                    errors += $"|A data do vencimento {billReceive.DueDate.ToString("dd/MM/yyyy")} da parcela {billReceive.Quota} é menor que a data da compra {createBillReceivesDto.PurchaseDate.ToString("dd/MM/yyyy")}";
+                    errors +=
+                        $"|A data do vencimento {billReceive.DueDate.ToString("dd/MM/yyyy")} da parcela {billReceive.Quota} é menor que a data da compra {createBillReceivesDto.PurchaseDate.ToString("dd/MM/yyyy")}";
                 else
-                    errors = $"A data do vencimento {billReceive.DueDate.ToString("dd/MM/yyyy")} da parcela {billReceive.Quota} é menor que a data da compra {createBillReceivesDto.PurchaseDate.ToString("dd/MM/yyyy")}";
+                    errors =
+                        $"A data do vencimento {billReceive.DueDate.ToString("dd/MM/yyyy")} da parcela {billReceive.Quota} é menor que a data da compra {createBillReceivesDto.PurchaseDate.ToString("dd/MM/yyyy")}";
             }
-
-            return errors;
         }
 
         private async void SaveBillReceives(CreateBillReceivesDto createBillReceivesDto)
@@ -91,7 +90,7 @@ namespace Systore.Services
             {
                 sumOriginalValue += billReceive.OriginalValue;
 
-                errors += ValidateBillReceive(billReceive, createBillReceivesDto);
+                ValidateBillReceive(billReceive, createBillReceivesDto, ref errors);
             }
 
             if (sumOriginalValue != createBillReceivesDto.OriginalValue)
