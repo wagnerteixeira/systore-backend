@@ -6,7 +6,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
 using System.Threading.Tasks;
 using Systore.Domain.Dtos;
-using AutoMapper;
 using System.Linq;
 
 namespace Systore.Api.Controllers

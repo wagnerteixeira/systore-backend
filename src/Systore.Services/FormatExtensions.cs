@@ -32,7 +32,6 @@ namespace Systore.Services
             }
             else
                 return string.Format($"{{0,-{digits}}}", "");
-
         }
 
         public static string StringFormat(this long value, int digits)
@@ -54,12 +53,11 @@ namespace Systore.Services
             }
             else
                 return string.Format($"{{0,-{digits}}}", "");
-
         }
 
         public static string StringFormat(this decimal value, int digits)
         {
-            string ret = ((long)Math.Round((Math.Round(value, 2) * 100), 0)).ToString($"D{digits}");
+            string ret = ((long) Math.Round((Math.Round(value, 2) * 100), 0)).ToString($"D{digits}");
             if (ret.Length > digits)
                 throw new NotSupportedException("Valor incorreto");
             return ret;
@@ -69,7 +67,7 @@ namespace Systore.Services
         {
             if (value.HasValue)
             {
-                string ret = ((long)Math.Round((Math.Round(value.Value, 2) * 100), 0)).ToString($"D{digits}");
+                string ret = ((long) Math.Round((Math.Round(value.Value, 2) * 100), 0)).ToString($"D{digits}");
                 if (ret.Length > digits)
                     throw new NotSupportedException("Valor incorreto");
                 return ret;
@@ -114,7 +112,7 @@ namespace Systore.Services
             string ret = "";
 
             if (dateValue.HasValue)
-                ret+= dateValue.Value.ToString("yyyyMMdd");
+                ret += dateValue.Value.ToString("yyyyMMdd");
             else
                 ret = "        ";
 
@@ -149,7 +147,6 @@ namespace Systore.Services
 
         public static decimal ToDecimal(this string value)
         {
-
             decimal.TryParse(value, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out decimal result);
 
             return result;
@@ -173,20 +170,18 @@ namespace Systore.Services
 
             DateTime result;
 
-            if (value.Contains("/"))
+            if (value.Contains("/") && DateTime.TryParseExact(value,
+                $"dd/MM/{year} HH:mm:ss,fff".Truncate(value.Length), null,
+                DateTimeStyles.None, out result))
             {
-                if (DateTime.TryParseExact(value, $"dd/MM/{year} HH:mm:ss,fff".Truncate(value.Length), null, DateTimeStyles.None, out result))
-                {
-                    return result;
-                }
+                return result;
             }
 
-            if (value.Contains("-"))
+            if (value.Contains("-") && DateTime.TryParseExact(value,
+                $"{year}-MM-dd HH:mm:ss.fff".Truncate(value.Length), null,
+                DateTimeStyles.None, out result))
             {
-                if (DateTime.TryParseExact(value, $"{year}-MM-dd HH:mm:ss.fff".Truncate(value.Length), null, DateTimeStyles.None, out result))
-                {
-                    return result;
-                }
+                return result;
             }
 
             return null;

@@ -1,8 +1,5 @@
 ﻿using FastReport.Data;
 using Microsoft.AspNetCore.Builder;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using FastReport.Utils;
 using Microsoft.Extensions.DependencyInjection;
 using Systore.Domain.Abstractions;
@@ -14,11 +11,10 @@ namespace Systore.Report
     public static class Bootstrapper
     {
         public static IServiceCollection UseReport(
-            this IServiceCollection services, 
-            AppSettings appSettings, 
+            this IServiceCollection services,
             IConfiguration configuration)
         {
-            services.AddSingleton<IReport>(new Report(appSettings, configuration));
+            services.AddSingleton<IReport>(new Report(configuration));
             return services;
         }
 

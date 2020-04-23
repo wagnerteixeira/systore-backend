@@ -4,7 +4,6 @@ using Systore.Domain.Abstractions;
 using Systore.Dtos;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using RestSharp;
 using Newtonsoft.Json;

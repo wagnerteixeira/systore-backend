@@ -28,7 +28,7 @@ namespace Systore.Data.Repositories
         public bool IsConversion { get; set; }
 
         bool disposed = false;
-        SafeHandle handle = new SafeFileHandle(IntPtr.Zero, true);
+        private readonly SafeHandle handle = new SafeFileHandle(IntPtr.Zero, true);
         protected BaseRepository(IDbContext context, IHeaderAuditRepository headerAuditRepository, ILogger logger)
         {
             _context = context;
@@ -71,13 +71,8 @@ namespace Systore.Data.Repositories
             return await SaveChangesAsync();
         }
         public virtual async Task<TEntity> GetAsync(int id) => await _entities.FindAsync(id);
-
         public virtual async Task<IEnumerable<TEntity>> GetAllAsync() => await _entities.ToListAsync();
-
         public virtual IQueryable<TEntity> GetAll() => _entities.Select(x => x);
-
-        public virtual async Task<List<TEntity>> GetWhereAsync(Expression<Func<TEntity, bool>> predicate) => await _entities.Where(predicate).ToListAsync();
-
         private IQueryable<TEntity> GetQueryWhere(IQueryable<TEntity> query, FilterPaginateDto filterPaginateDto)
         {
             if (filterPaginateDto.filters != null)
@@ -85,14 +80,12 @@ namespace Systore.Data.Repositories
             else
                 return query;
         }
-
         private IQueryable<TEntity> GetQueryPagination(IQueryable<TEntity> query, FilterPaginateDto filterPaginateDto)
         {
             return query
                 .Skip(filterPaginateDto.Skip)
                 .Take(filterPaginateDto.Limit); ;
-        }        
-
+        }
         // TODO: Test nullable sorts
         private IQueryable<TEntity> GetQueryOrderBy(IQueryable<TEntity> query, FilterPaginateDto filterPaginateDto)
         {            
@@ -109,6 +102,8 @@ namespace Systore.Data.Repositories
                 return query.OrderByDescending(expression);
         }
 
+        public virtual async Task<List<TEntity>> GetWhereAsync(Expression<Func<TEntity, bool>> predicate) => await _entities.Where(predicate).ToListAsync();
+        
         public virtual async Task<List<TEntity>> GetWhereAsync(FilterPaginateDto filterPaginateDto)
         {
             var query = _entities.Select(x => x);
@@ -126,7 +121,6 @@ namespace Systore.Data.Repositories
                 return await GetQueryOrderBy(query, filterPaginateDto).ToListAsync();
             }            
         }
-
         public virtual async Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate) => await _entities.FirstOrDefaultAsync(predicate);
 
         public virtual async Task<int> CountAllAsync() => await _entities.CountAsync();
@@ -304,15 +298,6 @@ namespace Systore.Data.Repositories
                     await _context.Instance.SaveChangesAsync();
                 return "";
             }
-            /*
-            catch (DbEntityValidationException erro)
-            {
-                string mensagem = "";
-                foreach (DbEntityValidationResult entityvalidationErrors in erro.EntityValidationErrors)
-                    foreach (DbValidationError validationError in entityvalidationErrors.ValidationErrors)
-                        mensagem += string.Format("Entity: {0} \nProperty: {1} \nError: {2}\n\r", entityvalidationErrors.Entry, validationError.PropertyName, validationError.ErrorMessage);
-                return mensagem;
-            } */
             catch (Exception e)
             {
                 if (e.InnerException != null)

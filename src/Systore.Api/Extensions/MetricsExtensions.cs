@@ -48,6 +48,7 @@ namespace Systore.Api.Extensions
             return services;
         }
 
+        // TODO: adjust this
         public static IApplicationBuilder UseMetrics(this IApplicationBuilder app, IApplicationLifetime lifetime)
         {
             if (_metricsSettings.UseMetrics)

@@ -12,12 +12,10 @@ namespace Systore.Report
     public class Report : IReport
     {
 
-        private readonly AppSettings _appSettings;
         private readonly IConfiguration _configuration;
 
-        public Report(AppSettings appSettings, IConfiguration configuration)
+        public Report(IConfiguration configuration)
         {
-            _appSettings = appSettings;
             _configuration = configuration;
         }
 
@@ -35,18 +33,13 @@ namespace Systore.Report
             }
             
             report.Dictionary.Connections[0].ConnectionString = _configuration.GetConnectionString("Systore");
-            //report.SetParameterValue("initialDate", "2019-01-01");
-            //report.SetParameterValue("finalDate", "2019-01-07");
-
+            
             foreach (var parameter in parameters)
             {
                 report.SetParameterValue(parameter.Key, parameter.Value);
             }
 
             report.Prepare();
-
-            // report.Parameters[0].Value = 143;
-            //report.Refresh();
 
             PDFSimpleExport export = new PDFSimpleExport();
             using (MemoryStream ms = new MemoryStream())

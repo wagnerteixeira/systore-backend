@@ -1,7 +1,7 @@
 ﻿
 namespace Systore.Dtos
 {
-    public class ResultDTO
+    public class ResultDto
     {
         public bool Success { get; set; }
         public string Message { get; set; }

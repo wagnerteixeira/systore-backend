@@ -1,27 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
-using Systore.Domain.Abstractions;
 using Systore.Infra.Context;
-using Systore.Infra.Abstractions;
-using Systore.Services;
-using Systore.Data.Abstractions;
-using Systore.Data.Repositories;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Systore.Domain;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Mvc.Authorization;
-using System.IO;
 using Microsoft.AspNetCore.Http;
 using Serilog;
 using Systore.Api.Extensions;
@@ -64,7 +54,7 @@ namespace Systore.Api
                 .UseAutoMapper()
                 .UseMetrics(Configuration, _env)
                 .AddCors()
-                .UseReport(_appSettings, Configuration)
+                .UseReport(Configuration)
                 .AddControllers();
 
 
@@ -168,9 +158,6 @@ namespace Systore.Api
                         new[] { "readAccess", "writeAccess" }
                     }
                 });
-
-                //var path = Path.Combine(_env.ContentRootPath, "Systore.Controllers.xml");
-                //c.IncludeXmlComments(path);
             });
         }
 
@@ -188,11 +175,6 @@ namespace Systore.Api
             }
 
             var cultureInfo = new CultureInfo("pt-BR");
-
-            //cultureInfo.NumberFormat.CurrencySymbol = "R$";
-            //ci.NumberFormat.NumberDecimalSeparator = ".";
-            //ci.NumberFormat.CurrencyDecimalSeparator = ".";
-
             CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
             CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
             CultureInfo.CurrentCulture = cultureInfo;
