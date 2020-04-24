@@ -6,13 +6,12 @@ using Systore.Domain.Enums;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Systore.Infra.Context;
-using Microsoft.Extensions.Logging;
 
 namespace Systore.Data.Repositories
 {
     public class BillReceiveRepository : BaseRepository<BillReceive>, IBillReceiveRepository
     {
-        public BillReceiveRepository(ISystoreContext context, IHeaderAuditRepository headerAuditRepository, ILogger logger) : base(context, headerAuditRepository, logger)
+        public BillReceiveRepository(ISystoreContext context, IHeaderAuditRepository headerAuditRepository) : base(context, headerAuditRepository)
         {
 
         }

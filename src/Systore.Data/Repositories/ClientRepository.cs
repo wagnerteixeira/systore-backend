@@ -5,14 +5,13 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
 
 namespace Systore.Data.Repositories
 {
     public class ClientRepository : BaseRepository<Client>, IClientRepository
     {
         
-        public ClientRepository(ISystoreContext context, IHeaderAuditRepository headerAuditRepository, ILogger logger) : base(context, headerAuditRepository, logger)
+        public ClientRepository(ISystoreContext context, IHeaderAuditRepository headerAuditRepository) : base(context, headerAuditRepository)
         {
             
         }
@@ -27,9 +26,9 @@ namespace Systore.Data.Repositories
                 query = query.Where(c => c.Id != entity.Id);
             var _client = await query.Select(c => new { c.Name, c.Cpf }).FirstOrDefaultAsync();
             if (_client != null)
-                validations += $"Já existe um cliente com o CPF {_client.Cpf}, {_client.Name}|";
+                validations += $"Jï¿½ existe um cliente com o CPF {_client.Cpf}, {_client.Name}|";
             if (entity.DateOfBirth > DateTime.Now)
-                validations += $"Data de aniversário {(entity.DateOfBirth.HasValue ? entity.DateOfBirth?.ToString("dd/MM/yyyy") : "")} deve ser menor que a data atual{DateTime.Now.ToString("dd/MM/yyyy")}|";
+                validations += $"Data de aniversï¿½rio {(entity.DateOfBirth.HasValue ? entity.DateOfBirth?.ToString("dd/MM/yyyy") : "")} deve ser menor que a data atual{DateTime.Now.ToString("dd/MM/yyyy")}|";
 
             return validations;
 

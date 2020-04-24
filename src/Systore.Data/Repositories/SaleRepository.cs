@@ -5,13 +5,12 @@ using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Systore.Domain.Dtos;
-using Microsoft.Extensions.Logging;
 
 namespace Systore.Data.Repositories
 {
     public class SaleRepository : BaseRepository<Sale>, ISaleRepository
     {
-        public SaleRepository(ISystoreContext context, IHeaderAuditRepository headerAuditRepository, ILogger logger) : base(context, headerAuditRepository, logger)
+        public SaleRepository(ISystoreContext context, IHeaderAuditRepository headerAuditRepository) : base(context, headerAuditRepository)
         {
 
         }

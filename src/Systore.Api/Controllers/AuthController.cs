@@ -4,25 +4,27 @@ using Systore.Domain.Abstractions;
 using Systore.Dtos;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using RestSharp;
 using Newtonsoft.Json;
 using Systore.Api.Exceptions;
+using Systore.Domain;
 
 namespace Systore.Api.Controllers
 {
     [Route("oapi")]
     public class AuthController : ControllerBase, IDisposable
     {
-        private readonly string _urlRelease = "https://us-central1-check-release-265504.cloudfunctions.net/checkRelease";
-        private readonly string _clientId = "santo-pecado-systore";
         private readonly IAuthService _authService;
         private readonly ILogger<AuthController> _logger;
+        private readonly AppSettings _appSettings;
 
-        public AuthController(IAuthService authService, ILogger<AuthController> logger)
+        public AuthController(IAuthService authService, ILogger<AuthController> logger, IConfiguration configuration)
         {
             _authService = authService;
             _logger = logger;
+            _appSettings = configuration.GetSection("AppSettings").Get<AppSettings>();
         }
 
         [AllowAnonymous]
@@ -79,10 +81,10 @@ namespace Systore.Api.Controllers
 
         private async Task<ValidationReleaseDto> VerifyRelease()
         {
-            var client = new RestClient(_urlRelease);
+            var client = new RestClient(_appSettings.UrlRelease);
 
             var request = new RestRequest(Method.POST);
-            request.AddParameter("clientId", _clientId);
+            request.AddParameter("clientId", _appSettings.ClientId);
 
             IRestResponse response = await client.ExecuteAsync(request);
 

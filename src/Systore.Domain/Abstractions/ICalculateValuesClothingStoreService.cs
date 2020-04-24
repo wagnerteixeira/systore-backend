@@ -2,7 +2,7 @@
 
 namespace Systore.Domain.Abstractions
 {
-    public interface ICalculateValuesService
+    public interface ICalculateValuesClothingStoreService
     {
         void CalculateValues(BillReceive billReceive);
     }

@@ -13,7 +13,6 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Systore.Domain.Abstractions;
 using System.Runtime.InteropServices;
 using Microsoft.Win32.SafeHandles;
-using Microsoft.Extensions.Logging;
 
 namespace Systore.Data.Repositories
 {
@@ -23,19 +22,17 @@ namespace Systore.Data.Repositories
         protected readonly DbSet<TEntity> _entities;
         protected readonly IHeaderAuditRepository _headerAuditRepository;
         private bool _inTransaction;
-        private readonly ILogger _logger;
 
         public bool IsConversion { get; set; }
 
         bool disposed = false;
         private readonly SafeHandle handle = new SafeFileHandle(IntPtr.Zero, true);
-        protected BaseRepository(IDbContext context, IHeaderAuditRepository headerAuditRepository, ILogger logger)
+        protected BaseRepository(IDbContext context, IHeaderAuditRepository headerAuditRepository)
         {
             _context = context;
             _entities = _context.Instance.Set<TEntity>();
             _headerAuditRepository = headerAuditRepository;
             _inTransaction = false;
-            _logger = logger;
             IsConversion = false;
         }
 
@@ -50,7 +47,6 @@ namespace Systore.Data.Repositories
             }
             catch (Exception e)
             {
-                _logger.LogError(e, e.Message);
                 throw;
             }
 

@@ -5,7 +5,7 @@ using Systore.Domain.Enums;
 
 namespace Systore.Services
 {
-    public class CalculateValuesClothingStoreService : ICalculateValuesService
+    public class CalculateValuesClothingStoreService : ICalculateValuesClothingStoreService
     {
         private static decimal _interestTax = 0.0023333333333333333333333333M; //(0.07M / 30.0M)
 

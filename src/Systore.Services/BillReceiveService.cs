@@ -12,10 +12,10 @@ namespace Systore.Services
 {
     public class BillReceiveService : BaseService<BillReceive>, IBillReceiveService
     {
-        private readonly ICalculateValuesService _calculateValuesService;
-        public BillReceiveService(IBillReceiveRepository repository, ICalculateValuesService calculateValuesService) : base(repository)
+        private readonly ICalculateValuesClothingStoreService _calculateValuesClothingStoreService;
+        public BillReceiveService(IBillReceiveRepository repository, ICalculateValuesClothingStoreService calculateValuesClothingStoreService) : base(repository)
         {
-            _calculateValuesService = calculateValuesService;
+            _calculateValuesClothingStoreService = calculateValuesClothingStoreService;
         }
 
         public async Task<List<BillReceive>> GetBillReceivesByClient(int ClientId)
@@ -23,7 +23,7 @@ namespace Systore.Services
             var billReceives = await (_repository as IBillReceiveRepository).GetBillReceivesByClient(ClientId);
             return billReceives.Select(c =>
             {
-                _calculateValuesService.CalculateValues(c);
+                _calculateValuesClothingStoreService.CalculateValues(c);
                 return c;
             }).ToList();            
         }

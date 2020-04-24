@@ -11,10 +11,10 @@ namespace Systore.Tests.Unit.Services
 {
     public class CalculateValuesClothingStoreServiceTest : IDisposable
     {
-        private readonly ICalculateValuesService _calculateValuesService;
+        private readonly ICalculateValuesClothingStoreService _calculateValuesClothingStoreService;
         public CalculateValuesClothingStoreServiceTest()
         {
-            _calculateValuesService = new CalculateValuesClothingStoreService();
+            _calculateValuesClothingStoreService = new CalculateValuesClothingStoreService();
         }       
 
         [Theory]
@@ -38,7 +38,7 @@ namespace Systore.Tests.Unit.Services
             billReceive.Interest = interest;            
             billReceive.DueDate = DateTime.UtcNow.Date.AddDays(daysAgo * -1);
             // Act
-            _calculateValuesService.CalculateValues(billReceive);
+            _calculateValuesClothingStoreService.CalculateValues(billReceive);
             // Assert
             Assert.Equal(expectedDaysDelay, billReceive.DaysDelay);
             Assert.Equal(expectedInterest, billReceive.Interest);

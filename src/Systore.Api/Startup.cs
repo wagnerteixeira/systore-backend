@@ -13,7 +13,6 @@ using Systore.Domain;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Http;
-using Serilog;
 using Systore.Api.Extensions;
 using Systore.Report;
 using System.Globalization;
@@ -48,11 +47,9 @@ namespace Systore.Api
                 .AddScoped<ISystoreContext, SystoreContext>()
                 .AddScoped<IAuditContext, AuditContext>()
                 .AddSingleton<IHttpContextAccessor, HttpContextAccessor>()
-                .UseSerilog()
                 .UseRepositories()
                 .UseServices()
                 .UseAutoMapper()
-                .UseMetrics(Configuration, _env)
                 .AddCors()
                 .UseReport(Configuration)
                 .AddControllers();
@@ -77,13 +74,10 @@ namespace Systore.Api
              });
 
             // TODO unify this lines
-            Log.Logger.Information($"Enviroment {_env.EnvironmentName}");
             Console.WriteLine($"Enviroment {_env.EnvironmentName}");
 
-            Log.Logger.Information($"Systore ConnectionString: {Configuration.GetConnectionString("Systore")}");
             Console.WriteLine($"Systore ConnectionString: {Configuration.GetConnectionString("Systore")}");
 
-            Log.Logger.Information($"SystoreAudit ConnectionString: {Configuration.GetConnectionString("SystoreAudit")}");
             Console.WriteLine($"SystoreAudit ConnectionString: {Configuration.GetConnectionString("SystoreAudit")}");
 
             services.Configure<AppSettings>(_appSettingsSection);

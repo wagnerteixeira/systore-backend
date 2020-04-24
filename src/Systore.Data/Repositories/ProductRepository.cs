@@ -7,14 +7,13 @@ using Systore.Domain.Dtos;
 using Systore.Domain.Enums;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 
 namespace Systore.Data.Repositories
 {
     public class ProductRepository : BaseRepository<Product>, IProductRepository
     {
         private readonly IItemSaleRepository _itemSaleRepository;
-        public ProductRepository(ISystoreContext context, IHeaderAuditRepository headerAuditRepository, IItemSaleRepository itemSaleRepository, ILogger logger) : base(context, headerAuditRepository, logger)
+        public ProductRepository(ISystoreContext context, IHeaderAuditRepository headerAuditRepository, IItemSaleRepository itemSaleRepository) : base(context, headerAuditRepository)
         {
 
             _itemSaleRepository = itemSaleRepository;

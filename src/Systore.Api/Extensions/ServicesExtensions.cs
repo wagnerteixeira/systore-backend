@@ -17,6 +17,7 @@ namespace Systore.Api.Extensions
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ISaleService, SaleService>();
             services.AddScoped<IAuditService, AuditService>();
+            services.AddScoped<ICalculateValuesClothingStoreService, CalculateValuesClothingStoreService>();
 
             return services;
         }
