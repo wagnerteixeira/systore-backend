@@ -1,12 +1,10 @@
 using Systore.Domain.Entities;
 using Systore.Data.Abstractions;
-using Systore.Infra.Abstractions;
 using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Systore.Infra.Context;
 using System;
-using Systore.Infra;
 using Microsoft.Extensions.Options;
 using Systore.Domain;
 using System.Security.Claims;
@@ -19,14 +17,17 @@ namespace Systore.Data.Repositories
 {
     public class HeaderAuditRepository : IHeaderAuditRepository
     {
-        private readonly IAuditContext _context;
+        private readonly AuditContext _context;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly DbSet<HeaderAudit> _entities;
-        public HeaderAuditRepository(IOptions<AppSettings> options, IHttpContextAccessor httpContextAccessor, IAuditContext context)
+        public HeaderAuditRepository(
+            IOptions<AppSettings> options, 
+            IHttpContextAccessor httpContextAccessor, 
+            AuditContext context)
         {
             _context = context;            
             _httpContextAccessor = httpContextAccessor;
-            _entities = _context.Instance.Set<HeaderAudit>();
+            _entities = _context.Set<HeaderAudit>();
         }
 
         public async Task<string> AddAsync(HeaderAudit entity)
@@ -45,11 +46,11 @@ namespace Systore.Data.Repositories
             switch (auditOperation)
             {
                 case AuditOperation.Add :
-                    return "Criação";
+                    return "Criaï¿½ï¿½o";
                 case AuditOperation.Remove:
-                    return "Exclusão";
+                    return "Exclusï¿½o";
                 case AuditOperation.Update:
-                    return "Alteração";
+                    return "Alteraï¿½ï¿½o";
                 default:
                     return "";
             }
@@ -82,7 +83,7 @@ namespace Systore.Data.Repositories
         {
             try
             {
-                await _context.Instance.SaveChangesAsync();
+                await _context.SaveChangesAsync();
                 return "";
             }
             /*

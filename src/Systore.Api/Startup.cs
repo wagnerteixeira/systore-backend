@@ -44,8 +44,6 @@ namespace Systore.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services
-                .AddScoped<ISystoreContext, SystoreContext>()
-                .AddScoped<IAuditContext, AuditContext>()
                 .AddSingleton<IHttpContextAccessor, HttpContextAccessor>()
                 .UseRepositories()
                 .UseServices()

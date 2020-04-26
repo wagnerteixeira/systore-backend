@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Systore.Infra.Mapping
 {
-    public class BillReceiveMappingMySql : IEntityTypeConfiguration<BillReceive>
+    public class BillReceiveMapping : IEntityTypeConfiguration<BillReceive>
     {
 
          public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BillReceive> builder)

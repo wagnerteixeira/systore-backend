@@ -9,7 +9,7 @@ namespace Systore.Data.Repositories
 {
     public class ItemSaleRepository : BaseRepository<ItemSale>, IItemSaleRepository
     {
-        public ItemSaleRepository(ISystoreContext context, IHeaderAuditRepository headerAuditRepository) : base(context, headerAuditRepository)
+        public ItemSaleRepository(SystoreContext context, IHeaderAuditRepository headerAuditRepository) : base(context, headerAuditRepository)
         {
 
         }

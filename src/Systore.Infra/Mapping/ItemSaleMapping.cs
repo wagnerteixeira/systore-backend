@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Systore.Infra.Mapping
 {
-    public class ItemSaleMappingMySql : IEntityTypeConfiguration<ItemSale>
+    public class ItemSaleMapping : IEntityTypeConfiguration<ItemSale>
     {
         public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<ItemSale> builder)
         {

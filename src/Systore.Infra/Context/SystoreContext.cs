@@ -3,14 +3,13 @@ using Microsoft.EntityFrameworkCore;
 using Systore.Domain;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Configuration;
+using Systore.Infra.Mapping;
 
 namespace Systore.Infra.Context
 {
 
-    public partial class SystoreContext : DbContext, ISystoreContext
+    public class SystoreContext : DbContext
     {
-        public DbContext Instance => this;
-
         private AppSettings _appSettings { get; set; }
 
         public SystoreContext(
@@ -24,7 +23,12 @@ namespace Systore.Infra.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(SystoreContext).Assembly, c => c.Name.Contains(_appSettings.DatabaseType) && !c.Name.Contains("Audit"));
+            modelBuilder.ApplyConfiguration(new BillReceiveMapping());
+            modelBuilder.ApplyConfiguration(new ClientMapping());
+            modelBuilder.ApplyConfiguration(new ItemSaleMapping());
+            modelBuilder.ApplyConfiguration(new ProductMapping());
+            modelBuilder.ApplyConfiguration(new SaleMapping());
+            modelBuilder.ApplyConfiguration(new UserMapping());
         }
 
         public DbSet<User> Users { get; set; }

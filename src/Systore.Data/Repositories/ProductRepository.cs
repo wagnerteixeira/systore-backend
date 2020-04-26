@@ -13,7 +13,7 @@ namespace Systore.Data.Repositories
     public class ProductRepository : BaseRepository<Product>, IProductRepository
     {
         private readonly IItemSaleRepository _itemSaleRepository;
-        public ProductRepository(ISystoreContext context, IHeaderAuditRepository headerAuditRepository, IItemSaleRepository itemSaleRepository) : base(context, headerAuditRepository)
+        public ProductRepository(SystoreContext context, IHeaderAuditRepository headerAuditRepository, IItemSaleRepository itemSaleRepository) : base(context, headerAuditRepository)
         {
 
             _itemSaleRepository = itemSaleRepository;

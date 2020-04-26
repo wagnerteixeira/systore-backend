@@ -3,7 +3,7 @@ using Systore.Domain.Entities;
 
 namespace Systore.Infra.Mapping
 {
-    public class ProductMappingMySql : IEntityTypeConfiguration<Product>
+    public class ProductMapping : IEntityTypeConfiguration<Product>
     {
         public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Product> builder)
         {

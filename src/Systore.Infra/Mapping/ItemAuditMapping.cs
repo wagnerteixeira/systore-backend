@@ -4,7 +4,7 @@ using Systore.Domain.Entities;
 namespace Systore.Infra.Mapping
 {
 
-    public class ItemAuditMappingMySql : IEntityTypeConfiguration<ItemAudit>
+    public class ItemAuditMapping : IEntityTypeConfiguration<ItemAudit>
     {
         public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<ItemAudit> builder)
         {

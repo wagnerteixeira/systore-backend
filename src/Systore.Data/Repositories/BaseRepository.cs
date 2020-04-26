@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Systore.Infra.Abstractions;
 using System.Linq.Expressions;
 using Systore.Data.Abstractions;
 using Systore.Domain.Enums;
@@ -13,12 +12,13 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Systore.Domain.Abstractions;
 using System.Runtime.InteropServices;
 using Microsoft.Win32.SafeHandles;
+using Systore.Infra.Context;
 
 namespace Systore.Data.Repositories
 {
     public abstract class BaseRepository<TEntity> : IDisposable, IBaseRepository<TEntity> where TEntity : class
     {
-        protected readonly IDbContext _context;
+        protected readonly DbContext _context;
         protected readonly DbSet<TEntity> _entities;
         protected readonly IHeaderAuditRepository _headerAuditRepository;
         private bool _inTransaction;
@@ -28,10 +28,12 @@ namespace Systore.Data.Repositories
         bool disposed = false;
         private readonly SafeHandle handle = new SafeFileHandle(IntPtr.Zero, true);
 
-        protected BaseRepository(IDbContext context, IHeaderAuditRepository headerAuditRepository)
+        protected BaseRepository(
+            DbContext context, 
+            IHeaderAuditRepository headerAuditRepository)
         {
             _context = context;
-            _entities = _context.Instance.Set<TEntity>();
+            _entities = _context.Set<TEntity>();
             _headerAuditRepository = headerAuditRepository;
             _inTransaction = false;
             IsConversion = false;
@@ -133,21 +135,21 @@ namespace Systore.Data.Repositories
 
         public virtual async Task<string> UpdateAsync(TEntity entity)
         {
-            await _context.Instance.Entry(entity).GetDatabaseValuesAsync();
-            _context.Instance.Entry(entity).State = EntityState.Modified;
+            await _context.Entry(entity).GetDatabaseValuesAsync();
+            _context.Entry(entity).State = EntityState.Modified;
             return await SaveChangesAsync();
         }
 
         public virtual async Task<string> RemoveAsync(int id)
         {
             var entity = await _entities.FindAsync(id);
-            _context.Instance.Remove(entity);
+            _context.Remove(entity);
             return await SaveChangesAsync();
         }
 
         public virtual async Task<int> ExecuteCommandAsync(string command, params object[] parameters)
         {
-            return await _context.Instance.Database.ExecuteSqlRawAsync(command, parameters);
+            return await _context.Database.ExecuteSqlRawAsync(command, parameters);
         }
 
         private AuditOperation GetAuditOperation(EntityState entityState)
@@ -167,9 +169,9 @@ namespace Systore.Data.Repositories
 
         private ListAuditEntry OnBeforeSaveChanges()
         {
-            _context.Instance.ChangeTracker.DetectChanges();
+            _context.ChangeTracker.DetectChanges();
             var auditEntries = new ListAuditEntry();
-            foreach (var entry in _context.Instance.ChangeTracker.Entries())
+            foreach (var entry in _context.ChangeTracker.Entries())
             {
                 if (entry.Entity is IAudit || entry.State == EntityState.Detached ||
                     entry.State == EntityState.Unchanged)
@@ -293,17 +295,17 @@ namespace Systore.Data.Repositories
                 {
                     if (IsConversion)
                     {
-                        await _context.Instance.SaveChangesAsync();
+                        await _context.SaveChangesAsync();
                     }
                     else
                     {
                         var listAuditEntry = OnBeforeSaveChanges();
-                        await _context.Instance.SaveChangesAsync();
+                        await _context.SaveChangesAsync();
                         OnAfterSaveChanges(listAuditEntry);
                     }
                 }
                 else
-                    await _context.Instance.SaveChangesAsync();
+                    await _context.SaveChangesAsync();
 
                 return "";
             }

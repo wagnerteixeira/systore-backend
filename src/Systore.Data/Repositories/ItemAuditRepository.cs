@@ -6,7 +6,9 @@ namespace Systore.Data.Repositories
 {
     public class ItemAuditRepository : BaseRepository<ItemAudit>, IItemAuditRepository
     {
-        public ItemAuditRepository(IAuditContext context, IHeaderAuditRepository headerAuditRepository) : base(context, headerAuditRepository)
+        public ItemAuditRepository(
+            AuditContext context, 
+            IHeaderAuditRepository headerAuditRepository) : base(context, headerAuditRepository)
         {
 
         }        

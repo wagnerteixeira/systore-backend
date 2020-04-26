@@ -4,7 +4,7 @@ using System;
 
 namespace Systore.Infra.Mapping
 {
-    public class SaleMappingMySql : IEntityTypeConfiguration<Sale>
+    public class SaleMapping : IEntityTypeConfiguration<Sale>
     {
         public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Sale> builder)
         {

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Systore.Infra.Mapping
 {
-    public class ClientMappingMySql : IEntityTypeConfiguration<Client>
+    public class ClientMapping : IEntityTypeConfiguration<Client>
     {
         public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Client> builder)
         {

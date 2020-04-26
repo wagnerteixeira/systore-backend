@@ -3,7 +3,7 @@ using Systore.Domain.Entities;
 
 namespace Systore.Infra.Mapping
 {
-    public class HeaderAuditMappingMySql : IEntityTypeConfiguration<HeaderAudit>
+    public class HeaderAuditMapping : IEntityTypeConfiguration<HeaderAudit>
     {
         public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<HeaderAudit> builder)
         {

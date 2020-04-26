@@ -2,16 +2,18 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Systore.Domain;
+using Systore.Infra.Mapping;
 
 namespace Systore.Infra.Context
 {
-    public partial class AuditContext : DbContext, IAuditContext
+    public class AuditContext : DbContext
     {
-        public DbContext Instance => this;
-
         private AppSettings _appSettings { get; set; }
         
-        public AuditContext(DbContextOptions<AuditContext> options, IOptions<AppSettings> settings, IConfiguration configuration)
+        public AuditContext(
+            DbContextOptions<AuditContext> options, 
+            IOptions<AppSettings> settings, 
+            IConfiguration configuration)
             : base(options)
         {
             _appSettings = settings.Value;            
@@ -19,7 +21,8 @@ namespace Systore.Infra.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(AuditContext).Assembly, c => c.Name.Contains(_appSettings.DatabaseType) && c.Name.Contains("Audit"));
+            modelBuilder.ApplyConfiguration(new HeaderAuditMapping());
+            modelBuilder.ApplyConfiguration(new ItemAuditMapping());
         }        
     }
 }
