@@ -280,7 +280,7 @@ namespace Systore.Tests.Unit.Services
             var exception = await Record.ExceptionAsync(async () => _billReceiveService.RemoveBillReceivesByCode(1));
             // Assert
             Assert.Null(exception);
-            _billReceiveRepositoryMock.Verify(v => v.RemoveBillReceivesByCode(0), Times.Exactly(1));
+            _billReceiveRepositoryMock.Verify(v => v.RemoveBillReceivesByCode(1), Times.Exactly(1));
         }
     }
 }
