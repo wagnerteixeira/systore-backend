@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Systore.Domain.Dtos;
 using System.Linq;
-using System.Reflection.Metadata.Ecma335;
 
 namespace Systore.Services
 {
@@ -63,7 +62,7 @@ namespace Systore.Services
             }
         }
 
-        private async void SaveBillReceives(CreateBillReceivesDto createBillReceivesDto)
+        private async Task SaveBillReceives(CreateBillReceivesDto createBillReceivesDto)
         {
             int nextCode = await (_repository as IBillReceiveRepository).NextCode();
 
@@ -104,7 +103,7 @@ namespace Systore.Services
             if (errors != "")
                 throw new NotSupportedException(errors);
 
-            SaveBillReceives(createBillReceivesDto);
+            await SaveBillReceives(createBillReceivesDto);
 
             return createBillReceivesDto.BillReceives;
         }

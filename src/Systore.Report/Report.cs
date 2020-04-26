@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Systore.Domain.Abstractions;
 using FastReport.Export.PdfSimple;
 using System.IO;
-using Systore.Domain;
 using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
 

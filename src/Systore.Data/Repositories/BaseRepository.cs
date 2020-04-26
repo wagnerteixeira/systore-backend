@@ -27,6 +27,7 @@ namespace Systore.Data.Repositories
 
         bool disposed = false;
         private readonly SafeHandle handle = new SafeFileHandle(IntPtr.Zero, true);
+
         protected BaseRepository(IDbContext context, IHeaderAuditRepository headerAuditRepository)
         {
             _context = context;
@@ -40,17 +41,11 @@ namespace Systore.Data.Repositories
         {
             if (_inTransaction)
                 return false;
-            try
-            {
-                _inTransaction = true;
-                return true;
-            }
-            catch (Exception e)
-            {
-                throw;
-            }
 
+            _inTransaction = true;
+            return true;
         }
+
         public virtual bool Commit()
         {
             return true;
@@ -66,9 +61,11 @@ namespace Systore.Data.Repositories
             await _entities.AddAsync(entity);
             return await SaveChangesAsync();
         }
+
         public virtual async Task<TEntity> GetAsync(int id) => await _entities.FindAsync(id);
         public virtual async Task<IEnumerable<TEntity>> GetAllAsync() => await _entities.ToListAsync();
         public virtual IQueryable<TEntity> GetAll() => _entities.Select(x => x);
+
         private IQueryable<TEntity> GetQueryWhere(IQueryable<TEntity> query, FilterPaginateDto filterPaginateDto)
         {
             if (filterPaginateDto.filters != null)
@@ -76,21 +73,24 @@ namespace Systore.Data.Repositories
             else
                 return query;
         }
+
         private IQueryable<TEntity> GetQueryPagination(IQueryable<TEntity> query, FilterPaginateDto filterPaginateDto)
         {
             return query
                 .Skip(filterPaginateDto.Skip)
-                .Take(filterPaginateDto.Limit); ;
+                .Take(filterPaginateDto.Limit);
         }
+
         // TODO: Test nullable sorts
         private IQueryable<TEntity> GetQueryOrderBy(IQueryable<TEntity> query, FilterPaginateDto filterPaginateDto)
-        {            
-
+        {
             if (filterPaginateDto.Order == null)
                 filterPaginateDto.Order = Order.Asc;
 
             var param = Expression.Parameter(typeof(TEntity), "t");
-            var expression = Expression.Lambda<Func<TEntity, object>>(Expression.Property(param, filterPaginateDto.SortPropertyName), param);
+            var expression =
+                Expression.Lambda<Func<TEntity, object>>(Expression.Property(param, filterPaginateDto.SortPropertyName),
+                    param);
 
             if (filterPaginateDto.Order == Order.Asc)
                 return query.OrderBy(expression);
@@ -98,8 +98,9 @@ namespace Systore.Data.Repositories
                 return query.OrderByDescending(expression);
         }
 
-        public virtual async Task<List<TEntity>> GetWhereAsync(Expression<Func<TEntity, bool>> predicate) => await _entities.Where(predicate).ToListAsync();
-        
+        public virtual async Task<List<TEntity>> GetWhereAsync(Expression<Func<TEntity, bool>> predicate) =>
+            await _entities.Where(predicate).ToListAsync();
+
         public virtual async Task<List<TEntity>> GetWhereAsync(FilterPaginateDto filterPaginateDto)
         {
             var query = _entities.Select(x => x);
@@ -107,7 +108,7 @@ namespace Systore.Data.Repositories
             query = GetQueryWhere(query, filterPaginateDto);
 
             query = GetQueryPagination(query, filterPaginateDto);
-            
+
             if (string.IsNullOrEmpty(filterPaginateDto.SortPropertyName))
             {
                 return await query.ToListAsync();
@@ -115,17 +116,23 @@ namespace Systore.Data.Repositories
             else
             {
                 return await GetQueryOrderBy(query, filterPaginateDto).ToListAsync();
-            }            
+            }
         }
-        public virtual async Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate) => await _entities.FirstOrDefaultAsync(predicate);
+
+        public virtual async Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate) =>
+            await _entities.FirstOrDefaultAsync(predicate);
 
         public virtual async Task<int> CountAllAsync() => await _entities.CountAsync();
-        public virtual async Task<int> CountWhereAsync(Expression<Func<TEntity, bool>> predicate) => await _entities.CountAsync(predicate);
-        public virtual async Task<int> CountWhereAsync(IEnumerable<FilterDto> filters) => await _entities.CountAsync(QueryExpressionBuilder.GetExpression<TEntity>(filters));
+
+        public virtual async Task<int> CountWhereAsync(Expression<Func<TEntity, bool>> predicate) =>
+            await _entities.CountAsync(predicate);
+
+        public virtual async Task<int> CountWhereAsync(IEnumerable<FilterDto> filters) =>
+            await _entities.CountAsync(QueryExpressionBuilder.GetExpression<TEntity>(filters));
 
 
         public virtual async Task<string> UpdateAsync(TEntity entity)
-        {            
+        {
             await _context.Instance.Entry(entity).GetDatabaseValuesAsync();
             _context.Instance.Entry(entity).State = EntityState.Modified;
             return await SaveChangesAsync();
@@ -164,8 +171,8 @@ namespace Systore.Data.Repositories
             var auditEntries = new ListAuditEntry();
             foreach (var entry in _context.Instance.ChangeTracker.Entries())
             {
-
-                if (entry.Entity is IAudit || entry.State == EntityState.Detached || entry.State == EntityState.Unchanged)
+                if (entry.Entity is IAudit || entry.State == EntityState.Detached ||
+                    entry.State == EntityState.Unchanged)
                     continue;
 
                 AuditEntry auditEntry = new AuditEntry();
@@ -215,7 +222,8 @@ namespace Systore.Data.Repositories
                             break;
 
                         case EntityState.Modified:
-                            if ((property.IsModified) && !string.IsNullOrWhiteSpace((property.CurrentValue ?? "").ToString()))
+                            if ((property.IsModified) &&
+                                !string.IsNullOrWhiteSpace((property.CurrentValue ?? "").ToString()))
                             {
                                 auditEntry.HeaderAudit.ItemAudits.Add(new ItemAudit
                                 {
@@ -223,11 +231,14 @@ namespace Systore.Data.Repositories
                                     NewValue = (property.CurrentValue ?? "").ToString(),
                                 });
                             }
+
                             break;
                     }
                 }
+
                 auditEntries.AuditEntries.Add(auditEntry);
             }
+
             return auditEntries;
         }
 
@@ -259,8 +270,8 @@ namespace Systore.Data.Repositories
                             });
                         }
                     }
-
                 }
+
                 string pk = string.Join('|', auditEntry.PrimaryKeys);
                 auditEntry.HeaderAudit.ItemAudits = auditEntry.HeaderAudit.ItemAudits.Select(c =>
                 {
@@ -269,6 +280,7 @@ namespace Systore.Data.Repositories
                 }).ToList();
                 _headerAuditRepository.AddAsync(auditEntry.HeaderAudit);
             }
+
             return Task.CompletedTask;
         }
 
@@ -292,6 +304,7 @@ namespace Systore.Data.Repositories
                 }
                 else
                     await _context.Instance.SaveChangesAsync();
+
                 return "";
             }
             catch (Exception e)
@@ -339,11 +352,11 @@ namespace Systore.Data.Repositories
         {
             PrimaryKeys = new List<string>();
         }
+
         public HeaderAudit HeaderAudit { get; set; } = new HeaderAudit();
         public List<PropertyEntry> TemporaryProperties { get; set; } = new List<PropertyEntry>();
 
         public bool HasTemporaryProperties => TemporaryProperties.Any();
         public List<string> PrimaryKeys { get; set; }
-
     }
 }
