@@ -27,7 +27,8 @@ namespace Systore.Tests.Unit.Services
             _billReceiveRepositoryMock = new Mock<IBillReceiveRepository>();
             _billReceiveRepositoryMock.Setup(x => x.NextCode()).ReturnsAsync(1);
             _billReceiveRepositoryMock.Setup(x => x.AddAsync(It.IsAny<BillReceive>())).ReturnsAsync("");
-            _billReceiveService = new BillReceiveService(_billReceiveRepositoryMock.Object, new CalculateValuesClothingStoreService());
+            _billReceiveService = new BillReceiveService(_billReceiveRepositoryMock.Object,
+                new CalculateValuesClothingStoreService());
             _mapperMock = new Mock<IMapper>();
         }
 
@@ -65,7 +66,8 @@ namespace Systore.Tests.Unit.Services
             List<BillReceive> billReceives = null;
 
             // Act
-            var exception = await Record.ExceptionAsync(async () => billReceives = await _billReceiveService.CreateBillReceives(billReceivesDto));
+            var exception = await Record.ExceptionAsync(async () =>
+                billReceives = await _billReceiveService.CreateBillReceives(billReceivesDto));
 
             // Assert 
             Assert.Null(exception);
@@ -104,11 +106,13 @@ namespace Systore.Tests.Unit.Services
             List<BillReceive> billReceives = null;
 
             // Act
-            var exception = await Record.ExceptionAsync(async () => billReceives = await _billReceiveService.CreateBillReceives(billReceivesDto));
+            var exception = await Record.ExceptionAsync(async () =>
+                billReceives = await _billReceiveService.CreateBillReceives(billReceivesDto));
 
             // Assert 
             Assert.NotNull(exception);
-            var expect = Encoding.Convert(Encoding.UTF8, Encoding.Default, Encoding.UTF8.GetBytes("A data da venda não pode ser inferior a 01/01/1900"));
+            var expect = Encoding.Convert(Encoding.UTF8, Encoding.Default,
+                Encoding.UTF8.GetBytes("A data da venda não pode ser inferior a 01/01/1900"));
             Assert.Contains(Encoding.Default.GetString(expect), exception.Message);
             _billReceiveRepositoryMock.Verify(v => v.NextCode(), Times.Exactly(0));
             _billReceiveRepositoryMock.Verify(v => v.AddAsync(It.IsAny<BillReceive>()), Times.Exactly(0));
@@ -145,7 +149,8 @@ namespace Systore.Tests.Unit.Services
             List<BillReceive> billReceives = null;
 
             // Act
-            var exception = await Record.ExceptionAsync(async () => billReceives = await _billReceiveService.CreateBillReceives(billReceivesDto));
+            var exception = await Record.ExceptionAsync(async () =>
+                billReceives = await _billReceiveService.CreateBillReceives(billReceivesDto));
 
             // Assert 
             Assert.NotNull(exception);
@@ -185,7 +190,8 @@ namespace Systore.Tests.Unit.Services
             List<BillReceive> billReceives = null;
 
             // Act
-            var exception = await Record.ExceptionAsync(async () => billReceives = await _billReceiveService.CreateBillReceives(billReceivesDto));
+            var exception = await Record.ExceptionAsync(async () =>
+                billReceives = await _billReceiveService.CreateBillReceives(billReceivesDto));
 
             // Assert 
             Assert.NotNull(exception);
@@ -193,6 +199,88 @@ namespace Systore.Tests.Unit.Services
             Assert.Contains("difere do valor do título (R$", exception.Message);
             _billReceiveRepositoryMock.Verify(v => v.NextCode(), Times.Exactly(0));
             _billReceiveRepositoryMock.Verify(v => v.AddAsync(It.IsAny<BillReceive>()), Times.Exactly(0));
+        }
+
+        [Fact]
+        public async Task Should_Get_Bill_Receives_By_Client()
+        {
+            // Arrange
+            var billReceivesDto = CreateBillReceivesDtoFactory.CreateDefault(3);
+            _billReceiveRepositoryMock.Setup(x => x.GetBillReceivesByClient(It.IsAny<int>()))
+                .ReturnsAsync(billReceivesDto.BillReceives);
+            List<BillReceive> billReceivesResult = null;
+            // Act
+            var exception = await Record.ExceptionAsync(async () =>
+                billReceivesResult = await _billReceiveService.GetBillReceivesByClient(1));
+            // Assert
+            Assert.Null(exception);
+            Assert.Equal(billReceivesDto.BillReceives, billReceivesResult);
+            _billReceiveRepositoryMock.Verify(v => v.GetBillReceivesByClient(It.IsAny<int>()), Times.Exactly(1));
+        }
+
+        [Fact]
+        public async Task Should_Get_Paid_Bill_Receives_By_Client()
+        {
+            // Arrange
+            var billReceivesDto = CreateBillReceivesDtoFactory.CreateDefault(3);
+            _billReceiveRepositoryMock.Setup(x => x.GetPaidBillReceivesByClient(It.IsAny<int>()))
+                .ReturnsAsync(billReceivesDto.BillReceives);
+            List<BillReceive> billReceivesResult = null;
+            // Act
+            var exception = await Record.ExceptionAsync(async () =>
+                billReceivesResult = await _billReceiveService.GetPaidBillReceivesByClient(1));
+            // Assert
+            Assert.Null(exception);
+            Assert.Equal(billReceivesDto.BillReceives, billReceivesResult);
+            _billReceiveRepositoryMock.Verify(v => v.GetPaidBillReceivesByClient(It.IsAny<int>()), Times.Exactly(1));
+        }
+
+        [Fact]
+        public async Task Should_Get_No_Bill_Receives_By_Client()
+        {
+            // Arrange
+            var billReceivesDto = CreateBillReceivesDtoFactory.CreateDefault(3);
+            _billReceiveRepositoryMock.Setup(x => x.GetNoPaidBillReceivesByClient(It.IsAny<int>()))
+                .ReturnsAsync(billReceivesDto.BillReceives);
+            List<BillReceive> billReceivesResult = null;
+            // Act
+            var exception = await Record.ExceptionAsync(async () =>
+                billReceivesResult = await _billReceiveService.GetNoPaidBillReceivesByClient(1));
+            // Assert
+            Assert.Null(exception);
+            Assert.Equal(billReceivesDto.BillReceives, billReceivesResult);
+            _billReceiveRepositoryMock.Verify(v => v.GetNoPaidBillReceivesByClient(It.IsAny<int>()), Times.Exactly(1));
+        }
+
+        [Fact]
+        public async Task Should_Get_Next_Code()
+        {
+            // Arrange
+            var nextCode = IntFactory.Positive();
+            int nextCodeResult = 0;
+            _billReceiveRepositoryMock.Setup(x => x.NextCode())
+                .ReturnsAsync(nextCode);
+            // Act
+            var exception = await Record.ExceptionAsync(async () =>
+                nextCodeResult = await _billReceiveService.NextCode());
+            // Assert
+            Assert.Null(exception);
+            Assert.Equal(nextCode, nextCodeResult);
+            _billReceiveRepositoryMock.Verify(v => v.NextCode(), Times.Exactly(1));
+        }
+
+        [Fact]
+        public async Task Should_Remove_Bill_Receives_By_Code()
+        {
+            // Arrange
+            _billReceiveRepositoryMock.Setup(x => x.RemoveBillReceivesByCode(It.IsAny<int>()))
+                .Returns(Task.CompletedTask);
+                
+            // Act
+            var exception = await Record.ExceptionAsync(async () => _billReceiveService.RemoveBillReceivesByCode(1));
+            // Assert
+            Assert.Null(exception);
+            _billReceiveRepositoryMock.Verify(v => v.RemoveBillReceivesByCode(0), Times.Exactly(1));
         }
     }
 }
