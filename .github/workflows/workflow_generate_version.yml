@@ -20,8 +20,11 @@ jobs:
       - name: Build
         run: dotnet build -c Release
 
-      - name: Test
-        run: dotnet test -c Release /p:CollectCoverage=true /p:CoverletOutput=../TestResults/ /p:CoverletOutputFormat=\"opencover,lcov\" /p:Exclude=\"[Systore.Tests*]*,[FastReport.OpenSource.Export.PdfSimple*]*\" --logger trx --results-directory ./tests/TestResults/
+      - name: Unit Test
+        run: dotnet test ./tests/Systore.Tests.Unit/Systore.Tests.Unit.csproj -c Release /p:CollectCoverage=true /p:CoverletOutput=../TestResults/ /p:CoverletOutputFormat=\"opencover,lcov\" /p:Exclude=\"[Systore.Tests*]*,[FastReport.OpenSource.Export.PdfSimple*]*\" --logger trx --results-directory ./tests/TestResults/
+
+      - name: Integration Test
+        run: dotnet test ./tests/Systore.Tests.Integration/Systore.Tests.Integration.csproj -c Release /p:CollectCoverage=true /p:CoverletOutput=../TestResults/ /p:CoverletOutputFormat=\"opencover,lcov\" /p:Exclude=\"[Systore.Tests*]*,[FastReport.OpenSource.Export.PdfSimple*]*\" --logger trx --results-directory ./tests/TestResults/ /p:MergeWith="../TestResults/coverage.opencover.xml"
 
       - name: SonarScanner end
         run: ./dotnet-sonarscanner end /d:sonar.login=${{ secrets.SONAR_TOKEN }}
