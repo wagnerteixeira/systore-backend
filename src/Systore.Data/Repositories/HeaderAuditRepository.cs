@@ -32,7 +32,7 @@ namespace Systore.Data.Repositories
 
         public async Task<string> AddAsync(HeaderAudit entity)
         {
-            var clainUserName = _httpContextAccessor.HttpContext.User.Claims.Where(c => c.Type == ClaimTypes.Name).FirstOrDefault();
+            var clainUserName = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name);
             if (clainUserName != null)
                 entity.UserName = clainUserName.Value;
             else
@@ -86,15 +86,6 @@ namespace Systore.Data.Repositories
                 await _context.SaveChangesAsync();
                 return "";
             }
-            /*
-            catch (DbEntityValidationException erro)
-            {
-                string mensagem = "";
-                foreach (DbEntityValidationResult entityvalidationErrors in erro.EntityValidationErrors)
-                    foreach (DbValidationError validationError in entityvalidationErrors.ValidationErrors)
-                        mensagem += string.Format("Entity: {0} \nProperty: {1} \nError: {2}\n\r", entityvalidationErrors.Entry, validationError.PropertyName, validationError.ErrorMessage);
-                return mensagem;
-            } */
             catch (Exception e)
             {
                 if (e.InnerException != null)

@@ -12,7 +12,6 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Systore.Domain.Abstractions;
 using System.Runtime.InteropServices;
 using Microsoft.Win32.SafeHandles;
-using Systore.Infra.Context;
 
 namespace Systore.Data.Repositories
 {
