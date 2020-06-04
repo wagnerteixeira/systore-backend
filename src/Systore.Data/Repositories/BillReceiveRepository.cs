@@ -29,14 +29,12 @@ namespace Systore.Data.Repositories
         {
             var queryOpen = this._entities
                .Where(c => c.ClientId == ClientId && c.Situation == BillReceiveSituation.Open)
-               .OrderBy(c => c.Code)
-               .ThenBy(c => c.PurchaseDate)
+               .OrderBy(c => c.Code)               
                .ThenBy(c => c.Quota);
 
             var queryClose = this._entities
               .Where(c => c.ClientId == ClientId && c.Situation == BillReceiveSituation.Closed)
-              .OrderByDescending(c => c.Code)
-              .ThenByDescending(c => c.PurchaseDate)
+              .OrderByDescending(c => c.Code)              
               .ThenBy(c => c.Quota);
 
             var _billReceives = await queryOpen

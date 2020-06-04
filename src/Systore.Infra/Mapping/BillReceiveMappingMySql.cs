@@ -62,6 +62,7 @@ namespace Systore.Infra.Mapping
             builder.Property(p => p.Vendor)
                 .HasMaxLength(30);
 
+            builder.Ignore(p => p.NumberOfQuotas);
 
             builder
               .HasOne<Client>(s => s.Client)

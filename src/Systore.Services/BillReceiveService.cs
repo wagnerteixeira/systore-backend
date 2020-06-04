@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Systore.Domain.Enums;
 using Systore.Domain.Dtos;
-
+using System.Linq;
 
 namespace Systore.Services
 {
@@ -17,9 +17,18 @@ namespace Systore.Services
 
         }
 
-        public Task<List<BillReceive>> GetBillReceivesByClient(int ClientId) =>
-          (_repository as IBillReceiveRepository)
-            .GetBillReceivesByClient(ClientId);
+        public async Task<List<BillReceive>> GetBillReceivesByClient(int ClientId)
+        {
+            var billReceives = await (_repository as IBillReceiveRepository)
+                        .GetBillReceivesByClient(ClientId);
+            billReceives.ForEach(b =>
+            {
+                b.NumberOfQuotas = billReceives.Where(c => c.Code == b.Code).Count();
+            });
+
+            return billReceives;
+        }
+
         public Task<List<BillReceive>> GetPaidBillReceivesByClient(int ClientId) =>
           (_repository as IBillReceiveRepository)
             .GetPaidBillReceivesByClient(ClientId);
