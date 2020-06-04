@@ -19,6 +19,7 @@ namespace Systore.Domain.Entities
     public int DaysDelay { get; set; }
     public BillReceiveSituation Situation { get; set; }
     public string Vendor { get; set; }
+    public virtual int NumberOfQuotas { get; set; }
   }
 }
 

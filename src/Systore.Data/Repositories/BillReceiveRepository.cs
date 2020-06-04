@@ -27,14 +27,14 @@ namespace Systore.Data.Repositories
 
         public async Task<List<BillReceive>> GetBillReceivesByClient(int ClientId)
         {
-           var queryOpen = this._entities
-              .Where(c => c.ClientId == ClientId && c.Situation == BillReceiveSituation.Open)
-              .OrderBy(c => c.PurchaseDate)
-              .ThenBy(c => c.Quota);
+            var queryOpen = this._entities
+               .Where(c => c.ClientId == ClientId && c.Situation == BillReceiveSituation.Open)
+               .OrderBy(c => c.Code)               
+               .ThenBy(c => c.Quota);
 
             var queryClose = this._entities
               .Where(c => c.ClientId == ClientId && c.Situation == BillReceiveSituation.Closed)
-              .OrderByDescending(c => c.PurchaseDate)
+              .OrderByDescending(c => c.Code)              
               .ThenBy(c => c.Quota);
 
             var _billReceives = await queryOpen
@@ -52,7 +52,7 @@ namespace Systore.Data.Repositories
                     c.FinalValue = c.OriginalValue + c.Interest;
                 }
                 else
-                    c.FinalValue = c.FinalValue;
+                    c.FinalValue = c.OriginalValue;
                 return c;
             }).ToList();
         }
