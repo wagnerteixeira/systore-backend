@@ -23,20 +23,9 @@ namespace Systore.Services
             return billReceives.Select(c =>
             {
                 _calculateValuesClothingStoreService.CalculateValues(c);
+                c.NumberOfQuotas = billReceives.Where(b => b.Code == c.Code).Count();
                 return c;
             }).ToList();            
-        }
-
-        public async Task<List<BillReceive>> GetBillReceivesByClient(int ClientId)
-        {
-            var billReceives = await (_repository as IBillReceiveRepository)
-                        .GetBillReceivesByClient(ClientId);
-            billReceives.ForEach(b =>
-            {
-                b.NumberOfQuotas = billReceives.Where(c => c.Code == b.Code).Count();
-            });
-
-            return billReceives;
         }
 
         public Task<List<BillReceive>> GetPaidBillReceivesByClient(int ClientId) =>

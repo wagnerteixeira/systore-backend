@@ -35,20 +35,7 @@ namespace Systore.Data.Repositories
               .Union(queryClose)
               .ToListAsync();            
 
-            return _billReceives.Select(c =>
-            {
-                var days = (DateTime.UtcNow.Date - c.DueDate.Date).Days;
-                if ((c.Situation == BillReceiveSituation.Open) && (days > 5))
-                {
-                    c.DaysDelay = days;
-                    var interestPerDay = _interestTax * c.DaysDelay;
-                    c.Interest = decimal.Round(c.OriginalValue * interestPerDay, 2);
-                    c.FinalValue = c.OriginalValue + c.Interest;
-                }
-                else
-                    c.FinalValue = c.OriginalValue;
-                return c;
-            }).ToList();
+            return _billReceives;
         }
 
         public Task<List<BillReceive>> GetPaidBillReceivesByClient(int ClientId) =>
