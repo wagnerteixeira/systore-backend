@@ -42,7 +42,7 @@ namespace Systore.Tests.Unit.Services
         public async Task Should_Create_Valid_Bill_Receive()
         {
             // Arrange            _
-            var billReceivesDto = CreateBillReceivesDtoFactory.CreateDefault(3);
+            var billReceivesDto = new CreateBillReceivesDtoBuilder(3).Build();
             billReceivesDto.BillReceives[0].Situation = Domain.Enums.BillReceiveSituation.Open;
             billReceivesDto.BillReceives[0].Interest = 0;
             billReceivesDto.BillReceives[0].OriginalValue = 36.0M;
@@ -80,7 +80,7 @@ namespace Systore.Tests.Unit.Services
         public async Task Should_Throw_When_Valid_Bill_Receive_And_Exception_By_Repository()
         {
             // Arrange            _
-            var billReceivesDto = CreateBillReceivesDtoFactory.CreateDefault(3);
+            var billReceivesDto = new CreateBillReceivesDtoBuilder(3).Build();
             billReceivesDto.BillReceives[0].Situation = Domain.Enums.BillReceiveSituation.Open;
             billReceivesDto.BillReceives[0].Interest = 0;
             billReceivesDto.BillReceives[0].OriginalValue = 36.0M;
@@ -118,7 +118,7 @@ namespace Systore.Tests.Unit.Services
         public async Task Should_Throw_Exception_By_Purchase_Less_Than_01_01_1900()
         {
             // Arrange
-            var billReceivesDto = CreateBillReceivesDtoFactory.CreateDefault(3);
+            var billReceivesDto = new CreateBillReceivesDtoBuilder(3).Build();
             billReceivesDto.BillReceives[0].Situation = Domain.Enums.BillReceiveSituation.Open;
             billReceivesDto.BillReceives[0].Interest = 0;
             billReceivesDto.BillReceives[0].OriginalValue = 36.0M;
@@ -161,7 +161,7 @@ namespace Systore.Tests.Unit.Services
         public async Task Should_Throw_Exception_By_DueDate_Less_Than_PurchaseDate()
         {
             // Arrange
-            var billReceivesDto = CreateBillReceivesDtoFactory.CreateDefault(3);
+            var billReceivesDto = new CreateBillReceivesDtoBuilder(3).Build();
             billReceivesDto.BillReceives[0].Situation = Domain.Enums.BillReceiveSituation.Open;
             billReceivesDto.BillReceives[0].Interest = 0;
             billReceivesDto.BillReceives[0].OriginalValue = 36.0M;
@@ -206,7 +206,7 @@ namespace Systore.Tests.Unit.Services
         public async Task Should_Throw_Exception_By_Sum_Of_OriginalValue_Different_Of_Total_OrignalValue()
         {
             // Arrange
-            var billReceivesDto = CreateBillReceivesDtoFactory.CreateDefault(3);
+            var billReceivesDto = new CreateBillReceivesDtoBuilder(3).Build();
             billReceivesDto.BillReceives[0].Situation = Domain.Enums.BillReceiveSituation.Open;
             billReceivesDto.BillReceives[0].Interest = 0;
             billReceivesDto.BillReceives[0].OriginalValue = 36.0M;
@@ -246,7 +246,7 @@ namespace Systore.Tests.Unit.Services
         public async Task Should_Throw_Exception_By_DueDate_Less_Than_PurchaseDate_And_Sum_Of_OriginalValue_Different_Of_Total_OrignalValue()
         {
             // Arrange
-            var billReceivesDto = CreateBillReceivesDtoFactory.CreateDefault(3);
+            var billReceivesDto = new CreateBillReceivesDtoBuilder(3).Build();
             billReceivesDto.BillReceives[0].Situation = Domain.Enums.BillReceiveSituation.Open;
             billReceivesDto.BillReceives[0].Interest = 0;
             billReceivesDto.BillReceives[0].OriginalValue = 36.0M;
@@ -290,7 +290,7 @@ namespace Systore.Tests.Unit.Services
         public async Task Should_Get_Bill_Receives_By_Client()
         {
             // Arrange
-            var billReceivesDto = CreateBillReceivesDtoFactory.CreateDefault(3);
+            var billReceivesDto = new CreateBillReceivesDtoBuilder(3).Build();
             _billReceiveRepositoryMock.Setup(x => x.GetBillReceivesByClient(It.IsAny<int>()))
                 .ReturnsAsync(billReceivesDto.BillReceives);
             List<BillReceive> billReceivesResult = null;
@@ -307,7 +307,7 @@ namespace Systore.Tests.Unit.Services
         public async Task Should_Get_Paid_Bill_Receives_By_Client()
         {
             // Arrange
-            var billReceivesDto = CreateBillReceivesDtoFactory.CreateDefault(3);
+            var billReceivesDto = new CreateBillReceivesDtoBuilder(3).Build();
             _billReceiveRepositoryMock.Setup(x => x.GetPaidBillReceivesByClient(It.IsAny<int>()))
                 .ReturnsAsync(billReceivesDto.BillReceives);
             List<BillReceive> billReceivesResult = null;
@@ -324,7 +324,7 @@ namespace Systore.Tests.Unit.Services
         public async Task Should_Get_No_Bill_Receives_By_Client()
         {
             // Arrange
-            var billReceivesDto = CreateBillReceivesDtoFactory.CreateDefault(3);
+            var billReceivesDto = new CreateBillReceivesDtoBuilder(3).Build();
             _billReceiveRepositoryMock.Setup(x => x.GetNoPaidBillReceivesByClient(It.IsAny<int>()))
                 .ReturnsAsync(billReceivesDto.BillReceives);
             List<BillReceive> billReceivesResult = null;
@@ -341,7 +341,7 @@ namespace Systore.Tests.Unit.Services
         public async Task Should_Get_Next_Code()
         {
             // Arrange
-            var nextCode = IntFactory.Positive();
+            var nextCode = IntBuilder.Positive();
             int nextCodeResult = 0;
             _billReceiveRepositoryMock.Setup(x => x.NextCode())
                 .ReturnsAsync(nextCode);

@@ -8,12 +8,19 @@ using Systore.Domain.Enums;
 
 namespace Systore.Tests.Common.Factories
 {
-    public static class ClientFactory
+    public class ClientBuilder
     {
-        private static Faker<Client> GetFaker()
+        private readonly Client _instance;
+
+        public ClientBuilder()
+        {
+            _instance = GetFaker().Generate();
+        }
+
+        private Faker<Client> GetFaker()
         {
             return new Faker<Client>("pt_BR")
-                .RuleFor(c=> c.Id, IntFactory.Positive())
+                .RuleFor(c=> c.Id, IntBuilder.Positive())
                 .RuleFor(c => c.Address, f => f.Address.StreetAddress())
                 .RuleFor(c => c.AddressNumber, f => f.Address.BuildingNumber())
                 .RuleFor(c => c.AdmissionDate, f => f.Date.Past(3))
@@ -41,9 +48,6 @@ namespace Systore.Tests.Common.Factories
                 .RuleFor(c => c.State, f => f.Address.State());
         }
 
-        public static Client CreateDefault()
-        {
-            return GetFaker().Generate();
-        }
+        public Client Build() => _instance;        
     }
 }

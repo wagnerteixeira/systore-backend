@@ -30,7 +30,7 @@ namespace Systore.Tests.Unit.Services
             decimal expectedFinalValue)
         {
             // Arrange
-            var billReceive = BillReceiveFactory.CreateDefault();
+            var billReceive = new BillReceiveBuilder().Build();
             billReceive.Situation = billReceiveSituation;
             billReceive.OriginalValue = originalValue;
             billReceive.DaysDelay = daysAgo;
