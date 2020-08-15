@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Bogus;
 using System.Collections.Generic;
-using System.Text;
 using Systore.Domain.Dtos;
+using Systore.Domain.Entities;
 
 namespace Systore.Tests.Common.Builders
 {
@@ -10,15 +10,21 @@ namespace Systore.Tests.Common.Builders
         private readonly FilterDto _instance;
         public FilterDtoBuilder()
         {
-            _instance = new FilterDto()
-            {
-                Operation = Domain.Enums.Operation.Eq,
-                PropertyName = "id",
-                Value = ""
-            };
+            _instance = GetFaker().Generate();
         }
 
+        private Faker<FilterDto> GetFaker()
+        {
+            return new Faker<FilterDto>()
+                .RuleFor(o => o.Operation, r => Domain.Enums.Operation.Eq)
+                .RuleFor(o => o.PropertyName, "id")
+                .RuleFor(o => o.Value, "");                
+                
+         }
+
         public FilterDto Build() => _instance;
-        
+
+        public IEnumerable<FilterDto> BuildList(int count) => GetFaker().GenerateLazy(count);
+
     }
 }

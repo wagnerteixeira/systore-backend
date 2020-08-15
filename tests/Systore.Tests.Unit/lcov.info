@@ -1,0 +1,3922 @@
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Data\QueryExpressionBuilder.cs
+FN:23,System.Linq.Expressions.Expression`1<System.Func`2<T,System.Boolean>> Systore.Data.QueryExpressionBuilder::GetExpression(System.Collections.Generic.IEnumerable`1<Systore.Domain.Dtos.FilterDto>)
+FNDA:0,System.Linq.Expressions.Expression`1<System.Func`2<T,System.Boolean>> Systore.Data.QueryExpressionBuilder::GetExpression(System.Collections.Generic.IEnumerable`1<Systore.Domain.Dtos.FilterDto>)
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+DA:28,0
+DA:29,0
+DA:30,0
+DA:31,0
+BRDA:30,75,0,0
+BRDA:30,75,1,0
+FN:39,System.Linq.Expressions.Expression Systore.Data.QueryExpressionBuilder::GetExpression(System.Linq.Expressions.ParameterExpression,Systore.Domain.Dtos.FilterDto)
+FNDA:0,System.Linq.Expressions.Expression Systore.Data.QueryExpressionBuilder::GetExpression(System.Linq.Expressions.ParameterExpression,Systore.Domain.Dtos.FilterDto)
+DA:40,0
+DA:41,0
+DA:42,0
+DA:45,0
+DA:48,0
+DA:49,0
+DA:51,0
+DA:52,0
+DA:54,0
+DA:55,0
+DA:57,0
+DA:58,0
+DA:61,0
+DA:62,0
+DA:64,0
+DA:65,0
+DA:67,0
+DA:68,0
+DA:70,0
+DA:72,0
+DA:73,0
+DA:76,0
+DA:79,0
+DA:82,0
+DA:85,0
+DA:88,0
+DA:91,0
+DA:94,0
+DA:97,0
+DA:100,0
+DA:103,0
+DA:104,0
+BRDA:45,35,0,0
+BRDA:45,52,0,0
+BRDA:45,66,0,0
+BRDA:45,80,0,0
+BRDA:45,52,1,0
+BRDA:45,66,1,0
+BRDA:45,80,1,0
+BRDA:45,94,1,0
+BRDA:58,211,0,0
+BRDA:58,225,0,0
+BRDA:58,225,1,0
+BRDA:58,239,1,0
+BRDA:58,211,1,0
+BRDA:58,239,0,0
+BRDA:45,35,1,0
+BRDA:45,94,0,0
+BRDA:76,359,1,0
+BRDA:76,359,2,0
+BRDA:76,359,3,0
+BRDA:76,359,4,0
+BRDA:76,359,5,0
+BRDA:76,359,6,0
+BRDA:76,359,7,0
+BRDA:76,359,8,0
+BRDA:76,359,0,0
+FN:106,System.Linq.Expressions.Expression Systore.Data.QueryExpressionBuilder::GetOrderByExpression(System.String)
+FNDA:0,System.Linq.Expressions.Expression Systore.Data.QueryExpressionBuilder::GetOrderByExpression(System.String)
+DA:107,0
+DA:108,0
+DA:109,0
+DA:111,0
+DA:114,0
+DA:115,0
+DA:117,0
+DA:118,0
+DA:120,0
+DA:121,0
+DA:123,0
+DA:124,0
+DA:127,0
+DA:128,0
+DA:130,0
+DA:131,0
+DA:133,0
+DA:134,0
+DA:136,0
+DA:138,0
+DA:139,0
+DA:142,0
+DA:144,0
+BRDA:111,49,0,0
+BRDA:111,66,0,0
+BRDA:111,80,0,0
+BRDA:111,94,0,0
+BRDA:111,66,1,0
+BRDA:111,80,1,0
+BRDA:111,94,1,0
+BRDA:111,108,1,0
+BRDA:124,207,0,0
+BRDA:124,221,0,0
+BRDA:124,221,1,0
+BRDA:124,235,1,0
+BRDA:124,207,1,0
+BRDA:124,235,0,0
+BRDA:111,49,1,0
+BRDA:111,108,0,0
+FN:12,System.Void Systore.Data.QueryExpressionBuilder::.cctor()
+FNDA:0,System.Void Systore.Data.QueryExpressionBuilder::.cctor()
+DA:13,0
+DA:14,0
+DA:15,0
+LF:66
+LH:0
+BRF:43
+BRH:0
+FNF:4
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Data\Repositories\BaseRepository.cs
+FN:24,System.Boolean Systore.Data.Repositories.BaseRepository`1::get_IsConversion()
+FNDA:0,System.Boolean Systore.Data.Repositories.BaseRepository`1::get_IsConversion()
+DA:25,0
+FN:41,System.Boolean Systore.Data.Repositories.BaseRepository`1::BeginTransaction()
+FNDA:0,System.Boolean Systore.Data.Repositories.BaseRepository`1::BeginTransaction()
+DA:42,0
+DA:43,0
+DA:44,0
+DA:46,0
+DA:47,0
+DA:48,0
+BRDA:43,9,0,0
+BRDA:43,9,1,0
+FN:50,System.Boolean Systore.Data.Repositories.BaseRepository`1::Commit()
+FNDA:0,System.Boolean Systore.Data.Repositories.BaseRepository`1::Commit()
+DA:51,0
+DA:52,0
+DA:53,0
+FN:55,System.Void Systore.Data.Repositories.BaseRepository`1::Rollback()
+FNDA:0,System.Void Systore.Data.Repositories.BaseRepository`1::Rollback()
+DA:56,0
+DA:57,0
+DA:58,0
+FN:67,System.Linq.IQueryable`1<TEntity> Systore.Data.Repositories.BaseRepository`1::GetAll()
+FNDA:0,System.Linq.IQueryable`1<TEntity> Systore.Data.Repositories.BaseRepository`1::GetAll()
+DA:68,0
+FN:70,System.Linq.IQueryable`1<TEntity> Systore.Data.Repositories.BaseRepository`1::GetQueryWhere(System.Linq.IQueryable`1<TEntity>,Systore.Domain.Dtos.FilterPaginateDto)
+FNDA:0,System.Linq.IQueryable`1<TEntity> Systore.Data.Repositories.BaseRepository`1::GetQueryWhere(System.Linq.IQueryable`1<TEntity>,Systore.Domain.Dtos.FilterPaginateDto)
+DA:71,0
+DA:72,0
+DA:73,0
+DA:75,0
+DA:76,0
+BRDA:72,12,0,0
+BRDA:72,12,1,0
+FN:78,System.Linq.IQueryable`1<TEntity> Systore.Data.Repositories.BaseRepository`1::GetQueryPagination(System.Linq.IQueryable`1<TEntity>,Systore.Domain.Dtos.FilterPaginateDto)
+FNDA:0,System.Linq.IQueryable`1<TEntity> Systore.Data.Repositories.BaseRepository`1::GetQueryPagination(System.Linq.IQueryable`1<TEntity>,Systore.Domain.Dtos.FilterPaginateDto)
+DA:79,0
+DA:80,0
+DA:81,0
+DA:82,0
+DA:83,0
+FN:86,System.Linq.IQueryable`1<TEntity> Systore.Data.Repositories.BaseRepository`1::GetQueryOrderBy(System.Linq.IQueryable`1<TEntity>,Systore.Domain.Dtos.FilterPaginateDto)
+FNDA:0,System.Linq.IQueryable`1<TEntity> Systore.Data.Repositories.BaseRepository`1::GetQueryOrderBy(System.Linq.IQueryable`1<TEntity>,Systore.Domain.Dtos.FilterPaginateDto)
+DA:87,0
+DA:88,0
+DA:89,0
+DA:91,0
+DA:92,0
+DA:93,0
+DA:94,0
+DA:96,0
+DA:97,0
+DA:99,0
+DA:100,0
+BRDA:88,20,0,0
+BRDA:88,20,1,0
+BRDA:96,117,0,0
+BRDA:96,117,1,0
+FN:154,Systore.Domain.Enums.AuditOperation Systore.Data.Repositories.BaseRepository`1::GetAuditOperation(Microsoft.EntityFrameworkCore.EntityState)
+FNDA:0,Systore.Domain.Enums.AuditOperation Systore.Data.Repositories.BaseRepository`1::GetAuditOperation(Microsoft.EntityFrameworkCore.EntityState)
+DA:155,0
+DA:156,0
+DA:159,0
+DA:161,0
+DA:163,0
+DA:165,0
+DA:167,0
+BRDA:156,8,3,0
+BRDA:156,8,1,0
+BRDA:156,8,2,0
+BRDA:156,8,0,0
+FN:169,Systore.Data.Repositories.ListAuditEntry Systore.Data.Repositories.BaseRepository`1::OnBeforeSaveChanges()
+FNDA:0,Systore.Data.Repositories.ListAuditEntry Systore.Data.Repositories.BaseRepository`1::OnBeforeSaveChanges()
+DA:170,0
+DA:171,0
+DA:172,0
+DA:173,0
+DA:174,0
+DA:175,0
+DA:176,0
+DA:177,0
+DA:179,0
+DA:181,0
+DA:182,0
+DA:183,0
+DA:184,0
+DA:186,0
+DA:187,0
+DA:188,0
+DA:189,0
+DA:191,0
+DA:192,0
+DA:195,0
+DA:196,0
+DA:197,0
+DA:198,0
+DA:199,0
+DA:200,0
+DA:201,0
+DA:202,0
+DA:203,0
+DA:204,0
+DA:207,0
+DA:210,0
+DA:211,0
+DA:212,0
+DA:213,0
+DA:214,0
+DA:215,0
+DA:218,0
+DA:219,0
+DA:220,0
+DA:221,0
+DA:222,0
+DA:223,0
+DA:226,0
+DA:227,0
+DA:228,0
+DA:229,0
+DA:230,0
+DA:231,0
+DA:232,0
+DA:233,0
+DA:234,0
+DA:236,0
+DA:238,0
+DA:240,0
+DA:241,0
+DA:243,0
+DA:244,0
+BRDA:173,686,1,0
+BRDA:175,71,0,0
+BRDA:175,79,0,0
+BRDA:175,71,1,0
+BRDA:175,79,1,0
+BRDA:175,97,1,0
+BRDA:186,646,1,0
+BRDA:188,231,0,0
+BRDA:188,231,1,0
+BRDA:196,283,0,0
+BRDA:196,283,1,0
+BRDA:207,381,3,0
+BRDA:210,437,0,0
+BRDA:210,437,1,0
+BRDA:207,381,1,0
+BRDA:218,501,0,0
+BRDA:218,501,1,0
+BRDA:207,381,2,0
+BRDA:226,535,0,0
+BRDA:226,545,0,0
+BRDA:226,545,1,0
+BRDA:226,535,1,0
+BRDA:226,573,0,0
+BRDA:229,610,0,0
+BRDA:229,610,1,0
+BRDA:207,381,0,0
+BRDA:226,573,1,0
+BRDA:186,646,0,0
+BRDA:175,97,0,0
+BRDA:173,686,0,0
+FN:246,System.Threading.Tasks.Task Systore.Data.Repositories.BaseRepository`1::OnAfterSaveChanges(Systore.Data.Repositories.ListAuditEntry)
+FNDA:0,System.Threading.Tasks.Task Systore.Data.Repositories.BaseRepository`1::OnAfterSaveChanges(Systore.Data.Repositories.ListAuditEntry)
+DA:247,0
+DA:248,0
+DA:249,0
+DA:251,0
+DA:252,0
+DA:253,0
+DA:254,0
+DA:255,0
+DA:256,0
+DA:257,0
+DA:258,0
+DA:259,0
+DA:260,0
+DA:261,0
+DA:262,0
+DA:264,0
+DA:265,0
+DA:266,0
+DA:267,0
+DA:268,0
+DA:269,0
+DA:270,0
+DA:271,0
+DA:272,0
+DA:273,0
+DA:274,0
+DA:276,0
+DA:277,0
+DA:278,0
+DA:279,0
+DA:280,0
+DA:281,0
+DA:282,0
+DA:283,0
+DA:285,0
+DA:286,0
+BRDA:248,387,1,0
+BRDA:251,275,1,0
+BRDA:253,78,0,0
+BRDA:253,78,1,0
+BRDA:265,177,0,0
+BRDA:265,177,1,0
+BRDA:265,202,0,0
+BRDA:265,202,1,0
+BRDA:251,275,0,0
+BRDA:248,387,0,0
+FN:325,System.Void Systore.Data.Repositories.BaseRepository`1::Dispose(System.Boolean)
+FNDA:0,System.Void Systore.Data.Repositories.BaseRepository`1::Dispose(System.Boolean)
+DA:326,0
+DA:327,0
+DA:328,0
+DA:330,0
+DA:331,0
+DA:332,0
+DA:333,0
+DA:335,0
+DA:336,0
+BRDA:327,9,1,0
+BRDA:330,16,0,0
+BRDA:330,16,1,0
+BRDA:327,9,0,0
+FN:338,System.Void Systore.Data.Repositories.BaseRepository`1::Dispose()
+FNDA:0,System.Void Systore.Data.Repositories.BaseRepository`1::Dispose()
+DA:339,0
+DA:340,0
+DA:341,0
+DA:342,0
+FN:26,System.Void Systore.Data.Repositories.BaseRepository`1::.ctor(Microsoft.EntityFrameworkCore.DbContext,Systore.Data.Abstractions.IHeaderAuditRepository)
+FNDA:0,System.Void Systore.Data.Repositories.BaseRepository`1::.ctor(Microsoft.EntityFrameworkCore.DbContext,Systore.Data.Abstractions.IHeaderAuditRepository)
+DA:27,0
+DA:28,0
+DA:30,0
+DA:31,0
+DA:32,0
+DA:33,0
+DA:34,0
+DA:35,0
+DA:36,0
+DA:37,0
+DA:38,0
+DA:39,0
+FN:60,System.Void Systore.Data.Repositories.BaseRepository`1/<AddAsync>d__14::MoveNext()
+FNDA:0,System.Void Systore.Data.Repositories.BaseRepository`1/<AddAsync>d__14::MoveNext()
+DA:61,0
+DA:62,0
+DA:63,0
+DA:64,0
+BRDA:62,74,0,0
+BRDA:62,74,1,0
+FN:65,System.Void Systore.Data.Repositories.BaseRepository`1/<GetAsync>d__15::MoveNext()
+FNDA:0,System.Void Systore.Data.Repositories.BaseRepository`1/<GetAsync>d__15::MoveNext()
+DA:66,0
+BRDA:66,66,0,0
+BRDA:66,66,1,0
+FN:66,System.Void Systore.Data.Repositories.BaseRepository`1/<GetAllAsync>d__16::MoveNext()
+FNDA:0,System.Void Systore.Data.Repositories.BaseRepository`1/<GetAllAsync>d__16::MoveNext()
+DA:67,0
+FN:102,System.Void Systore.Data.Repositories.BaseRepository`1/<GetWhereAsync>d__21::MoveNext()
+FNDA:0,System.Void Systore.Data.Repositories.BaseRepository`1/<GetWhereAsync>d__21::MoveNext()
+DA:103,0
+FN:105,System.Void Systore.Data.Repositories.BaseRepository`1/<GetWhereAsync>d__22::MoveNext()
+FNDA:0,System.Void Systore.Data.Repositories.BaseRepository`1/<GetWhereAsync>d__22::MoveNext()
+DA:106,0
+DA:107,0
+DA:109,0
+DA:111,0
+DA:113,0
+DA:114,0
+DA:115,0
+DA:118,0
+DA:119,0
+DA:121,0
+BRDA:113,164,0,0
+BRDA:113,164,1,0
+FN:123,System.Void Systore.Data.Repositories.BaseRepository`1/<FirstOrDefaultAsync>d__23::MoveNext()
+FNDA:0,System.Void Systore.Data.Repositories.BaseRepository`1/<FirstOrDefaultAsync>d__23::MoveNext()
+DA:124,0
+FN:125,System.Void Systore.Data.Repositories.BaseRepository`1/<CountAllAsync>d__24::MoveNext()
+FNDA:0,System.Void Systore.Data.Repositories.BaseRepository`1/<CountAllAsync>d__24::MoveNext()
+DA:126,0
+FN:128,System.Void Systore.Data.Repositories.BaseRepository`1/<CountWhereAsync>d__25::MoveNext()
+FNDA:0,System.Void Systore.Data.Repositories.BaseRepository`1/<CountWhereAsync>d__25::MoveNext()
+DA:129,0
+FN:131,System.Void Systore.Data.Repositories.BaseRepository`1/<CountWhereAsync>d__26::MoveNext()
+FNDA:0,System.Void Systore.Data.Repositories.BaseRepository`1/<CountWhereAsync>d__26::MoveNext()
+DA:132,0
+FN:135,System.Void Systore.Data.Repositories.BaseRepository`1/<UpdateAsync>d__27::MoveNext()
+FNDA:0,System.Void Systore.Data.Repositories.BaseRepository`1/<UpdateAsync>d__27::MoveNext()
+DA:136,0
+DA:137,0
+DA:138,0
+DA:139,0
+DA:140,0
+FN:142,System.Void Systore.Data.Repositories.BaseRepository`1/<RemoveAsync>d__28::MoveNext()
+FNDA:0,System.Void Systore.Data.Repositories.BaseRepository`1/<RemoveAsync>d__28::MoveNext()
+DA:143,0
+DA:144,0
+DA:145,0
+DA:146,0
+DA:147,0
+BRDA:144,78,0,0
+BRDA:144,78,1,0
+FN:149,System.Void Systore.Data.Repositories.BaseRepository`1/<ExecuteCommandAsync>d__29::MoveNext()
+FNDA:0,System.Void Systore.Data.Repositories.BaseRepository`1/<ExecuteCommandAsync>d__29::MoveNext()
+DA:150,0
+DA:151,0
+DA:152,0
+FN:289,System.Void Systore.Data.Repositories.BaseRepository`1/<SaveChangesAsync>d__33::MoveNext()
+FNDA:0,System.Void Systore.Data.Repositories.BaseRepository`1/<SaveChangesAsync>d__33::MoveNext()
+DA:290,0
+DA:292,0
+DA:293,0
+DA:294,0
+DA:295,0
+DA:296,0
+DA:297,0
+DA:298,0
+DA:300,0
+DA:301,0
+DA:302,0
+DA:303,0
+DA:304,0
+DA:305,0
+DA:307,0
+DA:309,0
+DA:311,0
+DA:312,0
+DA:313,0
+DA:314,0
+DA:315,0
+DA:316,0
+DA:318,0
+DA:321,0
+DA:323,0
+BRDA:293,69,0,0
+BRDA:295,88,0,0
+BRDA:295,88,1,0
+BRDA:293,69,1,0
+BRDA:313,544,0,0
+BRDA:315,570,0,0
+BRDA:315,570,1,0
+BRDA:313,544,1,0
+FN:346,System.Collections.Generic.List`1<Systore.Data.Repositories.AuditEntry> Systore.Data.Repositories.ListAuditEntry::get_AuditEntries()
+FNDA:0,System.Collections.Generic.List`1<Systore.Data.Repositories.AuditEntry> Systore.Data.Repositories.ListAuditEntry::get_AuditEntries()
+DA:347,0
+FN:356,Systore.Domain.Entities.HeaderAudit Systore.Data.Repositories.AuditEntry::get_HeaderAudit()
+FNDA:0,Systore.Domain.Entities.HeaderAudit Systore.Data.Repositories.AuditEntry::get_HeaderAudit()
+DA:357,0
+FN:357,System.Collections.Generic.List`1<Microsoft.EntityFrameworkCore.ChangeTracking.PropertyEntry> Systore.Data.Repositories.AuditEntry::get_TemporaryProperties()
+FNDA:0,System.Collections.Generic.List`1<Microsoft.EntityFrameworkCore.ChangeTracking.PropertyEntry> Systore.Data.Repositories.AuditEntry::get_TemporaryProperties()
+DA:358,0
+FN:359,System.Boolean Systore.Data.Repositories.AuditEntry::get_HasTemporaryProperties()
+FNDA:0,System.Boolean Systore.Data.Repositories.AuditEntry::get_HasTemporaryProperties()
+DA:360,0
+FN:360,System.Collections.Generic.List`1<System.String> Systore.Data.Repositories.AuditEntry::get_PrimaryKeys()
+FNDA:0,System.Collections.Generic.List`1<System.String> Systore.Data.Repositories.AuditEntry::get_PrimaryKeys()
+DA:361,0
+FN:351,System.Void Systore.Data.Repositories.AuditEntry::.ctor()
+FNDA:0,System.Void Systore.Data.Repositories.AuditEntry::.ctor()
+DA:352,0
+DA:353,0
+DA:354,0
+DA:355,0
+LF:228
+LH:0
+BRF:72
+BRH:0
+FNF:33
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Data\Repositories\BillReceiveRepository.cs
+FN:19,System.Threading.Tasks.Task`1<System.Int32> Systore.Data.Repositories.BillReceiveRepository::CountBillReceivesByClient(System.Int32)
+FNDA:0,System.Threading.Tasks.Task`1<System.Int32> Systore.Data.Repositories.BillReceiveRepository::CountBillReceivesByClient(System.Int32)
+DA:20,0
+FN:41,System.Threading.Tasks.Task`1<System.Collections.Generic.List`1<Systore.Domain.Entities.BillReceive>> Systore.Data.Repositories.BillReceiveRepository::GetPaidBillReceivesByClient(System.Int32)
+FNDA:0,System.Threading.Tasks.Task`1<System.Collections.Generic.List`1<Systore.Domain.Entities.BillReceive>> Systore.Data.Repositories.BillReceiveRepository::GetPaidBillReceivesByClient(System.Int32)
+DA:42,0
+DA:43,0
+DA:44,0
+DA:45,0
+DA:46,0
+FN:48,System.Threading.Tasks.Task`1<System.Collections.Generic.List`1<Systore.Domain.Entities.BillReceive>> Systore.Data.Repositories.BillReceiveRepository::GetNoPaidBillReceivesByClient(System.Int32)
+FNDA:0,System.Threading.Tasks.Task`1<System.Collections.Generic.List`1<Systore.Domain.Entities.BillReceive>> Systore.Data.Repositories.BillReceiveRepository::GetNoPaidBillReceivesByClient(System.Int32)
+DA:49,0
+DA:50,0
+DA:51,0
+DA:52,0
+DA:53,0
+FN:13,System.Void Systore.Data.Repositories.BillReceiveRepository::.ctor(Systore.Infra.Context.SystoreContext,Systore.Data.Abstractions.IHeaderAuditRepository)
+FNDA:0,System.Void Systore.Data.Repositories.BillReceiveRepository::.ctor(Systore.Infra.Context.SystoreContext,Systore.Data.Abstractions.IHeaderAuditRepository)
+DA:14,0
+DA:15,0
+DA:17,0
+FN:22,System.Void Systore.Data.Repositories.BillReceiveRepository/<GetBillReceivesByClient>d__2::MoveNext()
+FNDA:0,System.Void Systore.Data.Repositories.BillReceiveRepository/<GetBillReceivesByClient>d__2::MoveNext()
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+DA:29,0
+DA:30,0
+DA:31,0
+DA:32,0
+DA:34,0
+DA:35,0
+DA:36,0
+DA:38,0
+DA:39,0
+FN:55,System.Void Systore.Data.Repositories.BillReceiveRepository/<NextCode>d__5::MoveNext()
+FNDA:0,System.Void Systore.Data.Repositories.BillReceiveRepository/<NextCode>d__5::MoveNext()
+DA:56,0
+DA:57,0
+DA:58,0
+FN:60,System.Void Systore.Data.Repositories.BillReceiveRepository/<RemoveBillReceivesByCode>d__6::MoveNext()
+FNDA:0,System.Void Systore.Data.Repositories.BillReceiveRepository/<RemoveBillReceivesByCode>d__6::MoveNext()
+DA:61,0
+DA:62,0
+DA:63,0
+DA:64,0
+LF:35
+LH:0
+BRF:0
+BRH:0
+FNF:7
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Data\Repositories\ClientRepository.cs
+FN:13,System.Void Systore.Data.Repositories.ClientRepository::.ctor(Systore.Infra.Context.SystoreContext,Systore.Data.Abstractions.IHeaderAuditRepository)
+FNDA:0,System.Void Systore.Data.Repositories.ClientRepository::.ctor(Systore.Infra.Context.SystoreContext,Systore.Data.Abstractions.IHeaderAuditRepository)
+DA:14,0
+DA:15,0
+DA:17,0
+FN:19,System.Void Systore.Data.Repositories.ClientRepository/<Validate>d__1::MoveNext()
+FNDA:0,System.Void Systore.Data.Repositories.ClientRepository/<Validate>d__1::MoveNext()
+DA:20,0
+DA:21,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+DA:28,0
+DA:29,0
+DA:30,0
+DA:31,0
+DA:33,0
+DA:35,0
+BRDA:21,59,0,0
+BRDA:21,59,1,0
+BRDA:25,233,0,0
+BRDA:25,233,1,0
+BRDA:28,697,0,0
+BRDA:28,697,1,0
+BRDA:30,809,0,0
+BRDA:30,809,1,0
+BRDA:30,832,0,0
+BRDA:31,888,0,0
+BRDA:31,888,1,0
+BRDA:31,923,0,0
+BRDA:31,923,1,0
+BRDA:30,832,1,0
+FN:37,System.Void Systore.Data.Repositories.ClientRepository/<AddAsync>d__2::MoveNext()
+FNDA:0,System.Void Systore.Data.Repositories.ClientRepository/<AddAsync>d__2::MoveNext()
+DA:38,0
+DA:39,0
+DA:40,0
+DA:41,0
+DA:42,0
+DA:43,0
+BRDA:40,176,0,0
+BRDA:40,176,1,0
+FN:45,System.Void Systore.Data.Repositories.ClientRepository/<UpdateAsync>d__3::MoveNext()
+FNDA:0,System.Void Systore.Data.Repositories.ClientRepository/<UpdateAsync>d__3::MoveNext()
+DA:46,0
+DA:47,0
+DA:48,0
+DA:49,0
+DA:50,0
+DA:51,0
+BRDA:48,176,0,0
+BRDA:48,176,1,0
+LF:29
+LH:0
+BRF:18
+BRH:0
+FNF:4
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Data\Repositories\HeaderAuditRepository.cs
+FN:44,System.String Systore.Data.Repositories.HeaderAuditRepository::GetOperationString(Systore.Domain.Enums.AuditOperation)
+FNDA:0,System.String Systore.Data.Repositories.HeaderAuditRepository::GetOperationString(Systore.Domain.Enums.AuditOperation)
+DA:45,0
+DA:46,0
+DA:49,0
+DA:51,0
+DA:53,0
+DA:55,0
+DA:57,0
+BRDA:46,6,1,0
+BRDA:46,6,3,0
+BRDA:46,6,2,0
+BRDA:46,6,0,0
+FN:22,System.Void Systore.Data.Repositories.HeaderAuditRepository::.ctor(Microsoft.Extensions.Options.IOptions`1<Systore.Domain.AppSettings>,Microsoft.AspNetCore.Http.IHttpContextAccessor,Systore.Infra.Context.AuditContext)
+FNDA:0,System.Void Systore.Data.Repositories.HeaderAuditRepository::.ctor(Microsoft.Extensions.Options.IOptions`1<Systore.Domain.AppSettings>,Microsoft.AspNetCore.Http.IHttpContextAccessor,Systore.Infra.Context.AuditContext)
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+DA:28,0
+DA:29,0
+DA:30,0
+DA:31,0
+FN:34,System.Boolean Systore.Data.Repositories.HeaderAuditRepository/<>c::<AddAsync>b__4_0(System.Security.Claims.Claim)
+FNDA:0,System.Boolean Systore.Data.Repositories.HeaderAuditRepository/<>c::<AddAsync>b__4_0(System.Security.Claims.Claim)
+DA:35,0
+FN:33,System.Void Systore.Data.Repositories.HeaderAuditRepository/<AddAsync>d__4::MoveNext()
+FNDA:0,System.Void Systore.Data.Repositories.HeaderAuditRepository/<AddAsync>d__4::MoveNext()
+DA:34,0
+DA:36,0
+DA:37,0
+DA:39,0
+DA:40,0
+DA:41,0
+DA:42,0
+BRDA:36,108,0,0
+BRDA:36,108,1,0
+BRDA:40,201,0,0
+BRDA:40,201,1,0
+FN:59,System.Void Systore.Data.Repositories.HeaderAuditRepository/<GetAuditsByDateAsync>d__6::MoveNext()
+FNDA:0,System.Void Systore.Data.Repositories.HeaderAuditRepository/<GetAuditsByDateAsync>d__6::MoveNext()
+DA:60,0
+DA:61,0
+DA:62,0
+DA:63,0
+DA:64,0
+DA:65,0
+DA:66,0
+DA:67,0
+DA:68,0
+DA:69,0
+DA:70,0
+DA:71,0
+DA:72,0
+DA:73,0
+DA:74,0
+DA:75,0
+DA:76,0
+DA:77,0
+DA:78,0
+DA:79,0
+DA:80,0
+FN:82,System.Void Systore.Data.Repositories.HeaderAuditRepository/<SaveChangesAsync>d__7::MoveNext()
+FNDA:0,System.Void Systore.Data.Repositories.HeaderAuditRepository/<SaveChangesAsync>d__7::MoveNext()
+DA:83,0
+DA:85,0
+DA:86,0
+DA:87,0
+DA:89,0
+DA:90,0
+DA:91,0
+DA:92,0
+DA:93,0
+DA:94,0
+DA:95,0
+DA:96,0
+DA:99,0
+DA:100,0
+DA:101,0
+DA:105,0
+DA:106,0
+DA:107,0
+DA:110,0
+BRDA:91,180,0,0
+BRDA:93,206,0,0
+BRDA:93,206,1,0
+BRDA:91,180,1,0
+LF:64
+LH:0
+BRF:12
+BRH:0
+FNF:6
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Data\Repositories\ItemAuditRepository.cs
+FN:10,System.Void Systore.Data.Repositories.ItemAuditRepository::.ctor(Systore.Infra.Context.AuditContext,Systore.Data.Abstractions.IHeaderAuditRepository)
+FNDA:0,System.Void Systore.Data.Repositories.ItemAuditRepository::.ctor(Systore.Infra.Context.AuditContext,Systore.Data.Abstractions.IHeaderAuditRepository)
+DA:11,0
+DA:12,0
+DA:14,0
+LF:3
+LH:0
+BRF:0
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Data\Repositories\ItemSaleRepository.cs
+FN:17,System.Threading.Tasks.Task`1<System.Boolean> Systore.Data.Repositories.ItemSaleRepository::ExistsByProduct(System.Int32)
+FNDA:0,System.Threading.Tasks.Task`1<System.Boolean> Systore.Data.Repositories.ItemSaleRepository::ExistsByProduct(System.Int32)
+DA:18,0
+DA:19,0
+DA:20,0
+FN:11,System.Void Systore.Data.Repositories.ItemSaleRepository::.ctor(Systore.Infra.Context.SystoreContext,Systore.Data.Abstractions.IHeaderAuditRepository)
+FNDA:0,System.Void Systore.Data.Repositories.ItemSaleRepository::.ctor(Systore.Infra.Context.SystoreContext,Systore.Data.Abstractions.IHeaderAuditRepository)
+DA:12,0
+DA:13,0
+DA:15,0
+LF:6
+LH:0
+BRF:0
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Data\Repositories\ProductRepository.cs
+FN:22,System.String Systore.Data.Repositories.ProductRepository::Validate(Systore.Domain.Entities.Product)
+FNDA:0,System.String Systore.Data.Repositories.ProductRepository::Validate(Systore.Domain.Entities.Product)
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+DA:28,0
+DA:29,0
+DA:30,0
+DA:31,0
+DA:33,0
+BRDA:24,9,0,0
+BRDA:24,9,1,0
+BRDA:27,38,0,0
+BRDA:27,38,1,0
+BRDA:29,77,0,0
+BRDA:29,77,1,0
+FN:45,System.Threading.Tasks.Task`1<System.String> Systore.Data.Repositories.ProductRepository::AddAsync(Systore.Domain.Entities.Product)
+FNDA:0,System.Threading.Tasks.Task`1<System.String> Systore.Data.Repositories.ProductRepository::AddAsync(Systore.Domain.Entities.Product)
+DA:46,0
+DA:47,0
+DA:48,0
+DA:49,0
+DA:50,0
+DA:51,0
+DA:52,0
+BRDA:48,20,0,0
+BRDA:48,20,1,0
+FN:62,System.Threading.Tasks.Task`1<System.String> Systore.Data.Repositories.ProductRepository::UpdateAsync(Systore.Domain.Entities.Product)
+FNDA:0,System.Threading.Tasks.Task`1<System.String> Systore.Data.Repositories.ProductRepository::UpdateAsync(Systore.Domain.Entities.Product)
+DA:63,0
+DA:64,0
+DA:65,0
+DA:66,0
+DA:67,0
+DA:68,0
+DA:69,0
+BRDA:65,20,0,0
+BRDA:65,20,1,0
+FN:71,System.Threading.Tasks.Task`1<System.String> Systore.Data.Repositories.ProductRepository::UpdateAsyncWithOutExportToBalance(Systore.Domain.Entities.Product)
+FNDA:0,System.Threading.Tasks.Task`1<System.String> Systore.Data.Repositories.ProductRepository::UpdateAsyncWithOutExportToBalance(Systore.Domain.Entities.Product)
+DA:72,0
+DA:73,0
+DA:74,0
+FN:15,System.Void Systore.Data.Repositories.ProductRepository::.ctor(Systore.Infra.Context.SystoreContext,Systore.Data.Abstractions.IHeaderAuditRepository,Systore.Data.Abstractions.IItemSaleRepository)
+FNDA:0,System.Void Systore.Data.Repositories.ProductRepository::.ctor(Systore.Infra.Context.SystoreContext,Systore.Data.Abstractions.IHeaderAuditRepository,Systore.Data.Abstractions.IItemSaleRepository)
+DA:16,0
+DA:17,0
+DA:19,0
+DA:20,0
+FN:35,System.Void Systore.Data.Repositories.ProductRepository/<ValidateDelete>d__3::MoveNext()
+FNDA:0,System.Void Systore.Data.Repositories.ProductRepository/<ValidateDelete>d__3::MoveNext()
+DA:36,0
+DA:37,0
+DA:39,0
+DA:40,0
+DA:41,0
+DA:43,0
+BRDA:39,152,0,0
+BRDA:39,152,1,0
+FN:54,System.Void Systore.Data.Repositories.ProductRepository/<RemoveAsync>d__5::MoveNext()
+FNDA:0,System.Void Systore.Data.Repositories.ProductRepository/<RemoveAsync>d__5::MoveNext()
+DA:55,0
+DA:56,0
+DA:57,0
+DA:58,0
+DA:59,0
+DA:60,0
+BRDA:57,175,0,0
+BRDA:57,175,1,0
+FN:76,System.Void Systore.Data.Repositories.ProductRepository/<GetProductsForExportToBalance>d__8::MoveNext()
+FNDA:0,System.Void Systore.Data.Repositories.ProductRepository/<GetProductsForExportToBalance>d__8::MoveNext()
+DA:77,0
+DA:78,0
+DA:80,0
+DA:81,0
+DA:83,0
+DA:84,0
+BRDA:80,93,0,0
+BRDA:80,93,1,0
+LF:49
+LH:0
+BRF:16
+BRH:0
+FNF:8
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Data\Repositories\SaleRepository.cs
+FN:18,System.Threading.Tasks.Task`1<Systore.Domain.Dtos.SaleDto> Systore.Data.Repositories.SaleRepository::GetSaleFullByIdAsync(System.Int32)
+FNDA:0,System.Threading.Tasks.Task`1<Systore.Domain.Dtos.SaleDto> Systore.Data.Repositories.SaleRepository::GetSaleFullByIdAsync(System.Int32)
+DA:19,0
+DA:20,0
+DA:21,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+DA:28,0
+DA:29,0
+DA:30,0
+DA:31,0
+DA:32,0
+DA:33,0
+DA:34,0
+DA:35,0
+DA:36,0
+DA:37,0
+DA:38,0
+DA:39,0
+DA:40,0
+DA:41,0
+DA:42,0
+DA:43,0
+FN:12,System.Void Systore.Data.Repositories.SaleRepository::.ctor(Systore.Infra.Context.SystoreContext,Systore.Data.Abstractions.IHeaderAuditRepository)
+FNDA:0,System.Void Systore.Data.Repositories.SaleRepository::.ctor(Systore.Infra.Context.SystoreContext,Systore.Data.Abstractions.IHeaderAuditRepository)
+DA:13,0
+DA:14,0
+DA:16,0
+LF:28
+LH:0
+BRF:0
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Data\Repositories\UserRepository.cs
+FN:11,System.Void Systore.Data.Repositories.UserRepository::.ctor(Systore.Infra.Context.SystoreContext,Systore.Data.Abstractions.IHeaderAuditRepository)
+FNDA:0,System.Void Systore.Data.Repositories.UserRepository::.ctor(Systore.Infra.Context.SystoreContext,Systore.Data.Abstractions.IHeaderAuditRepository)
+DA:12,0
+DA:13,0
+DA:15,0
+FN:17,System.Void Systore.Data.Repositories.UserRepository/<GetUserByUsernameAndPassword>d__1::MoveNext()
+FNDA:0,System.Void Systore.Data.Repositories.UserRepository/<GetUserByUsernameAndPassword>d__1::MoveNext()
+DA:18,0
+DA:19,0
+DA:20,0
+LF:6
+LH:0
+BRF:0
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Domain\AppSettings.cs
+FN:4,System.String Systore.Domain.AppSettings::get_Secret()
+FNDA:0,System.String Systore.Domain.AppSettings::get_Secret()
+DA:5,0
+FN:5,System.String Systore.Domain.AppSettings::get_DatabaseType()
+FNDA:0,System.String Systore.Domain.AppSettings::get_DatabaseType()
+DA:6,0
+FN:6,System.String Systore.Domain.AppSettings::get_UrlRelease()
+FNDA:0,System.String Systore.Domain.AppSettings::get_UrlRelease()
+DA:7,0
+FN:7,System.String Systore.Domain.AppSettings::get_ClientId()
+FNDA:0,System.String Systore.Domain.AppSettings::get_ClientId()
+DA:8,0
+LF:4
+LH:0
+BRF:0
+BRH:0
+FNF:4
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Domain\MetricsSettings.cs
+FN:5,System.Boolean Systore.Domain.MetricsSettings::get_UseMetrics()
+FNDA:0,System.Boolean Systore.Domain.MetricsSettings::get_UseMetrics()
+DA:6,0
+FN:6,System.String Systore.Domain.MetricsSettings::get_InfluxDatabase()
+FNDA:0,System.String Systore.Domain.MetricsSettings::get_InfluxDatabase()
+DA:7,0
+FN:7,System.String Systore.Domain.MetricsSettings::get_InfluxServer()
+FNDA:0,System.String Systore.Domain.MetricsSettings::get_InfluxServer()
+DA:8,0
+LF:3
+LH:0
+BRF:0
+BRH:0
+FNF:3
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Domain\Entities\BillReceive.cs
+FN:7,System.Int32 Systore.Domain.Entities.BillReceive::get_Id()
+FNDA:0,System.Int32 Systore.Domain.Entities.BillReceive::get_Id()
+DA:8,0
+FN:8,System.Int32 Systore.Domain.Entities.BillReceive::get_ClientId()
+FNDA:0,System.Int32 Systore.Domain.Entities.BillReceive::get_ClientId()
+DA:9,0
+FN:9,Systore.Domain.Entities.Client Systore.Domain.Entities.BillReceive::get_Client()
+FNDA:0,Systore.Domain.Entities.Client Systore.Domain.Entities.BillReceive::get_Client()
+DA:10,0
+FN:10,System.Int32 Systore.Domain.Entities.BillReceive::get_Code()
+FNDA:59,System.Int32 Systore.Domain.Entities.BillReceive::get_Code()
+DA:11,59
+FN:11,System.Int32 Systore.Domain.Entities.BillReceive::get_Quota()
+FNDA:41,System.Int32 Systore.Domain.Entities.BillReceive::get_Quota()
+DA:12,41
+FN:12,System.Decimal Systore.Domain.Entities.BillReceive::get_OriginalValue()
+FNDA:94,System.Decimal Systore.Domain.Entities.BillReceive::get_OriginalValue()
+DA:13,94
+FN:13,System.Decimal Systore.Domain.Entities.BillReceive::get_Interest()
+FNDA:86,System.Decimal Systore.Domain.Entities.BillReceive::get_Interest()
+DA:14,86
+FN:14,System.Decimal Systore.Domain.Entities.BillReceive::get_FinalValue()
+FNDA:45,System.Decimal Systore.Domain.Entities.BillReceive::get_FinalValue()
+DA:15,45
+FN:15,System.DateTime Systore.Domain.Entities.BillReceive::get_PurchaseDate()
+FNDA:0,System.DateTime Systore.Domain.Entities.BillReceive::get_PurchaseDate()
+DA:16,0
+FN:16,System.DateTime Systore.Domain.Entities.BillReceive::get_DueDate()
+FNDA:82,System.DateTime Systore.Domain.Entities.BillReceive::get_DueDate()
+DA:17,82
+FN:17,System.Nullable`1<System.DateTime> Systore.Domain.Entities.BillReceive::get_PayDate()
+FNDA:0,System.Nullable`1<System.DateTime> Systore.Domain.Entities.BillReceive::get_PayDate()
+DA:18,0
+FN:18,System.Int32 Systore.Domain.Entities.BillReceive::get_DaysDelay()
+FNDA:49,System.Int32 Systore.Domain.Entities.BillReceive::get_DaysDelay()
+DA:19,49
+FN:19,Systore.Domain.Enums.BillReceiveSituation Systore.Domain.Entities.BillReceive::get_Situation()
+FNDA:78,Systore.Domain.Enums.BillReceiveSituation Systore.Domain.Entities.BillReceive::get_Situation()
+DA:20,78
+FN:20,System.String Systore.Domain.Entities.BillReceive::get_Vendor()
+FNDA:0,System.String Systore.Domain.Entities.BillReceive::get_Vendor()
+DA:21,0
+FN:21,System.Int32 Systore.Domain.Entities.BillReceive::get_NumberOfQuotas()
+FNDA:0,System.Int32 Systore.Domain.Entities.BillReceive::get_NumberOfQuotas()
+DA:22,0
+LF:15
+LH:8
+BRF:0
+BRH:0
+FNF:15
+FNH:8
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Domain\Entities\Client.cs
+FN:8,System.Int32 Systore.Domain.Entities.Client::get_Id()
+FNDA:0,System.Int32 Systore.Domain.Entities.Client::get_Id()
+DA:9,0
+FN:9,System.String Systore.Domain.Entities.Client::get_Name()
+FNDA:0,System.String Systore.Domain.Entities.Client::get_Name()
+DA:10,0
+FN:10,System.Nullable`1<System.DateTime> Systore.Domain.Entities.Client::get_RegistryDate()
+FNDA:0,System.Nullable`1<System.DateTime> Systore.Domain.Entities.Client::get_RegistryDate()
+DA:11,0
+FN:11,System.Nullable`1<System.DateTime> Systore.Domain.Entities.Client::get_DateOfBirth()
+FNDA:0,System.Nullable`1<System.DateTime> Systore.Domain.Entities.Client::get_DateOfBirth()
+DA:12,0
+FN:12,System.String Systore.Domain.Entities.Client::get_Address()
+FNDA:0,System.String Systore.Domain.Entities.Client::get_Address()
+DA:13,0
+FN:13,System.String Systore.Domain.Entities.Client::get_Neighborhood()
+FNDA:0,System.String Systore.Domain.Entities.Client::get_Neighborhood()
+DA:14,0
+FN:14,System.String Systore.Domain.Entities.Client::get_City()
+FNDA:0,System.String Systore.Domain.Entities.Client::get_City()
+DA:15,0
+FN:15,System.String Systore.Domain.Entities.Client::get_State()
+FNDA:0,System.String Systore.Domain.Entities.Client::get_State()
+DA:16,0
+FN:16,System.String Systore.Domain.Entities.Client::get_PostalCode()
+FNDA:0,System.String Systore.Domain.Entities.Client::get_PostalCode()
+DA:17,0
+FN:17,System.String Systore.Domain.Entities.Client::get_Cpf()
+FNDA:0,System.String Systore.Domain.Entities.Client::get_Cpf()
+DA:18,0
+FN:18,System.String Systore.Domain.Entities.Client::get_Seller()
+FNDA:0,System.String Systore.Domain.Entities.Client::get_Seller()
+DA:19,0
+FN:19,System.String Systore.Domain.Entities.Client::get_JobName()
+FNDA:0,System.String Systore.Domain.Entities.Client::get_JobName()
+DA:20,0
+FN:20,System.String Systore.Domain.Entities.Client::get_Occupation()
+FNDA:0,System.String Systore.Domain.Entities.Client::get_Occupation()
+DA:21,0
+FN:21,System.String Systore.Domain.Entities.Client::get_PlaceOfBirth()
+FNDA:0,System.String Systore.Domain.Entities.Client::get_PlaceOfBirth()
+DA:22,0
+FN:22,System.String Systore.Domain.Entities.Client::get_Spouse()
+FNDA:0,System.String Systore.Domain.Entities.Client::get_Spouse()
+DA:23,0
+FN:23,System.String Systore.Domain.Entities.Client::get_Note()
+FNDA:0,System.String Systore.Domain.Entities.Client::get_Note()
+DA:24,0
+FN:24,System.String Systore.Domain.Entities.Client::get_Phone1()
+FNDA:0,System.String Systore.Domain.Entities.Client::get_Phone1()
+DA:25,0
+FN:25,System.String Systore.Domain.Entities.Client::get_Phone2()
+FNDA:0,System.String Systore.Domain.Entities.Client::get_Phone2()
+DA:26,0
+FN:26,System.String Systore.Domain.Entities.Client::get_AddressNumber()
+FNDA:0,System.String Systore.Domain.Entities.Client::get_AddressNumber()
+DA:27,0
+FN:27,System.String Systore.Domain.Entities.Client::get_Rg()
+FNDA:0,System.String Systore.Domain.Entities.Client::get_Rg()
+DA:28,0
+FN:28,System.String Systore.Domain.Entities.Client::get_Complement()
+FNDA:0,System.String Systore.Domain.Entities.Client::get_Complement()
+DA:29,0
+FN:29,System.Nullable`1<System.DateTime> Systore.Domain.Entities.Client::get_AdmissionDate()
+FNDA:0,System.Nullable`1<System.DateTime> Systore.Domain.Entities.Client::get_AdmissionDate()
+DA:30,0
+FN:30,Systore.Domain.Enums.CivilStatus Systore.Domain.Entities.Client::get_CivilStatus()
+FNDA:0,Systore.Domain.Enums.CivilStatus Systore.Domain.Entities.Client::get_CivilStatus()
+DA:31,0
+FN:31,System.String Systore.Domain.Entities.Client::get_FatherName()
+FNDA:0,System.String Systore.Domain.Entities.Client::get_FatherName()
+DA:32,0
+FN:32,System.String Systore.Domain.Entities.Client::get_MotherName()
+FNDA:0,System.String Systore.Domain.Entities.Client::get_MotherName()
+DA:33,0
+FN:33,System.Collections.Generic.ICollection`1<Systore.Domain.Entities.BillReceive> Systore.Domain.Entities.Client::get_BillReceives()
+FNDA:0,System.Collections.Generic.ICollection`1<Systore.Domain.Entities.BillReceive> Systore.Domain.Entities.Client::get_BillReceives()
+DA:34,0
+FN:34,System.Collections.Generic.ICollection`1<Systore.Domain.Entities.Sale> Systore.Domain.Entities.Client::get_Sales()
+FNDA:0,System.Collections.Generic.ICollection`1<Systore.Domain.Entities.Sale> Systore.Domain.Entities.Client::get_Sales()
+DA:35,0
+LF:27
+LH:0
+BRF:0
+BRH:0
+FNF:27
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Domain\Entities\HeaderAudit.cs
+FN:14,System.Int32 Systore.Domain.Entities.HeaderAudit::get_Id()
+FNDA:0,System.Int32 Systore.Domain.Entities.HeaderAudit::get_Id()
+DA:15,0
+FN:15,System.String Systore.Domain.Entities.HeaderAudit::get_TableName()
+FNDA:0,System.String Systore.Domain.Entities.HeaderAudit::get_TableName()
+DA:16,0
+FN:16,System.DateTime Systore.Domain.Entities.HeaderAudit::get_Date()
+FNDA:0,System.DateTime Systore.Domain.Entities.HeaderAudit::get_Date()
+DA:17,0
+FN:17,System.String Systore.Domain.Entities.HeaderAudit::get_UserName()
+FNDA:0,System.String Systore.Domain.Entities.HeaderAudit::get_UserName()
+DA:18,0
+FN:18,Systore.Domain.Enums.AuditOperation Systore.Domain.Entities.HeaderAudit::get_Operation()
+FNDA:0,Systore.Domain.Enums.AuditOperation Systore.Domain.Entities.HeaderAudit::get_Operation()
+DA:19,0
+FN:20,System.Collections.Generic.ICollection`1<Systore.Domain.Entities.ItemAudit> Systore.Domain.Entities.HeaderAudit::get_ItemAudits()
+FNDA:0,System.Collections.Generic.ICollection`1<Systore.Domain.Entities.ItemAudit> Systore.Domain.Entities.HeaderAudit::get_ItemAudits()
+DA:21,0
+FN:9,System.Void Systore.Domain.Entities.HeaderAudit::.ctor()
+FNDA:0,System.Void Systore.Domain.Entities.HeaderAudit::.ctor()
+DA:10,0
+DA:11,0
+DA:12,0
+DA:13,0
+LF:10
+LH:0
+BRF:0
+BRH:0
+FNF:7
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Domain\Entities\ItemAudit.cs
+FN:6,System.Int32 Systore.Domain.Entities.ItemAudit::get_Id()
+FNDA:0,System.Int32 Systore.Domain.Entities.ItemAudit::get_Id()
+DA:7,0
+FN:7,System.Int32 Systore.Domain.Entities.ItemAudit::get_HeaderAuditId()
+FNDA:0,System.Int32 Systore.Domain.Entities.ItemAudit::get_HeaderAuditId()
+DA:8,0
+FN:8,System.String Systore.Domain.Entities.ItemAudit::get_FieldName()
+FNDA:0,System.String Systore.Domain.Entities.ItemAudit::get_FieldName()
+DA:9,0
+FN:9,System.String Systore.Domain.Entities.ItemAudit::get_NewValue()
+FNDA:0,System.String Systore.Domain.Entities.ItemAudit::get_NewValue()
+DA:10,0
+FN:10,System.String Systore.Domain.Entities.ItemAudit::get_PrimaryKey()
+FNDA:0,System.String Systore.Domain.Entities.ItemAudit::get_PrimaryKey()
+DA:11,0
+FN:11,Systore.Domain.Entities.HeaderAudit Systore.Domain.Entities.ItemAudit::get_HeaderAudit()
+FNDA:0,Systore.Domain.Entities.HeaderAudit Systore.Domain.Entities.ItemAudit::get_HeaderAudit()
+DA:12,0
+LF:6
+LH:0
+BRF:0
+BRH:0
+FNF:6
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Domain\Entities\ItemSale.cs
+FN:5,System.Int32 Systore.Domain.Entities.ItemSale::get_Id()
+FNDA:0,System.Int32 Systore.Domain.Entities.ItemSale::get_Id()
+DA:6,0
+FN:7,System.Int32 Systore.Domain.Entities.ItemSale::get_SaleId()
+FNDA:0,System.Int32 Systore.Domain.Entities.ItemSale::get_SaleId()
+DA:8,0
+FN:9,Systore.Domain.Entities.Sale Systore.Domain.Entities.ItemSale::get_Sale()
+FNDA:0,Systore.Domain.Entities.Sale Systore.Domain.Entities.ItemSale::get_Sale()
+DA:10,0
+FN:11,System.Int32 Systore.Domain.Entities.ItemSale::get_ProductId()
+FNDA:0,System.Int32 Systore.Domain.Entities.ItemSale::get_ProductId()
+DA:12,0
+FN:13,Systore.Domain.Entities.Product Systore.Domain.Entities.ItemSale::get_Product()
+FNDA:0,Systore.Domain.Entities.Product Systore.Domain.Entities.ItemSale::get_Product()
+DA:14,0
+FN:15,System.Decimal Systore.Domain.Entities.ItemSale::get_Price()
+FNDA:0,System.Decimal Systore.Domain.Entities.ItemSale::get_Price()
+DA:16,0
+FN:17,System.Decimal Systore.Domain.Entities.ItemSale::get_Quantity()
+FNDA:0,System.Decimal Systore.Domain.Entities.ItemSale::get_Quantity()
+DA:18,0
+FN:19,System.Decimal Systore.Domain.Entities.ItemSale::get_TotalPrice()
+FNDA:0,System.Decimal Systore.Domain.Entities.ItemSale::get_TotalPrice()
+DA:20,0
+LF:8
+LH:0
+BRF:0
+BRH:0
+FNF:8
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Domain\Entities\Product.cs
+FN:7,System.Int32 Systore.Domain.Entities.Product::get_Id()
+FNDA:0,System.Int32 Systore.Domain.Entities.Product::get_Id()
+DA:8,0
+FN:9,Systore.Domain.Enums.SaleType Systore.Domain.Entities.Product::get_SaleType()
+FNDA:0,Systore.Domain.Enums.SaleType Systore.Domain.Entities.Product::get_SaleType()
+DA:10,0
+FN:11,System.Decimal Systore.Domain.Entities.Product::get_Price()
+FNDA:0,System.Decimal Systore.Domain.Entities.Product::get_Price()
+DA:12,0
+FN:13,System.Int32 Systore.Domain.Entities.Product::get_ExpirationDays()
+FNDA:0,System.Int32 Systore.Domain.Entities.Product::get_ExpirationDays()
+DA:14,0
+FN:15,System.String Systore.Domain.Entities.Product::get_Description()
+FNDA:0,System.String Systore.Domain.Entities.Product::get_Description()
+DA:16,0
+FN:17,System.String Systore.Domain.Entities.Product::get_ExtraInformation()
+FNDA:0,System.String Systore.Domain.Entities.Product::get_ExtraInformation()
+DA:18,0
+FN:19,System.Boolean Systore.Domain.Entities.Product::get_PrintExpirationDate()
+FNDA:0,System.Boolean Systore.Domain.Entities.Product::get_PrintExpirationDate()
+DA:20,0
+FN:21,System.Boolean Systore.Domain.Entities.Product::get_PrintDateOfPackaging()
+FNDA:0,System.Boolean Systore.Domain.Entities.Product::get_PrintDateOfPackaging()
+DA:22,0
+FN:23,System.Boolean Systore.Domain.Entities.Product::get_ExportToBalance()
+FNDA:0,System.Boolean Systore.Domain.Entities.Product::get_ExportToBalance()
+DA:24,0
+FN:25,System.Collections.Generic.ICollection`1<Systore.Domain.Entities.ItemSale> Systore.Domain.Entities.Product::get_ItemSale()
+FNDA:0,System.Collections.Generic.ICollection`1<Systore.Domain.Entities.ItemSale> Systore.Domain.Entities.Product::get_ItemSale()
+DA:26,0
+LF:10
+LH:0
+BRF:0
+BRH:0
+FNF:10
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Domain\Entities\Sale.cs
+FN:7,System.Int32 Systore.Domain.Entities.Sale::get_Id()
+FNDA:0,System.Int32 Systore.Domain.Entities.Sale::get_Id()
+DA:8,0
+FN:8,System.Int32 Systore.Domain.Entities.Sale::get_ClientId()
+FNDA:0,System.Int32 Systore.Domain.Entities.Sale::get_ClientId()
+DA:9,0
+FN:9,Systore.Domain.Entities.Client Systore.Domain.Entities.Sale::get_Client()
+FNDA:0,Systore.Domain.Entities.Client Systore.Domain.Entities.Sale::get_Client()
+DA:10,0
+FN:10,System.Decimal Systore.Domain.Entities.Sale::get_FinalValue()
+FNDA:0,System.Decimal Systore.Domain.Entities.Sale::get_FinalValue()
+DA:11,0
+FN:11,System.DateTime Systore.Domain.Entities.Sale::get_SaleDate()
+FNDA:0,System.DateTime Systore.Domain.Entities.Sale::get_SaleDate()
+DA:12,0
+FN:12,System.String Systore.Domain.Entities.Sale::get_Vendor()
+FNDA:0,System.String Systore.Domain.Entities.Sale::get_Vendor()
+DA:13,0
+FN:13,System.Collections.Generic.ICollection`1<Systore.Domain.Entities.ItemSale> Systore.Domain.Entities.Sale::get_ItemSale()
+FNDA:0,System.Collections.Generic.ICollection`1<Systore.Domain.Entities.ItemSale> Systore.Domain.Entities.Sale::get_ItemSale()
+DA:14,0
+LF:7
+LH:0
+BRF:0
+BRH:0
+FNF:7
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Domain\Entities\User.cs
+FN:4,System.Int32 Systore.Domain.Entities.User::get_Id()
+FNDA:0,System.Int32 Systore.Domain.Entities.User::get_Id()
+DA:5,0
+FN:5,System.String Systore.Domain.Entities.User::get_UserName()
+FNDA:0,System.String Systore.Domain.Entities.User::get_UserName()
+DA:6,0
+FN:6,System.String Systore.Domain.Entities.User::get_Password()
+FNDA:0,System.String Systore.Domain.Entities.User::get_Password()
+DA:7,0
+FN:7,System.Boolean Systore.Domain.Entities.User::get_Admin()
+FNDA:0,System.Boolean Systore.Domain.Entities.User::get_Admin()
+DA:8,0
+LF:4
+LH:0
+BRF:0
+BRH:0
+FNF:4
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Domain\Dtos\AuditDto.cs
+FN:6,System.Int32 Systore.Domain.Dtos.AuditDto::get_Id()
+FNDA:0,System.Int32 Systore.Domain.Dtos.AuditDto::get_Id()
+DA:7,0
+FN:7,System.String Systore.Domain.Dtos.AuditDto::get_TableName()
+FNDA:0,System.String Systore.Domain.Dtos.AuditDto::get_TableName()
+DA:8,0
+FN:8,System.DateTime Systore.Domain.Dtos.AuditDto::get_Date()
+FNDA:0,System.DateTime Systore.Domain.Dtos.AuditDto::get_Date()
+DA:9,0
+FN:9,System.String Systore.Domain.Dtos.AuditDto::get_UserName()
+FNDA:0,System.String Systore.Domain.Dtos.AuditDto::get_UserName()
+DA:10,0
+FN:10,System.String Systore.Domain.Dtos.AuditDto::get_Operation()
+FNDA:0,System.String Systore.Domain.Dtos.AuditDto::get_Operation()
+DA:11,0
+FN:11,System.String Systore.Domain.Dtos.AuditDto::get_FieldName()
+FNDA:0,System.String Systore.Domain.Dtos.AuditDto::get_FieldName()
+DA:12,0
+FN:12,System.String Systore.Domain.Dtos.AuditDto::get_PrimaryKey()
+FNDA:0,System.String Systore.Domain.Dtos.AuditDto::get_PrimaryKey()
+DA:13,0
+FN:13,System.String Systore.Domain.Dtos.AuditDto::get_NewValue()
+FNDA:0,System.String Systore.Domain.Dtos.AuditDto::get_NewValue()
+DA:14,0
+LF:8
+LH:0
+BRF:0
+BRH:0
+FNF:8
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Domain\Dtos\ClientDto.cs
+FN:9,System.Int32 Systore.Domain.Dtos.ClientDto::get_Id()
+FNDA:0,System.Int32 Systore.Domain.Dtos.ClientDto::get_Id()
+DA:10,0
+FN:10,System.String Systore.Domain.Dtos.ClientDto::get_Name()
+FNDA:0,System.String Systore.Domain.Dtos.ClientDto::get_Name()
+DA:11,0
+FN:11,System.Nullable`1<System.DateTime> Systore.Domain.Dtos.ClientDto::get_RegistryDate()
+FNDA:0,System.Nullable`1<System.DateTime> Systore.Domain.Dtos.ClientDto::get_RegistryDate()
+DA:12,0
+FN:12,System.Nullable`1<System.DateTime> Systore.Domain.Dtos.ClientDto::get_DateOfBirth()
+FNDA:0,System.Nullable`1<System.DateTime> Systore.Domain.Dtos.ClientDto::get_DateOfBirth()
+DA:13,0
+FN:13,System.String Systore.Domain.Dtos.ClientDto::get_Address()
+FNDA:0,System.String Systore.Domain.Dtos.ClientDto::get_Address()
+DA:14,0
+FN:14,System.String Systore.Domain.Dtos.ClientDto::get_Neighborhood()
+FNDA:0,System.String Systore.Domain.Dtos.ClientDto::get_Neighborhood()
+DA:15,0
+FN:15,System.String Systore.Domain.Dtos.ClientDto::get_City()
+FNDA:0,System.String Systore.Domain.Dtos.ClientDto::get_City()
+DA:16,0
+FN:16,System.String Systore.Domain.Dtos.ClientDto::get_State()
+FNDA:0,System.String Systore.Domain.Dtos.ClientDto::get_State()
+DA:17,0
+FN:17,System.String Systore.Domain.Dtos.ClientDto::get_PostalCode()
+FNDA:0,System.String Systore.Domain.Dtos.ClientDto::get_PostalCode()
+DA:18,0
+FN:18,System.String Systore.Domain.Dtos.ClientDto::get_Cpf()
+FNDA:0,System.String Systore.Domain.Dtos.ClientDto::get_Cpf()
+DA:19,0
+FN:19,System.String Systore.Domain.Dtos.ClientDto::get_Seller()
+FNDA:0,System.String Systore.Domain.Dtos.ClientDto::get_Seller()
+DA:20,0
+FN:20,System.String Systore.Domain.Dtos.ClientDto::get_JobName()
+FNDA:0,System.String Systore.Domain.Dtos.ClientDto::get_JobName()
+DA:21,0
+FN:21,System.String Systore.Domain.Dtos.ClientDto::get_Occupation()
+FNDA:0,System.String Systore.Domain.Dtos.ClientDto::get_Occupation()
+DA:22,0
+FN:22,System.String Systore.Domain.Dtos.ClientDto::get_PlaceOfBirth()
+FNDA:0,System.String Systore.Domain.Dtos.ClientDto::get_PlaceOfBirth()
+DA:23,0
+FN:23,System.String Systore.Domain.Dtos.ClientDto::get_Spouse()
+FNDA:0,System.String Systore.Domain.Dtos.ClientDto::get_Spouse()
+DA:24,0
+FN:24,System.String Systore.Domain.Dtos.ClientDto::get_Note()
+FNDA:0,System.String Systore.Domain.Dtos.ClientDto::get_Note()
+DA:25,0
+FN:25,System.String Systore.Domain.Dtos.ClientDto::get_Phone1()
+FNDA:0,System.String Systore.Domain.Dtos.ClientDto::get_Phone1()
+DA:26,0
+FN:26,System.String Systore.Domain.Dtos.ClientDto::get_Phone2()
+FNDA:0,System.String Systore.Domain.Dtos.ClientDto::get_Phone2()
+DA:27,0
+FN:27,System.String Systore.Domain.Dtos.ClientDto::get_AddressNumber()
+FNDA:0,System.String Systore.Domain.Dtos.ClientDto::get_AddressNumber()
+DA:28,0
+FN:28,System.String Systore.Domain.Dtos.ClientDto::get_Rg()
+FNDA:0,System.String Systore.Domain.Dtos.ClientDto::get_Rg()
+DA:29,0
+FN:29,System.String Systore.Domain.Dtos.ClientDto::get_Complement()
+FNDA:0,System.String Systore.Domain.Dtos.ClientDto::get_Complement()
+DA:30,0
+FN:30,System.Nullable`1<System.DateTime> Systore.Domain.Dtos.ClientDto::get_AdmissionDate()
+FNDA:0,System.Nullable`1<System.DateTime> Systore.Domain.Dtos.ClientDto::get_AdmissionDate()
+DA:31,0
+FN:31,Systore.Domain.Enums.CivilStatus Systore.Domain.Dtos.ClientDto::get_CivilStatus()
+FNDA:0,Systore.Domain.Enums.CivilStatus Systore.Domain.Dtos.ClientDto::get_CivilStatus()
+DA:32,0
+FN:32,System.String Systore.Domain.Dtos.ClientDto::get_FatherName()
+FNDA:0,System.String Systore.Domain.Dtos.ClientDto::get_FatherName()
+DA:33,0
+FN:33,System.String Systore.Domain.Dtos.ClientDto::get_MotherName()
+FNDA:0,System.String Systore.Domain.Dtos.ClientDto::get_MotherName()
+DA:34,0
+FN:34,System.Collections.Generic.ICollection`1<Systore.Domain.Entities.BillReceive> Systore.Domain.Dtos.ClientDto::get_BillReceives()
+FNDA:0,System.Collections.Generic.ICollection`1<Systore.Domain.Entities.BillReceive> Systore.Domain.Dtos.ClientDto::get_BillReceives()
+DA:35,0
+LF:26
+LH:0
+BRF:0
+BRH:0
+FNF:26
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Domain\Dtos\CreateBillReceivesDto.cs
+FN:8,System.Int32 Systore.Domain.Dtos.CreateBillReceivesDto::get_ClientId()
+FNDA:13,System.Int32 Systore.Domain.Dtos.CreateBillReceivesDto::get_ClientId()
+DA:9,13
+FN:9,System.Decimal Systore.Domain.Dtos.CreateBillReceivesDto::get_OriginalValue()
+FNDA:23,System.Decimal Systore.Domain.Dtos.CreateBillReceivesDto::get_OriginalValue()
+DA:10,23
+FN:10,System.DateTime Systore.Domain.Dtos.CreateBillReceivesDto::get_PurchaseDate()
+FNDA:42,System.DateTime Systore.Domain.Dtos.CreateBillReceivesDto::get_PurchaseDate()
+DA:11,42
+FN:11,System.Int32 Systore.Domain.Dtos.CreateBillReceivesDto::get_Quotas()
+FNDA:0,System.Int32 Systore.Domain.Dtos.CreateBillReceivesDto::get_Quotas()
+DA:12,0
+FN:12,System.String Systore.Domain.Dtos.CreateBillReceivesDto::get_Vendor()
+FNDA:13,System.String Systore.Domain.Dtos.CreateBillReceivesDto::get_Vendor()
+DA:13,13
+FN:13,System.Collections.Generic.List`1<Systore.Domain.Entities.BillReceive> Systore.Domain.Dtos.CreateBillReceivesDto::get_BillReceives()
+FNDA:121,System.Collections.Generic.List`1<Systore.Domain.Entities.BillReceive> Systore.Domain.Dtos.CreateBillReceivesDto::get_BillReceives()
+DA:14,121
+LF:6
+LH:5
+BRF:0
+BRH:0
+FNF:6
+FNH:5
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Domain\Dtos\FilterDto.cs
+FN:6,System.String Systore.Domain.Dtos.FilterDto::get_PropertyName()
+FNDA:0,System.String Systore.Domain.Dtos.FilterDto::get_PropertyName()
+DA:7,0
+FN:7,Systore.Domain.Enums.Operation Systore.Domain.Dtos.FilterDto::get_Operation()
+FNDA:0,Systore.Domain.Enums.Operation Systore.Domain.Dtos.FilterDto::get_Operation()
+DA:8,0
+FN:8,System.Object Systore.Domain.Dtos.FilterDto::get_Value()
+FNDA:0,System.Object Systore.Domain.Dtos.FilterDto::get_Value()
+DA:9,0
+LF:3
+LH:0
+BRF:0
+BRH:0
+FNF:3
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Domain\Dtos\FilterPaginateDto.cs
+FN:7,System.Collections.Generic.IEnumerable`1<Systore.Domain.Dtos.FilterDto> Systore.Domain.Dtos.FilterPaginateDto::get_filters()
+FNDA:0,System.Collections.Generic.IEnumerable`1<Systore.Domain.Dtos.FilterDto> Systore.Domain.Dtos.FilterPaginateDto::get_filters()
+DA:8,0
+FN:8,System.String Systore.Domain.Dtos.FilterPaginateDto::get_SortPropertyName()
+FNDA:0,System.String Systore.Domain.Dtos.FilterPaginateDto::get_SortPropertyName()
+DA:9,0
+FN:9,System.Int32 Systore.Domain.Dtos.FilterPaginateDto::get_Skip()
+FNDA:0,System.Int32 Systore.Domain.Dtos.FilterPaginateDto::get_Skip()
+DA:10,0
+FN:10,System.Int32 Systore.Domain.Dtos.FilterPaginateDto::get_Limit()
+FNDA:0,System.Int32 Systore.Domain.Dtos.FilterPaginateDto::get_Limit()
+DA:11,0
+FN:11,System.Nullable`1<Systore.Domain.Enums.Order> Systore.Domain.Dtos.FilterPaginateDto::get_Order()
+FNDA:0,System.Nullable`1<Systore.Domain.Enums.Order> Systore.Domain.Dtos.FilterPaginateDto::get_Order()
+DA:12,0
+LF:5
+LH:0
+BRF:0
+BRH:0
+FNF:5
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Domain\Dtos\FilterProductsToBalance.cs
+FN:6,Systore.Domain.Enums.TypeOfSearchProductsToBalance Systore.Domain.Dtos.FilterProductsToBalance::get_TypeOfSearchProductsToBalance()
+FNDA:0,Systore.Domain.Enums.TypeOfSearchProductsToBalance Systore.Domain.Dtos.FilterProductsToBalance::get_TypeOfSearchProductsToBalance()
+DA:7,0
+LF:1
+LH:0
+BRF:0
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Domain\Dtos\ItemSaleDto.cs
+FN:6,System.Int32 Systore.Domain.Dtos.ItemSaleDto::get_Id()
+FNDA:0,System.Int32 Systore.Domain.Dtos.ItemSaleDto::get_Id()
+DA:7,0
+FN:8,System.Int32 Systore.Domain.Dtos.ItemSaleDto::get_SaleId()
+FNDA:0,System.Int32 Systore.Domain.Dtos.ItemSaleDto::get_SaleId()
+DA:9,0
+FN:10,System.Int32 Systore.Domain.Dtos.ItemSaleDto::get_ProductId()
+FNDA:0,System.Int32 Systore.Domain.Dtos.ItemSaleDto::get_ProductId()
+DA:11,0
+FN:11,System.String Systore.Domain.Dtos.ItemSaleDto::get_ProductDescription()
+FNDA:0,System.String Systore.Domain.Dtos.ItemSaleDto::get_ProductDescription()
+DA:12,0
+FN:12,System.Decimal Systore.Domain.Dtos.ItemSaleDto::get_Price()
+FNDA:0,System.Decimal Systore.Domain.Dtos.ItemSaleDto::get_Price()
+DA:13,0
+FN:14,System.Decimal Systore.Domain.Dtos.ItemSaleDto::get_Quantity()
+FNDA:0,System.Decimal Systore.Domain.Dtos.ItemSaleDto::get_Quantity()
+DA:15,0
+FN:16,System.Decimal Systore.Domain.Dtos.ItemSaleDto::get_TotalPrice()
+FNDA:0,System.Decimal Systore.Domain.Dtos.ItemSaleDto::get_TotalPrice()
+DA:17,0
+FN:18,Systore.Domain.Enums.ActionItem Systore.Domain.Dtos.ItemSaleDto::get_Action()
+FNDA:0,Systore.Domain.Enums.ActionItem Systore.Domain.Dtos.ItemSaleDto::get_Action()
+DA:19,0
+LF:8
+LH:0
+BRF:0
+BRH:0
+FNF:8
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Domain\Dtos\SaleDto.cs
+FN:7,System.Int32 Systore.Domain.Dtos.SaleDto::get_Id()
+FNDA:0,System.Int32 Systore.Domain.Dtos.SaleDto::get_Id()
+DA:8,0
+FN:8,System.Int32 Systore.Domain.Dtos.SaleDto::get_ClientId()
+FNDA:0,System.Int32 Systore.Domain.Dtos.SaleDto::get_ClientId()
+DA:9,0
+FN:9,System.Decimal Systore.Domain.Dtos.SaleDto::get_FinalValue()
+FNDA:0,System.Decimal Systore.Domain.Dtos.SaleDto::get_FinalValue()
+DA:10,0
+FN:10,System.DateTime Systore.Domain.Dtos.SaleDto::get_SaleDate()
+FNDA:0,System.DateTime Systore.Domain.Dtos.SaleDto::get_SaleDate()
+DA:11,0
+FN:11,System.String Systore.Domain.Dtos.SaleDto::get_Vendor()
+FNDA:0,System.String Systore.Domain.Dtos.SaleDto::get_Vendor()
+DA:12,0
+FN:12,System.Collections.Generic.ICollection`1<Systore.Domain.Dtos.ItemSaleDto> Systore.Domain.Dtos.SaleDto::get_ItemSale()
+FNDA:0,System.Collections.Generic.ICollection`1<Systore.Domain.Dtos.ItemSaleDto> Systore.Domain.Dtos.SaleDto::get_ItemSale()
+DA:13,0
+LF:6
+LH:0
+BRF:0
+BRH:0
+FNF:6
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Dtos\LoginRequestDto.cs
+FN:5,System.String Systore.Dtos.LoginRequestDto::get_UserName()
+FNDA:0,System.String Systore.Dtos.LoginRequestDto::get_UserName()
+DA:6,0
+FN:6,System.String Systore.Dtos.LoginRequestDto::get_Password()
+FNDA:0,System.String Systore.Dtos.LoginRequestDto::get_Password()
+DA:7,0
+LF:2
+LH:0
+BRF:0
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Dtos\LoginResponseDto.cs
+FN:5,System.String Systore.Dtos.UserLoginDto::get_UserName()
+FNDA:0,System.String Systore.Dtos.UserLoginDto::get_UserName()
+DA:6,0
+FN:6,System.Boolean Systore.Dtos.UserLoginDto::get_Admin()
+FNDA:0,System.Boolean Systore.Dtos.UserLoginDto::get_Admin()
+DA:7,0
+FN:11,Systore.Dtos.UserLoginDto Systore.Dtos.LoginResponseDto::get_User()
+FNDA:0,Systore.Dtos.UserLoginDto Systore.Dtos.LoginResponseDto::get_User()
+DA:12,0
+FN:12,System.String Systore.Dtos.LoginResponseDto::get_Token()
+FNDA:0,System.String Systore.Dtos.LoginResponseDto::get_Token()
+DA:13,0
+FN:13,System.Boolean Systore.Dtos.LoginResponseDto::get_Valid()
+FNDA:0,System.Boolean Systore.Dtos.LoginResponseDto::get_Valid()
+DA:14,0
+FN:14,System.Boolean Systore.Dtos.LoginResponseDto::get_Relese()
+FNDA:0,System.Boolean Systore.Dtos.LoginResponseDto::get_Relese()
+DA:15,0
+LF:6
+LH:0
+BRF:0
+BRH:0
+FNF:6
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Dtos\ResultDto.cs
+FN:5,System.Boolean Systore.Dtos.ResultDto::get_Success()
+FNDA:0,System.Boolean Systore.Dtos.ResultDto::get_Success()
+DA:6,0
+FN:6,System.String Systore.Dtos.ResultDto::get_Message()
+FNDA:0,System.String Systore.Dtos.ResultDto::get_Message()
+DA:7,0
+FN:8,System.Object Systore.Dtos.ResultDto::get_Key()
+FNDA:0,System.Object Systore.Dtos.ResultDto::get_Key()
+DA:9,0
+LF:3
+LH:0
+BRF:0
+BRH:0
+FNF:3
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Dtos\ValidateTokenDto.cs
+FN:5,System.String Systore.Dtos.ValidateTokenDto::get_Token()
+FNDA:0,System.String Systore.Dtos.ValidateTokenDto::get_Token()
+DA:6,0
+LF:1
+LH:0
+BRF:0
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Dtos\ValidationReleaseDto.cs
+FN:5,System.Boolean Systore.Dtos.ValidationReleaseDto::get_Release()
+FNDA:0,System.Boolean Systore.Dtos.ValidationReleaseDto::get_Release()
+DA:6,0
+FN:6,System.String Systore.Dtos.ValidationReleaseDto::get_Message()
+FNDA:0,System.String Systore.Dtos.ValidationReleaseDto::get_Message()
+DA:7,0
+LF:2
+LH:0
+BRF:0
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Infra\AuditContextFactory.cs
+FN:14,Microsoft.Extensions.Configuration.IConfiguration Systore.Infra.AuditContextFactory::get_Configuration()
+FNDA:0,Microsoft.Extensions.Configuration.IConfiguration Systore.Infra.AuditContextFactory::get_Configuration()
+DA:15,0
+FN:22,Systore.Infra.Context.AuditContext Systore.Infra.AuditContextFactory::CreateDbContext(System.String[])
+FNDA:0,Systore.Infra.Context.AuditContext Systore.Infra.AuditContextFactory::CreateDbContext(System.String[])
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:28,0
+DA:29,0
+DA:30,0
+DA:31,0
+DA:32,0
+FN:34,Systore.Infra.Context.AuditContext Systore.Infra.AuditContextFactory::CreateDbContext(Microsoft.Extensions.Options.IOptions`1<Systore.Domain.AppSettings>)
+FNDA:0,Systore.Infra.Context.AuditContext Systore.Infra.AuditContextFactory::CreateDbContext(Microsoft.Extensions.Options.IOptions`1<Systore.Domain.AppSettings>)
+DA:35,0
+DA:36,0
+DA:37,0
+DA:38,0
+DA:39,0
+FN:15,System.Void Systore.Infra.AuditContextFactory::.cctor()
+FNDA:0,System.Void Systore.Infra.AuditContextFactory::.cctor()
+DA:16,0
+DA:17,0
+DA:18,0
+DA:19,0
+BRDA:15,43,0,0
+BRDA:15,43,1,0
+LF:19
+LH:0
+BRF:2
+BRH:0
+FNF:4
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Infra\SystoreContextFactory.cs
+FN:13,Microsoft.Extensions.Configuration.IConfiguration Systore.Infra.SystoreContextFactory::get_Configuration()
+FNDA:0,Microsoft.Extensions.Configuration.IConfiguration Systore.Infra.SystoreContextFactory::get_Configuration()
+DA:14,0
+FN:20,Systore.Infra.Context.SystoreContext Systore.Infra.SystoreContextFactory::CreateDbContext(System.String[])
+FNDA:0,Systore.Infra.Context.SystoreContext Systore.Infra.SystoreContextFactory::CreateDbContext(System.String[])
+DA:21,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:26,0
+DA:27,0
+DA:28,0
+DA:29,0
+DA:30,0
+FN:14,System.Void Systore.Infra.SystoreContextFactory::.cctor()
+FNDA:0,System.Void Systore.Infra.SystoreContextFactory::.cctor()
+DA:15,0
+DA:16,0
+DA:17,0
+DA:18,0
+BRDA:14,43,0,0
+BRDA:14,43,1,0
+LF:14
+LH:0
+BRF:2
+BRH:0
+FNF:3
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Infra\TimeZoneHelper.cs
+FN:7,System.String Systore.Infra.TimeZoneHelper::get_TimeZoneId()
+FNDA:0,System.String Systore.Infra.TimeZoneHelper::get_TimeZoneId()
+DA:8,0
+BRDA:8,10,0,0
+BRDA:8,10,1,0
+FN:11,System.DateTime Systore.Infra.TimeZoneHelper::ConvertTimeFromUtc(System.DateTime)
+FNDA:0,System.DateTime Systore.Infra.TimeZoneHelper::ConvertTimeFromUtc(System.DateTime)
+DA:12,0
+DA:14,0
+DA:15,0
+DA:18,0
+DA:19,0
+DA:20,0
+DA:23,0
+FN:25,System.Nullable`1<System.DateTime> Systore.Infra.TimeZoneHelper::ConvertTimeFromUtc(System.Nullable`1<System.DateTime>)
+FNDA:0,System.Nullable`1<System.DateTime> Systore.Infra.TimeZoneHelper::ConvertTimeFromUtc(System.Nullable`1<System.DateTime>)
+DA:26,0
+DA:28,0
+DA:29,0
+DA:30,0
+DA:31,0
+DA:34,0
+DA:35,0
+DA:36,0
+DA:37,0
+DA:38,0
+DA:42,0
+BRDA:29,9,0,0
+BRDA:29,9,1,0
+BRDA:36,53,0,0
+BRDA:36,53,1,0
+FN:44,System.DateTime Systore.Infra.TimeZoneHelper::ConvertTimeToUtc(System.DateTime)
+FNDA:0,System.DateTime Systore.Infra.TimeZoneHelper::ConvertTimeToUtc(System.DateTime)
+DA:45,0
+DA:47,0
+DA:48,0
+DA:50,0
+DA:51,0
+DA:52,0
+DA:54,0
+FN:56,System.Nullable`1<System.DateTime> Systore.Infra.TimeZoneHelper::ConvertTimeToUtc(System.Nullable`1<System.DateTime>)
+FNDA:0,System.Nullable`1<System.DateTime> Systore.Infra.TimeZoneHelper::ConvertTimeToUtc(System.Nullable`1<System.DateTime>)
+DA:57,0
+DA:59,0
+DA:60,0
+DA:61,0
+DA:62,0
+DA:64,0
+DA:65,0
+DA:66,0
+DA:67,0
+DA:68,0
+DA:71,0
+BRDA:60,9,0,0
+BRDA:60,9,1,0
+BRDA:66,53,0,0
+BRDA:66,53,1,0
+LF:37
+LH:0
+BRF:10
+BRH:0
+FNF:5
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Infra\Migrations\20200112150130_InitialCreate.cs
+FN:9,System.Void Systore.Infra.Migrations.InitialCreate::Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)
+FNDA:0,System.Void Systore.Infra.Migrations.InitialCreate::Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)
+DA:10,0
+DA:11,0
+DA:12,0
+DA:13,0
+DA:14,0
+DA:15,0
+DA:16,0
+DA:17,0
+DA:18,0
+DA:19,0
+DA:20,0
+DA:21,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+DA:28,0
+DA:29,0
+DA:30,0
+DA:31,0
+DA:32,0
+DA:33,0
+DA:34,0
+DA:35,0
+DA:36,0
+DA:37,0
+DA:38,0
+DA:39,0
+DA:40,0
+DA:41,0
+DA:42,0
+DA:43,0
+DA:44,0
+DA:45,0
+DA:47,0
+DA:48,0
+DA:49,0
+DA:50,0
+DA:51,0
+DA:52,0
+DA:53,0
+DA:54,0
+DA:55,0
+DA:56,0
+DA:57,0
+DA:58,0
+DA:59,0
+DA:60,0
+DA:61,0
+DA:62,0
+DA:63,0
+DA:64,0
+DA:65,0
+DA:67,0
+DA:68,0
+DA:69,0
+DA:70,0
+DA:71,0
+DA:72,0
+DA:73,0
+DA:74,0
+DA:75,0
+DA:76,0
+DA:77,0
+DA:78,0
+DA:79,0
+DA:80,0
+DA:82,0
+DA:83,0
+DA:84,0
+DA:85,0
+DA:86,0
+DA:87,0
+DA:88,0
+DA:89,0
+DA:90,0
+DA:91,0
+DA:92,0
+DA:93,0
+DA:94,0
+DA:95,0
+DA:96,0
+DA:97,0
+DA:98,0
+DA:99,0
+DA:100,0
+DA:101,0
+DA:102,0
+DA:103,0
+DA:104,0
+DA:105,0
+DA:106,0
+DA:107,0
+DA:108,0
+DA:109,0
+DA:110,0
+DA:112,0
+DA:113,0
+DA:114,0
+DA:115,0
+DA:116,0
+DA:117,0
+DA:118,0
+DA:119,0
+DA:120,0
+DA:121,0
+DA:122,0
+DA:123,0
+DA:124,0
+DA:125,0
+DA:126,0
+DA:127,0
+DA:128,0
+DA:129,0
+DA:130,0
+DA:131,0
+DA:132,0
+DA:134,0
+DA:135,0
+DA:136,0
+DA:137,0
+DA:138,0
+DA:139,0
+DA:140,0
+DA:141,0
+DA:142,0
+DA:143,0
+DA:144,0
+DA:145,0
+DA:146,0
+DA:147,0
+DA:148,0
+DA:149,0
+DA:150,0
+DA:151,0
+DA:152,0
+DA:153,0
+DA:154,0
+DA:155,0
+DA:156,0
+DA:157,0
+DA:158,0
+DA:159,0
+DA:160,0
+DA:161,0
+DA:163,0
+DA:164,0
+DA:165,0
+DA:166,0
+DA:168,0
+DA:169,0
+DA:170,0
+DA:171,0
+DA:173,0
+DA:174,0
+DA:175,0
+DA:176,0
+DA:178,0
+DA:179,0
+DA:180,0
+DA:181,0
+DA:183,0
+DA:184,0
+DA:185,0
+DA:186,0
+DA:187,0
+FN:189,System.Void Systore.Infra.Migrations.InitialCreate::Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)
+FNDA:0,System.Void Systore.Infra.Migrations.InitialCreate::Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)
+DA:190,0
+DA:191,0
+DA:192,0
+DA:194,0
+DA:195,0
+DA:197,0
+DA:198,0
+DA:200,0
+DA:201,0
+DA:203,0
+DA:204,0
+DA:206,0
+DA:207,0
+DA:208,0
+LF:182
+LH:0
+BRF:0
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Infra\Migrations\20200112150130_InitialCreate.Designer.cs
+FN:15,System.Void Systore.Infra.Migrations.InitialCreate::BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)
+FNDA:0,System.Void Systore.Infra.Migrations.InitialCreate::BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)
+DA:16,0
+DA:18,0
+DA:19,0
+DA:20,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+DA:28,0
+DA:29,0
+DA:30,0
+DA:31,0
+DA:32,0
+DA:33,0
+DA:34,0
+DA:35,0
+DA:36,0
+DA:37,0
+DA:38,0
+DA:39,0
+DA:40,0
+DA:41,0
+DA:42,0
+DA:43,0
+DA:44,0
+DA:45,0
+DA:46,0
+DA:47,0
+DA:48,0
+DA:49,0
+DA:50,0
+DA:51,0
+DA:52,0
+DA:53,0
+DA:54,0
+DA:55,0
+DA:56,0
+DA:57,0
+DA:58,0
+DA:59,0
+DA:60,0
+DA:61,0
+DA:62,0
+DA:63,0
+DA:64,0
+DA:65,0
+DA:67,0
+DA:68,0
+DA:69,0
+DA:70,0
+DA:71,0
+DA:72,0
+DA:73,0
+DA:74,0
+DA:75,0
+DA:76,0
+DA:77,0
+DA:78,0
+DA:79,0
+DA:80,0
+DA:81,0
+DA:82,0
+DA:83,0
+DA:84,0
+DA:85,0
+DA:86,0
+DA:87,0
+DA:88,0
+DA:89,0
+DA:90,0
+DA:91,0
+DA:92,0
+DA:93,0
+DA:94,0
+DA:95,0
+DA:96,0
+DA:97,0
+DA:98,0
+DA:99,0
+DA:100,0
+DA:101,0
+DA:102,0
+DA:103,0
+DA:104,0
+DA:105,0
+DA:106,0
+DA:107,0
+DA:108,0
+DA:109,0
+DA:110,0
+DA:111,0
+DA:112,0
+DA:113,0
+DA:114,0
+DA:115,0
+DA:116,0
+DA:117,0
+DA:118,0
+DA:119,0
+DA:120,0
+DA:121,0
+DA:122,0
+DA:123,0
+DA:124,0
+DA:125,0
+DA:126,0
+DA:127,0
+DA:128,0
+DA:129,0
+DA:130,0
+DA:131,0
+DA:132,0
+DA:133,0
+DA:134,0
+DA:135,0
+DA:136,0
+DA:137,0
+DA:138,0
+DA:139,0
+DA:140,0
+DA:141,0
+DA:142,0
+DA:143,0
+DA:144,0
+DA:145,0
+DA:146,0
+DA:148,0
+DA:149,0
+DA:150,0
+DA:151,0
+DA:152,0
+DA:153,0
+DA:154,0
+DA:155,0
+DA:156,0
+DA:157,0
+DA:158,0
+DA:159,0
+DA:160,0
+DA:161,0
+DA:162,0
+DA:163,0
+DA:164,0
+DA:165,0
+DA:166,0
+DA:167,0
+DA:168,0
+DA:169,0
+DA:170,0
+DA:171,0
+DA:172,0
+DA:173,0
+DA:175,0
+DA:176,0
+DA:177,0
+DA:178,0
+DA:179,0
+DA:180,0
+DA:181,0
+DA:182,0
+DA:183,0
+DA:184,0
+DA:185,0
+DA:186,0
+DA:187,0
+DA:188,0
+DA:189,0
+DA:190,0
+DA:191,0
+DA:192,0
+DA:193,0
+DA:194,0
+DA:195,0
+DA:196,0
+DA:197,0
+DA:198,0
+DA:199,0
+DA:200,0
+DA:201,0
+DA:202,0
+DA:203,0
+DA:204,0
+DA:205,0
+DA:206,0
+DA:207,0
+DA:209,0
+DA:210,0
+DA:211,0
+DA:212,0
+DA:213,0
+DA:214,0
+DA:215,0
+DA:216,0
+DA:217,0
+DA:218,0
+DA:219,0
+DA:220,0
+DA:221,0
+DA:222,0
+DA:223,0
+DA:224,0
+DA:225,0
+DA:226,0
+DA:227,0
+DA:228,0
+DA:229,0
+DA:230,0
+DA:232,0
+DA:233,0
+DA:234,0
+DA:235,0
+DA:236,0
+DA:237,0
+DA:238,0
+DA:239,0
+DA:240,0
+DA:241,0
+DA:242,0
+DA:243,0
+DA:244,0
+DA:245,0
+DA:246,0
+DA:247,0
+DA:248,0
+DA:249,0
+DA:250,0
+DA:251,0
+DA:252,0
+DA:253,0
+DA:254,0
+DA:255,0
+DA:256,0
+DA:257,0
+DA:258,0
+DA:260,0
+DA:261,0
+DA:262,0
+DA:263,0
+DA:264,0
+DA:265,0
+DA:266,0
+DA:268,0
+DA:269,0
+DA:270,0
+DA:271,0
+DA:272,0
+DA:273,0
+DA:274,0
+DA:275,0
+DA:276,0
+DA:277,0
+DA:278,0
+DA:279,0
+DA:281,0
+DA:282,0
+DA:283,0
+DA:284,0
+DA:285,0
+DA:286,0
+DA:287,0
+DA:289,0
+LF:263
+LH:0
+BRF:0
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Infra\Migrations\SystoreContextModelSnapshot.cs
+FN:13,System.Void Systore.Infra.Migrations.SystoreContextModelSnapshot::BuildModel(Microsoft.EntityFrameworkCore.ModelBuilder)
+FNDA:0,System.Void Systore.Infra.Migrations.SystoreContextModelSnapshot::BuildModel(Microsoft.EntityFrameworkCore.ModelBuilder)
+DA:14,0
+DA:16,0
+DA:17,0
+DA:18,0
+DA:20,0
+DA:21,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+DA:28,0
+DA:29,0
+DA:30,0
+DA:31,0
+DA:32,0
+DA:33,0
+DA:34,0
+DA:35,0
+DA:36,0
+DA:37,0
+DA:38,0
+DA:39,0
+DA:40,0
+DA:41,0
+DA:42,0
+DA:43,0
+DA:44,0
+DA:45,0
+DA:46,0
+DA:47,0
+DA:48,0
+DA:49,0
+DA:50,0
+DA:51,0
+DA:52,0
+DA:53,0
+DA:54,0
+DA:55,0
+DA:56,0
+DA:57,0
+DA:58,0
+DA:59,0
+DA:60,0
+DA:61,0
+DA:62,0
+DA:63,0
+DA:65,0
+DA:66,0
+DA:67,0
+DA:68,0
+DA:69,0
+DA:70,0
+DA:71,0
+DA:72,0
+DA:73,0
+DA:74,0
+DA:75,0
+DA:76,0
+DA:77,0
+DA:78,0
+DA:79,0
+DA:80,0
+DA:81,0
+DA:82,0
+DA:83,0
+DA:84,0
+DA:85,0
+DA:86,0
+DA:87,0
+DA:88,0
+DA:89,0
+DA:90,0
+DA:91,0
+DA:92,0
+DA:93,0
+DA:94,0
+DA:95,0
+DA:96,0
+DA:97,0
+DA:98,0
+DA:99,0
+DA:100,0
+DA:101,0
+DA:102,0
+DA:103,0
+DA:104,0
+DA:105,0
+DA:106,0
+DA:107,0
+DA:108,0
+DA:109,0
+DA:110,0
+DA:111,0
+DA:112,0
+DA:113,0
+DA:114,0
+DA:115,0
+DA:116,0
+DA:117,0
+DA:118,0
+DA:119,0
+DA:120,0
+DA:121,0
+DA:122,0
+DA:123,0
+DA:124,0
+DA:125,0
+DA:126,0
+DA:127,0
+DA:128,0
+DA:129,0
+DA:130,0
+DA:131,0
+DA:132,0
+DA:133,0
+DA:134,0
+DA:135,0
+DA:136,0
+DA:137,0
+DA:138,0
+DA:139,0
+DA:140,0
+DA:141,0
+DA:142,0
+DA:143,0
+DA:144,0
+DA:146,0
+DA:147,0
+DA:148,0
+DA:149,0
+DA:150,0
+DA:151,0
+DA:152,0
+DA:153,0
+DA:154,0
+DA:155,0
+DA:156,0
+DA:157,0
+DA:158,0
+DA:159,0
+DA:160,0
+DA:161,0
+DA:162,0
+DA:163,0
+DA:164,0
+DA:165,0
+DA:166,0
+DA:167,0
+DA:168,0
+DA:169,0
+DA:170,0
+DA:171,0
+DA:173,0
+DA:174,0
+DA:175,0
+DA:176,0
+DA:177,0
+DA:178,0
+DA:179,0
+DA:180,0
+DA:181,0
+DA:182,0
+DA:183,0
+DA:184,0
+DA:185,0
+DA:186,0
+DA:187,0
+DA:188,0
+DA:189,0
+DA:190,0
+DA:191,0
+DA:192,0
+DA:193,0
+DA:194,0
+DA:195,0
+DA:196,0
+DA:197,0
+DA:198,0
+DA:199,0
+DA:200,0
+DA:201,0
+DA:202,0
+DA:203,0
+DA:204,0
+DA:205,0
+DA:207,0
+DA:208,0
+DA:209,0
+DA:210,0
+DA:211,0
+DA:212,0
+DA:213,0
+DA:214,0
+DA:215,0
+DA:216,0
+DA:217,0
+DA:218,0
+DA:219,0
+DA:220,0
+DA:221,0
+DA:222,0
+DA:223,0
+DA:224,0
+DA:225,0
+DA:226,0
+DA:227,0
+DA:228,0
+DA:230,0
+DA:231,0
+DA:232,0
+DA:233,0
+DA:234,0
+DA:235,0
+DA:236,0
+DA:237,0
+DA:238,0
+DA:239,0
+DA:240,0
+DA:241,0
+DA:242,0
+DA:243,0
+DA:244,0
+DA:245,0
+DA:246,0
+DA:247,0
+DA:248,0
+DA:249,0
+DA:250,0
+DA:251,0
+DA:252,0
+DA:253,0
+DA:254,0
+DA:255,0
+DA:256,0
+DA:258,0
+DA:259,0
+DA:260,0
+DA:261,0
+DA:262,0
+DA:263,0
+DA:264,0
+DA:266,0
+DA:267,0
+DA:268,0
+DA:269,0
+DA:270,0
+DA:271,0
+DA:272,0
+DA:273,0
+DA:274,0
+DA:275,0
+DA:276,0
+DA:277,0
+DA:279,0
+DA:280,0
+DA:281,0
+DA:282,0
+DA:283,0
+DA:284,0
+DA:285,0
+DA:287,0
+LF:263
+LH:0
+BRF:0
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Infra\Migrations\Audit\20200112150146_InitialCreate.cs
+FN:9,System.Void Systore.Infra.Migrations.Audit.InitialCreate::Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)
+FNDA:0,System.Void Systore.Infra.Migrations.Audit.InitialCreate::Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)
+DA:10,0
+DA:11,0
+DA:12,0
+DA:13,0
+DA:14,0
+DA:15,0
+DA:16,0
+DA:17,0
+DA:18,0
+DA:19,0
+DA:20,0
+DA:21,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
+DA:27,0
+DA:28,0
+DA:29,0
+DA:30,0
+DA:31,0
+DA:32,0
+DA:33,0
+DA:34,0
+DA:35,0
+DA:36,0
+DA:37,0
+DA:38,0
+DA:39,0
+DA:40,0
+DA:41,0
+DA:42,0
+DA:43,0
+DA:44,0
+DA:45,0
+DA:46,0
+DA:47,0
+DA:49,0
+DA:50,0
+DA:51,0
+DA:52,0
+DA:53,0
+FN:55,System.Void Systore.Infra.Migrations.Audit.InitialCreate::Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)
+FNDA:0,System.Void Systore.Infra.Migrations.Audit.InitialCreate::Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)
+DA:56,0
+DA:57,0
+DA:58,0
+DA:60,0
+DA:61,0
+DA:62,0
+LF:48
+LH:0
+BRF:0
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Infra\Migrations\Audit\20200112150146_InitialCreate.Designer.cs
+FN:15,System.Void Systore.Infra.Migrations.Audit.InitialCreate::BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)
+FNDA:0,System.Void Systore.Infra.Migrations.Audit.InitialCreate::BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)
+DA:16,0
+DA:18,0
+DA:19,0
+DA:20,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+DA:28,0
+DA:29,0
+DA:30,0
+DA:31,0
+DA:32,0
+DA:33,0
+DA:34,0
+DA:35,0
+DA:36,0
+DA:37,0
+DA:38,0
+DA:39,0
+DA:40,0
+DA:41,0
+DA:42,0
+DA:44,0
+DA:45,0
+DA:46,0
+DA:47,0
+DA:48,0
+DA:49,0
+DA:50,0
+DA:51,0
+DA:52,0
+DA:53,0
+DA:54,0
+DA:55,0
+DA:56,0
+DA:57,0
+DA:58,0
+DA:59,0
+DA:60,0
+DA:61,0
+DA:62,0
+DA:63,0
+DA:64,0
+DA:66,0
+DA:67,0
+DA:68,0
+DA:69,0
+DA:70,0
+DA:71,0
+DA:72,0
+DA:74,0
+LF:54
+LH:0
+BRF:0
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Infra\Migrations\Audit\AuditContextModelSnapshot.cs
+FN:13,System.Void Systore.Infra.Migrations.Audit.AuditContextModelSnapshot::BuildModel(Microsoft.EntityFrameworkCore.ModelBuilder)
+FNDA:0,System.Void Systore.Infra.Migrations.Audit.AuditContextModelSnapshot::BuildModel(Microsoft.EntityFrameworkCore.ModelBuilder)
+DA:14,0
+DA:16,0
+DA:17,0
+DA:18,0
+DA:20,0
+DA:21,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+DA:28,0
+DA:29,0
+DA:30,0
+DA:31,0
+DA:32,0
+DA:33,0
+DA:34,0
+DA:35,0
+DA:36,0
+DA:37,0
+DA:38,0
+DA:39,0
+DA:40,0
+DA:42,0
+DA:43,0
+DA:44,0
+DA:45,0
+DA:46,0
+DA:47,0
+DA:48,0
+DA:49,0
+DA:50,0
+DA:51,0
+DA:52,0
+DA:53,0
+DA:54,0
+DA:55,0
+DA:56,0
+DA:57,0
+DA:58,0
+DA:59,0
+DA:60,0
+DA:61,0
+DA:62,0
+DA:64,0
+DA:65,0
+DA:66,0
+DA:67,0
+DA:68,0
+DA:69,0
+DA:70,0
+DA:72,0
+LF:54
+LH:0
+BRF:0
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Infra\Mapping\BillReceiveMapping.cs
+FN:9,System.Void Systore.Infra.Mapping.BillReceiveMapping::Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder`1<Systore.Domain.Entities.BillReceive>)
+FNDA:0,System.Void Systore.Infra.Mapping.BillReceiveMapping::Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder`1<Systore.Domain.Entities.BillReceive>)
+DA:10,0
+DA:11,0
+DA:13,0
+DA:15,0
+DA:16,0
+DA:18,0
+DA:20,0
+DA:21,0
+DA:23,0
+DA:24,0
+DA:26,0
+DA:27,0
+DA:29,0
+DA:30,0
+DA:32,0
+DA:33,0
+DA:34,0
+DA:35,0
+DA:36,0
+DA:37,0
+DA:40,0
+DA:41,0
+DA:42,0
+DA:43,0
+DA:44,0
+DA:45,0
+DA:48,0
+DA:49,0
+DA:50,0
+DA:51,0
+DA:52,0
+DA:53,0
+DA:56,0
+DA:58,0
+DA:59,0
+DA:61,0
+DA:62,0
+DA:64,0
+DA:66,0
+DA:67,0
+DA:68,0
+DA:69,0
+DA:70,0
+DA:71,0
+LF:44
+LH:0
+BRF:0
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Infra\Mapping\ClientMapping.cs
+FN:8,System.Void Systore.Infra.Mapping.ClientMapping::Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder`1<Systore.Domain.Entities.Client>)
+FNDA:0,System.Void Systore.Infra.Mapping.ClientMapping::Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder`1<Systore.Domain.Entities.Client>)
+DA:9,0
+DA:10,0
+DA:12,0
+DA:14,0
+DA:15,0
+DA:17,0
+DA:18,0
+DA:20,0
+DA:21,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
+DA:28,0
+DA:29,0
+DA:30,0
+DA:31,0
+DA:32,0
+DA:33,0
+DA:35,0
+DA:36,0
+DA:38,0
+DA:39,0
+DA:41,0
+DA:42,0
+DA:44,0
+DA:45,0
+DA:47,0
+DA:48,0
+DA:50,0
+DA:51,0
+DA:53,0
+DA:54,0
+DA:56,0
+DA:57,0
+DA:59,0
+DA:60,0
+DA:62,0
+DA:63,0
+DA:65,0
+DA:66,0
+DA:68,0
+DA:70,0
+DA:71,0
+DA:73,0
+DA:74,0
+DA:76,0
+DA:77,0
+DA:79,0
+DA:80,0
+DA:82,0
+DA:83,0
+DA:85,0
+DA:86,0
+DA:87,0
+DA:88,0
+DA:89,0
+DA:90,0
+DA:92,0
+DA:93,0
+DA:95,0
+DA:96,0
+DA:98,0
+DA:99,0
+DA:101,0
+LF:65
+LH:0
+BRF:0
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Infra\Mapping\HeaderAuditMapping.cs
+FN:8,System.Void Systore.Infra.Mapping.HeaderAuditMapping::Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder`1<Systore.Domain.Entities.HeaderAudit>)
+FNDA:0,System.Void Systore.Infra.Mapping.HeaderAuditMapping::Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder`1<Systore.Domain.Entities.HeaderAudit>)
+DA:9,0
+DA:10,0
+DA:12,0
+DA:14,0
+DA:15,0
+DA:17,0
+DA:18,0
+DA:20,0
+DA:21,0
+DA:23,0
+DA:24,0
+DA:26,0
+DA:27,0
+DA:28,0
+LF:14
+LH:0
+BRF:0
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Infra\Mapping\ItemAuditMapping.cs
+FN:9,System.Void Systore.Infra.Mapping.ItemAuditMapping::Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder`1<Systore.Domain.Entities.ItemAudit>)
+FNDA:0,System.Void Systore.Infra.Mapping.ItemAuditMapping::Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder`1<Systore.Domain.Entities.ItemAudit>)
+DA:10,0
+DA:11,0
+DA:12,0
+DA:14,0
+DA:15,0
+DA:17,0
+DA:19,0
+DA:20,0
+DA:22,0
+DA:23,0
+DA:25,0
+DA:27,0
+DA:28,0
+DA:29,0
+DA:30,0
+LF:15
+LH:0
+BRF:0
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Infra\Mapping\ItemSaleMapping.cs
+FN:8,System.Void Systore.Infra.Mapping.ItemSaleMapping::Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder`1<Systore.Domain.Entities.ItemSale>)
+FNDA:0,System.Void Systore.Infra.Mapping.ItemSaleMapping::Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder`1<Systore.Domain.Entities.ItemSale>)
+DA:9,0
+DA:10,0
+DA:12,0
+DA:14,0
+DA:15,0
+DA:17,0
+DA:18,0
+DA:20,0
+DA:21,0
+DA:23,0
+DA:24,0
+DA:26,0
+DA:27,0
+DA:28,0
+DA:29,0
+DA:30,0
+DA:32,0
+DA:33,0
+DA:34,0
+DA:35,0
+DA:36,0
+DA:39,0
+LF:22
+LH:0
+BRF:0
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Infra\Mapping\ProductMapping.cs
+FN:8,System.Void Systore.Infra.Mapping.ProductMapping::Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder`1<Systore.Domain.Entities.Product>)
+FNDA:0,System.Void Systore.Infra.Mapping.ProductMapping::Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder`1<Systore.Domain.Entities.Product>)
+DA:9,0
+DA:10,0
+DA:12,0
+DA:14,0
+DA:15,0
+DA:17,0
+DA:18,0
+DA:20,0
+DA:21,0
+DA:23,0
+DA:24,0
+DA:26,0
+DA:27,0
+DA:29,0
+DA:30,0
+DA:32,0
+DA:33,0
+DA:35,0
+DA:36,0
+DA:38,0
+DA:39,0
+DA:41,0
+LF:22
+LH:0
+BRF:0
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Infra\Mapping\SaleMapping.cs
+FN:9,System.Void Systore.Infra.Mapping.SaleMapping::Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder`1<Systore.Domain.Entities.Sale>)
+FNDA:0,System.Void Systore.Infra.Mapping.SaleMapping::Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder`1<Systore.Domain.Entities.Sale>)
+DA:10,0
+DA:11,0
+DA:13,0
+DA:15,0
+DA:16,0
+DA:18,0
+DA:19,0
+DA:21,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:29,0
+DA:30,0
+DA:32,0
+DA:33,0
+DA:34,0
+DA:35,0
+DA:36,0
+DA:39,0
+LF:21
+LH:0
+BRF:0
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Infra\Mapping\UserMapping.cs
+FN:8,System.Void Systore.Infra.Mapping.UserMapping::Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder`1<Systore.Domain.Entities.User>)
+FNDA:0,System.Void Systore.Infra.Mapping.UserMapping::Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder`1<Systore.Domain.Entities.User>)
+DA:9,0
+DA:10,0
+DA:11,0
+DA:12,0
+DA:13,0
+DA:15,0
+DA:16,0
+DA:18,0
+DA:19,0
+DA:21,0
+DA:22,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+LF:15
+LH:0
+BRF:0
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Infra\Context\AuditContext.cs
+FN:10,Systore.Domain.AppSettings Systore.Infra.Context.AuditContext::get__appSettings()
+FNDA:0,Systore.Domain.AppSettings Systore.Infra.Context.AuditContext::get__appSettings()
+DA:11,0
+FN:22,System.Void Systore.Infra.Context.AuditContext::OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)
+FNDA:0,System.Void Systore.Infra.Context.AuditContext::OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+FN:16,System.Void Systore.Infra.Context.AuditContext::.ctor(Microsoft.EntityFrameworkCore.DbContextOptions`1<Systore.Infra.Context.AuditContext>,Microsoft.Extensions.Options.IOptions`1<Systore.Domain.AppSettings>,Microsoft.Extensions.Configuration.IConfiguration)
+FNDA:0,System.Void Systore.Infra.Context.AuditContext::.ctor(Microsoft.EntityFrameworkCore.DbContextOptions`1<Systore.Infra.Context.AuditContext>,Microsoft.Extensions.Options.IOptions`1<Systore.Domain.AppSettings>,Microsoft.Extensions.Configuration.IConfiguration)
+DA:17,0
+DA:18,0
+DA:19,0
+DA:20,0
+LF:9
+LH:0
+BRF:0
+BRH:0
+FNF:3
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Infra\Context\SystoreContext.cs
+FN:12,Systore.Domain.AppSettings Systore.Infra.Context.SystoreContext::get__appSettings()
+FNDA:0,Systore.Domain.AppSettings Systore.Infra.Context.SystoreContext::get__appSettings()
+DA:13,0
+FN:24,System.Void Systore.Infra.Context.SystoreContext::OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)
+FNDA:0,System.Void Systore.Infra.Context.SystoreContext::OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)
+DA:25,0
+DA:26,0
+DA:27,0
+DA:28,0
+DA:29,0
+DA:30,0
+DA:31,0
+DA:32,0
+FN:33,Microsoft.EntityFrameworkCore.DbSet`1<Systore.Domain.Entities.User> Systore.Infra.Context.SystoreContext::get_Users()
+FNDA:0,Microsoft.EntityFrameworkCore.DbSet`1<Systore.Domain.Entities.User> Systore.Infra.Context.SystoreContext::get_Users()
+DA:34,0
+FN:34,Microsoft.EntityFrameworkCore.DbSet`1<Systore.Domain.Entities.Client> Systore.Infra.Context.SystoreContext::get_Clients()
+FNDA:0,Microsoft.EntityFrameworkCore.DbSet`1<Systore.Domain.Entities.Client> Systore.Infra.Context.SystoreContext::get_Clients()
+DA:35,0
+FN:35,Microsoft.EntityFrameworkCore.DbSet`1<Systore.Domain.Entities.BillReceive> Systore.Infra.Context.SystoreContext::get_BillReceives()
+FNDA:0,Microsoft.EntityFrameworkCore.DbSet`1<Systore.Domain.Entities.BillReceive> Systore.Infra.Context.SystoreContext::get_BillReceives()
+DA:36,0
+FN:36,Microsoft.EntityFrameworkCore.DbSet`1<Systore.Domain.Entities.Product> Systore.Infra.Context.SystoreContext::get_Products()
+FNDA:0,Microsoft.EntityFrameworkCore.DbSet`1<Systore.Domain.Entities.Product> Systore.Infra.Context.SystoreContext::get_Products()
+DA:37,0
+FN:37,Microsoft.EntityFrameworkCore.DbSet`1<Systore.Domain.Entities.Sale> Systore.Infra.Context.SystoreContext::get_Sales()
+FNDA:0,Microsoft.EntityFrameworkCore.DbSet`1<Systore.Domain.Entities.Sale> Systore.Infra.Context.SystoreContext::get_Sales()
+DA:38,0
+FN:38,Microsoft.EntityFrameworkCore.DbSet`1<Systore.Domain.Entities.ItemSale> Systore.Infra.Context.SystoreContext::get_ItemSales()
+FNDA:0,Microsoft.EntityFrameworkCore.DbSet`1<Systore.Domain.Entities.ItemSale> Systore.Infra.Context.SystoreContext::get_ItemSales()
+DA:39,0
+FN:18,System.Void Systore.Infra.Context.SystoreContext::.ctor(Microsoft.EntityFrameworkCore.DbContextOptions`1<Systore.Infra.Context.SystoreContext>,Microsoft.Extensions.Options.IOptions`1<Systore.Domain.AppSettings>,Microsoft.Extensions.Configuration.IConfiguration)
+FNDA:0,System.Void Systore.Infra.Context.SystoreContext::.ctor(Microsoft.EntityFrameworkCore.DbContextOptions`1<Systore.Infra.Context.SystoreContext>,Microsoft.Extensions.Options.IOptions`1<Systore.Domain.AppSettings>,Microsoft.Extensions.Configuration.IConfiguration)
+DA:19,0
+DA:20,0
+DA:21,0
+DA:22,0
+LF:19
+LH:0
+BRF:0
+BRH:0
+FNF:9
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Services\AuditService.cs
+FN:19,System.Threading.Tasks.Task`1<System.Collections.Generic.List`1<Systore.Domain.Dtos.AuditDto>> Systore.Services.AuditService::GetAuditsByDateAsync(System.DateTime,System.DateTime)
+FNDA:0,System.Threading.Tasks.Task`1<System.Collections.Generic.List`1<Systore.Domain.Dtos.AuditDto>> Systore.Services.AuditService::GetAuditsByDateAsync(System.DateTime,System.DateTime)
+DA:20,0
+FN:13,System.Void Systore.Services.AuditService::.ctor(Systore.Data.Abstractions.IHeaderAuditRepository)
+FNDA:0,System.Void Systore.Services.AuditService::.ctor(Systore.Data.Abstractions.IHeaderAuditRepository)
+DA:14,0
+DA:15,0
+DA:16,0
+DA:17,0
+LF:5
+LH:0
+BRF:0
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Services\AuthService.cs
+FN:27,Systore.Dtos.LoginResponseDto Systore.Services.AuthService::ValidateToken(System.String)
+FNDA:0,Systore.Dtos.LoginResponseDto Systore.Services.AuthService::ValidateToken(System.String)
+DA:28,0
+DA:29,0
+DA:30,0
+DA:31,0
+DA:32,0
+DA:33,0
+DA:34,0
+DA:35,0
+DA:36,0
+DA:37,0
+DA:39,0
+DA:41,0
+DA:42,0
+DA:43,0
+DA:44,0
+DA:45,0
+DA:46,0
+DA:48,0
+DA:49,0
+DA:50,0
+DA:51,0
+DA:52,0
+DA:53,0
+DA:54,0
+DA:55,0
+DA:56,0
+DA:57,0
+DA:58,0
+BRDA:43,139,0,0
+BRDA:43,139,1,0
+FN:20,System.Void Systore.Services.AuthService::.ctor(Systore.Data.Abstractions.IUserRepository,Microsoft.Extensions.Options.IOptions`1<Systore.Domain.AppSettings>)
+FNDA:0,System.Void Systore.Services.AuthService::.ctor(Systore.Data.Abstractions.IUserRepository,Microsoft.Extensions.Options.IOptions`1<Systore.Domain.AppSettings>)
+DA:21,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
+FN:60,System.Void Systore.Services.AuthService/<Login>d__4::MoveNext()
+FNDA:0,System.Void Systore.Services.AuthService/<Login>d__4::MoveNext()
+DA:61,0
+DA:62,0
+DA:63,0
+DA:64,0
+DA:65,0
+DA:66,0
+DA:67,0
+DA:68,0
+DA:69,0
+DA:70,0
+DA:71,0
+DA:72,0
+DA:73,0
+DA:74,0
+DA:75,0
+DA:76,0
+DA:77,0
+DA:79,0
+DA:80,0
+DA:81,0
+DA:82,0
+DA:83,0
+DA:84,0
+DA:85,0
+DA:86,0
+DA:87,0
+DA:88,0
+DA:91,0
+DA:92,0
+DA:93,0
+DA:94,0
+DA:95,0
+DA:96,0
+DA:98,0
+BRDA:63,180,0,0
+BRDA:63,180,1,0
+LF:67
+LH:0
+BRF:4
+BRH:0
+FNF:3
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Services\BaseService.cs
+FN:20,System.Threading.Tasks.Task`1<System.String> Systore.Services.BaseService`1::AddAsync(TEntity)
+FNDA:0,System.Threading.Tasks.Task`1<System.String> Systore.Services.BaseService`1::AddAsync(TEntity)
+DA:21,0
+FN:22,System.Threading.Tasks.Task`1<TEntity> Systore.Services.BaseService`1::GetAsync(System.Int32)
+FNDA:0,System.Threading.Tasks.Task`1<TEntity> Systore.Services.BaseService`1::GetAsync(System.Int32)
+DA:23,0
+FN:24,System.Threading.Tasks.Task`1<System.Collections.Generic.IEnumerable`1<TEntity>> Systore.Services.BaseService`1::GetAllAsync()
+FNDA:0,System.Threading.Tasks.Task`1<System.Collections.Generic.IEnumerable`1<TEntity>> Systore.Services.BaseService`1::GetAllAsync()
+DA:25,0
+FN:27,System.Linq.IQueryable`1<TEntity> Systore.Services.BaseService`1::GetAll()
+FNDA:0,System.Linq.IQueryable`1<TEntity> Systore.Services.BaseService`1::GetAll()
+DA:28,0
+FN:29,System.Threading.Tasks.Task`1<System.Collections.Generic.List`1<TEntity>> Systore.Services.BaseService`1::GetWhereAsync(System.Linq.Expressions.Expression`1<System.Func`2<TEntity,System.Boolean>>)
+FNDA:0,System.Threading.Tasks.Task`1<System.Collections.Generic.List`1<TEntity>> Systore.Services.BaseService`1::GetWhereAsync(System.Linq.Expressions.Expression`1<System.Func`2<TEntity,System.Boolean>>)
+DA:30,0
+FN:30,System.Threading.Tasks.Task`1<System.Collections.Generic.List`1<TEntity>> Systore.Services.BaseService`1::GetWhereAsync(Systore.Domain.Dtos.FilterPaginateDto)
+FNDA:0,System.Threading.Tasks.Task`1<System.Collections.Generic.List`1<TEntity>> Systore.Services.BaseService`1::GetWhereAsync(Systore.Domain.Dtos.FilterPaginateDto)
+DA:31,0
+FN:32,System.Threading.Tasks.Task`1<TEntity> Systore.Services.BaseService`1::FirstOrDefaultAsync(System.Linq.Expressions.Expression`1<System.Func`2<TEntity,System.Boolean>>)
+FNDA:0,System.Threading.Tasks.Task`1<TEntity> Systore.Services.BaseService`1::FirstOrDefaultAsync(System.Linq.Expressions.Expression`1<System.Func`2<TEntity,System.Boolean>>)
+DA:33,0
+FN:34,System.Threading.Tasks.Task`1<System.Int32> Systore.Services.BaseService`1::CountAllAsync()
+FNDA:0,System.Threading.Tasks.Task`1<System.Int32> Systore.Services.BaseService`1::CountAllAsync()
+DA:35,0
+FN:36,System.Threading.Tasks.Task`1<System.Int32> Systore.Services.BaseService`1::CountWhereAsync(System.Linq.Expressions.Expression`1<System.Func`2<TEntity,System.Boolean>>)
+FNDA:0,System.Threading.Tasks.Task`1<System.Int32> Systore.Services.BaseService`1::CountWhereAsync(System.Linq.Expressions.Expression`1<System.Func`2<TEntity,System.Boolean>>)
+DA:37,0
+FN:38,System.Threading.Tasks.Task`1<System.Int32> Systore.Services.BaseService`1::CountWhereAsync(System.Collections.Generic.IEnumerable`1<Systore.Domain.Dtos.FilterDto>)
+FNDA:0,System.Threading.Tasks.Task`1<System.Int32> Systore.Services.BaseService`1::CountWhereAsync(System.Collections.Generic.IEnumerable`1<Systore.Domain.Dtos.FilterDto>)
+DA:39,0
+FN:40,System.Threading.Tasks.Task`1<System.String> Systore.Services.BaseService`1::UpdateAsync(TEntity)
+FNDA:0,System.Threading.Tasks.Task`1<System.String> Systore.Services.BaseService`1::UpdateAsync(TEntity)
+DA:41,0
+FN:42,System.Threading.Tasks.Task`1<System.String> Systore.Services.BaseService`1::RemoveAsync(System.Int32)
+FNDA:0,System.Threading.Tasks.Task`1<System.String> Systore.Services.BaseService`1::RemoveAsync(System.Int32)
+DA:43,0
+FN:15,System.Void Systore.Services.BaseService`1::.ctor(Systore.Data.Abstractions.IBaseRepository`1<TEntity>)
+FNDA:11,System.Void Systore.Services.BaseService`1::.ctor(Systore.Data.Abstractions.IBaseRepository`1<TEntity>)
+DA:16,11
+DA:17,11
+DA:18,11
+DA:19,11
+LF:16
+LH:4
+BRF:0
+BRH:0
+FNF:13
+FNH:1
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Services\BillReceiveService.cs
+FN:31,System.Threading.Tasks.Task`1<System.Collections.Generic.List`1<Systore.Domain.Entities.BillReceive>> Systore.Services.BillReceiveService::GetPaidBillReceivesByClient(System.Int32)
+FNDA:1,System.Threading.Tasks.Task`1<System.Collections.Generic.List`1<Systore.Domain.Entities.BillReceive>> Systore.Services.BillReceiveService::GetPaidBillReceivesByClient(System.Int32)
+DA:32,1
+DA:33,1
+FN:34,System.Threading.Tasks.Task`1<System.Collections.Generic.List`1<Systore.Domain.Entities.BillReceive>> Systore.Services.BillReceiveService::GetNoPaidBillReceivesByClient(System.Int32)
+FNDA:1,System.Threading.Tasks.Task`1<System.Collections.Generic.List`1<Systore.Domain.Entities.BillReceive>> Systore.Services.BillReceiveService::GetNoPaidBillReceivesByClient(System.Int32)
+DA:35,1
+DA:36,1
+FN:37,System.Threading.Tasks.Task`1<System.Int32> Systore.Services.BillReceiveService::NextCode()
+FNDA:1,System.Threading.Tasks.Task`1<System.Int32> Systore.Services.BillReceiveService::NextCode()
+DA:38,1
+DA:39,1
+FN:41,System.Void Systore.Services.BillReceiveService::ValidateBillReceive(Systore.Domain.Entities.BillReceive,Systore.Domain.Dtos.CreateBillReceivesDto,System.String&)
+FNDA:18,System.Void Systore.Services.BillReceiveService::ValidateBillReceive(Systore.Domain.Entities.BillReceive,Systore.Domain.Dtos.CreateBillReceivesDto,System.String&)
+DA:42,18
+DA:43,18
+DA:44,4
+DA:45,4
+DA:46,2
+DA:47,2
+DA:49,2
+DA:50,2
+DA:51,4
+DA:52,18
+BRDA:43,20,0,4
+BRDA:45,40,0,2
+BRDA:45,40,1,2
+BRDA:43,20,1,18
+FN:98,System.Threading.Tasks.Task Systore.Services.BillReceiveService::RemoveBillReceivesByCode(System.Int32)
+FNDA:1,System.Threading.Tasks.Task Systore.Services.BillReceiveService::RemoveBillReceivesByCode(System.Int32)
+DA:99,1
+FN:14,System.Void Systore.Services.BillReceiveService::.ctor(Systore.Data.Abstractions.IBillReceiveRepository,Systore.Domain.Abstractions.ICalculateValuesClothingStoreService)
+FNDA:11,System.Void Systore.Services.BillReceiveService::.ctor(Systore.Data.Abstractions.IBillReceiveRepository,Systore.Domain.Abstractions.ICalculateValuesClothingStoreService)
+DA:15,11
+DA:16,11
+DA:17,11
+DA:18,11
+FN:23,Systore.Domain.Entities.BillReceive Systore.Services.BillReceiveService/<>c__DisplayClass2_0::<GetBillReceivesByClient>b__0(Systore.Domain.Entities.BillReceive)
+FNDA:4,Systore.Domain.Entities.BillReceive Systore.Services.BillReceiveService/<>c__DisplayClass2_0::<GetBillReceivesByClient>b__0(Systore.Domain.Entities.BillReceive)
+DA:24,4
+DA:25,4
+DA:26,13
+DA:27,4
+DA:28,4
+FN:20,System.Void Systore.Services.BillReceiveService/<GetBillReceivesByClient>d__2::MoveNext()
+FNDA:1,System.Void Systore.Services.BillReceiveService/<GetBillReceivesByClient>d__2::MoveNext()
+DA:21,1
+DA:22,1
+DA:23,1
+DA:29,1
+FN:54,System.Void Systore.Services.BillReceiveService/<SaveBillReceives>d__7::MoveNext()
+FNDA:2,System.Void Systore.Services.BillReceiveService/<SaveBillReceives>d__7::MoveNext()
+DA:55,2
+DA:56,2
+DA:58,13
+DA:59,4
+DA:60,4
+DA:61,4
+DA:62,4
+DA:63,4
+DA:64,4
+DA:65,4
+DA:66,1
+DA:67,3
+DA:68,1
+BRDA:58,498,1,4
+BRDA:65,458,0,1
+BRDA:65,458,1,3
+BRDA:58,498,0,1
+FN:70,System.Void Systore.Services.BillReceiveService/<CreateBillReceives>d__8::MoveNext()
+FNDA:6,System.Void Systore.Services.BillReceiveService/<CreateBillReceives>d__8::MoveNext()
+DA:71,6
+DA:72,6
+DA:73,6
+DA:74,6
+DA:75,1
+DA:77,54
+DA:78,18
+DA:79,18
+DA:81,18
+DA:82,18
+DA:84,6
+DA:85,2
+DA:86,2
+DA:87,1
+DA:89,1
+DA:90,2
+DA:92,6
+DA:93,4
+DA:95,2
+DA:97,1
+DA:98,1
+BRDA:74,71,0,1
+BRDA:74,71,1,6
+BRDA:77,204,1,18
+BRDA:77,204,0,6
+BRDA:84,267,0,2
+BRDA:86,290,0,1
+BRDA:86,290,1,1
+BRDA:84,267,1,6
+BRDA:92,412,0,4
+BRDA:92,412,1,2
+LF:64
+LH:64
+BRF:18
+BRH:18
+FNF:10
+FNH:10
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Services\CalculateValuesClothingStoreService.cs
+FN:12,System.Void Systore.Services.CalculateValuesClothingStoreService::CalculateValues(Systore.Domain.Entities.BillReceive)
+FNDA:13,System.Void Systore.Services.CalculateValuesClothingStoreService::CalculateValues(Systore.Domain.Entities.BillReceive)
+DA:13,13
+DA:14,13
+DA:15,7
+DA:16,7
+DA:17,7
+DA:18,4
+DA:19,4
+DA:20,4
+DA:21,4
+DA:22,4
+DA:23,4
+DA:25,3
+DA:26,3
+DA:27,3
+DA:28,3
+DA:29,3
+DA:30,7
+DA:31,13
+BRDA:14,12,0,7
+BRDA:17,67,0,4
+BRDA:17,67,1,3
+BRDA:14,12,1,13
+FN:9,System.Void Systore.Services.CalculateValuesClothingStoreService::.cctor()
+FNDA:1,System.Void Systore.Services.CalculateValuesClothingStoreService::.cctor()
+DA:10,1
+LF:19
+LH:19
+BRF:4
+BRH:4
+FNF:2
+FNH:2
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Services\ClientService.cs
+FN:11,System.Void Systore.Services.ClientService::.ctor(Systore.Data.Abstractions.IClientRepository,Systore.Data.Abstractions.IBillReceiveRepository)
+FNDA:0,System.Void Systore.Services.ClientService::.ctor(Systore.Data.Abstractions.IClientRepository,Systore.Data.Abstractions.IBillReceiveRepository)
+DA:12,0
+DA:13,0
+DA:14,0
+DA:15,0
+FN:16,System.Void Systore.Services.ClientService/<ExistBillReceiveForClient>d__2::MoveNext()
+FNDA:0,System.Void Systore.Services.ClientService/<ExistBillReceiveForClient>d__2::MoveNext()
+DA:17,0
+DA:18,0
+DA:19,0
+LF:7
+LH:0
+BRF:0
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Services\FormatExtensions.cs
+FN:8,System.String Systore.Services.FormatExtensions::StringFormat(System.String,System.Int32)
+FNDA:2,System.String Systore.Services.FormatExtensions::StringFormat(System.String,System.Int32)
+DA:9,2
+DA:10,2
+DA:11,2
+DA:12,1
+DA:13,1
+DA:14,1
+BRDA:11,35,0,1
+BRDA:11,35,1,1
+FN:16,System.String Systore.Services.FormatExtensions::StringFormat(System.Int32,System.Int32)
+FNDA:2,System.String Systore.Services.FormatExtensions::StringFormat(System.Int32,System.Int32)
+DA:17,2
+DA:18,2
+DA:19,2
+DA:20,1
+DA:21,1
+DA:22,1
+BRDA:19,36,0,1
+BRDA:19,36,1,1
+FN:24,System.String Systore.Services.FormatExtensions::StringFormat(System.Nullable`1<System.Int32>,System.Int32)
+FNDA:3,System.String Systore.Services.FormatExtensions::StringFormat(System.Nullable`1<System.Int32>,System.Int32)
+DA:25,3
+DA:26,3
+DA:27,2
+DA:28,2
+DA:29,2
+DA:30,1
+DA:31,1
+DA:34,1
+DA:35,2
+BRDA:26,10,0,2
+BRDA:29,56,0,1
+BRDA:29,56,1,1
+BRDA:26,10,1,1
+FN:37,System.String Systore.Services.FormatExtensions::StringFormat(System.Int64,System.Int32)
+FNDA:2,System.String Systore.Services.FormatExtensions::StringFormat(System.Int64,System.Int32)
+DA:38,2
+DA:39,2
+DA:40,2
+DA:41,1
+DA:42,1
+DA:43,1
+BRDA:40,36,0,1
+BRDA:40,36,1,1
+FN:45,System.String Systore.Services.FormatExtensions::StringFormat(System.Nullable`1<System.Int64>,System.Int32)
+FNDA:3,System.String Systore.Services.FormatExtensions::StringFormat(System.Nullable`1<System.Int64>,System.Int32)
+DA:46,3
+DA:47,3
+DA:48,2
+DA:49,2
+DA:50,2
+DA:51,1
+DA:52,1
+DA:55,1
+DA:56,2
+BRDA:47,10,0,2
+BRDA:50,56,0,1
+BRDA:50,56,1,1
+BRDA:47,10,1,1
+FN:58,System.String Systore.Services.FormatExtensions::StringFormat(System.Decimal,System.Int32)
+FNDA:6,System.String Systore.Services.FormatExtensions::StringFormat(System.Decimal,System.Int32)
+DA:59,6
+DA:60,6
+DA:61,6
+DA:62,1
+DA:63,5
+DA:64,5
+BRDA:61,67,0,1
+BRDA:61,67,1,5
+FN:66,System.String Systore.Services.FormatExtensions::StringFormat(System.Nullable`1<System.Decimal>,System.Int32)
+FNDA:8,System.String Systore.Services.FormatExtensions::StringFormat(System.Nullable`1<System.Decimal>,System.Int32)
+DA:67,8
+DA:68,8
+DA:69,6
+DA:70,6
+DA:71,6
+DA:72,1
+DA:73,5
+DA:76,2
+DA:77,7
+BRDA:68,10,0,6
+BRDA:71,85,0,1
+BRDA:71,85,1,5
+BRDA:68,10,1,2
+FN:79,System.String Systore.Services.FormatExtensions::StringFormat(System.DateTime,System.Boolean)
+FNDA:7,System.String Systore.Services.FormatExtensions::StringFormat(System.DateTime,System.Boolean)
+DA:80,7
+DA:81,7
+DA:82,3
+DA:84,4
+DA:85,7
+BRDA:81,4,0,3
+BRDA:81,4,1,4
+FN:87,System.String Systore.Services.FormatExtensions::StringFormat(System.TimeSpan)
+FNDA:4,System.String Systore.Services.FormatExtensions::StringFormat(System.TimeSpan)
+DA:88,4
+DA:89,4
+DA:90,4
+FN:92,System.String Systore.Services.FormatExtensions::StringFormat(System.Nullable`1<System.DateTime>,System.Boolean)
+FNDA:7,System.String Systore.Services.FormatExtensions::StringFormat(System.Nullable`1<System.DateTime>,System.Boolean)
+DA:93,7
+DA:94,7
+DA:95,4
+DA:97,3
+DA:98,7
+BRDA:94,4,0,4
+BRDA:95,13,0,1
+BRDA:95,13,1,3
+BRDA:94,4,1,3
+BRDA:97,52,0,1
+BRDA:97,52,1,2
+FN:100,System.String Systore.Services.FormatExtensions::StringFormat(System.Nullable`1<System.TimeSpan>)
+FNDA:5,System.String Systore.Services.FormatExtensions::StringFormat(System.Nullable`1<System.TimeSpan>)
+DA:101,5
+DA:102,5
+DA:103,5
+BRDA:102,8,0,1
+BRDA:102,8,1,4
+FN:105,System.String Systore.Services.FormatExtensions::StringFormat(System.DateTime,System.TimeSpan)
+FNDA:7,System.String Systore.Services.FormatExtensions::StringFormat(System.DateTime,System.TimeSpan)
+DA:106,7
+DA:107,7
+DA:108,7
+FN:110,System.String Systore.Services.FormatExtensions::StringFormat(System.Nullable`1<System.DateTime>,System.Nullable`1<System.TimeSpan>)
+FNDA:13,System.String Systore.Services.FormatExtensions::StringFormat(System.Nullable`1<System.DateTime>,System.Nullable`1<System.TimeSpan>)
+DA:111,13
+DA:112,13
+DA:114,13
+DA:115,9
+DA:117,4
+DA:119,13
+DA:120,10
+DA:122,3
+DA:124,13
+DA:125,13
+BRDA:114,16,0,9
+BRDA:114,16,1,4
+BRDA:119,62,0,10
+BRDA:119,62,1,3
+FN:127,System.Int16 Systore.Services.FormatExtensions::ToShort(System.String)
+FNDA:5,System.Int16 Systore.Services.FormatExtensions::ToShort(System.String)
+DA:128,5
+DA:129,5
+DA:131,5
+DA:132,5
+FN:134,System.Int32 Systore.Services.FormatExtensions::ToInt(System.String)
+FNDA:9,System.Int32 Systore.Services.FormatExtensions::ToInt(System.String)
+DA:135,9
+DA:136,9
+DA:138,9
+DA:139,9
+FN:141,System.Int64 Systore.Services.FormatExtensions::ToLong(System.String)
+FNDA:6,System.Int64 Systore.Services.FormatExtensions::ToLong(System.String)
+DA:142,6
+DA:143,6
+DA:145,6
+DA:146,6
+FN:148,System.Decimal Systore.Services.FormatExtensions::ToDecimal(System.String)
+FNDA:6,System.Decimal Systore.Services.FormatExtensions::ToDecimal(System.String)
+DA:149,6
+DA:150,6
+DA:152,6
+DA:153,6
+FN:155,System.Boolean Systore.Services.FormatExtensions::ToBoolean(System.String)
+FNDA:2,System.Boolean Systore.Services.FormatExtensions::ToBoolean(System.String)
+DA:156,2
+DA:157,2
+DA:159,2
+DA:160,2
+FN:162,System.Nullable`1<System.DateTime> Systore.Services.FormatExtensions::TryToDateTime(System.String)
+FNDA:24,System.Nullable`1<System.DateTime> Systore.Services.FormatExtensions::TryToDateTime(System.String)
+DA:163,24
+DA:164,24
+DA:165,4
+DA:167,20
+DA:169,20
+DA:173,20
+DA:174,20
+DA:175,20
+DA:176,8
+DA:177,8
+DA:180,12
+DA:181,12
+DA:182,12
+DA:183,8
+DA:184,8
+DA:187,4
+DA:188,24
+BRDA:164,9,0,4
+BRDA:164,9,1,20
+BRDA:169,53,0,9
+BRDA:169,53,1,11
+BRDA:173,79,0,9
+BRDA:173,79,1,11
+BRDA:173,125,0,8
+BRDA:173,125,1,12
+BRDA:180,149,0,9
+BRDA:180,149,1,3
+BRDA:180,190,0,8
+BRDA:180,190,1,4
+FN:190,System.Nullable`1<System.DateTime> Systore.Services.FormatExtensions::ToDateTime(System.String)
+FNDA:10,System.Nullable`1<System.DateTime> Systore.Services.FormatExtensions::ToDateTime(System.String)
+DA:191,10
+DA:192,10
+DA:193,10
+FN:195,System.String Systore.Services.FormatExtensions::Truncate(System.String,System.Int32)
+FNDA:23,System.String Systore.Services.FormatExtensions::Truncate(System.String,System.Int32)
+DA:196,23
+DA:197,23
+DA:198,18
+DA:200,5
+DA:201,23
+BRDA:197,2,0,22
+BRDA:197,2,1,1
+BRDA:197,21,0,18
+BRDA:197,21,1,5
+FN:203,System.Boolean Systore.Services.FormatExtensions::EqualsIgnoreCase(System.String,System.String)
+FNDA:8,System.Boolean Systore.Services.FormatExtensions::EqualsIgnoreCase(System.String,System.String)
+DA:204,8
+DA:205,8
+DA:206,8
+LF:128
+LH:128
+BRF:50
+BRH:50
+FNF:22
+FNH:22
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Services\ProductService.cs
+FN:20,System.Threading.Tasks.Task`1<System.Collections.Generic.List`1<Systore.Domain.Entities.Product>> Systore.Services.ProductService::GetProductsForExportToBalance(Systore.Domain.Dtos.FilterProductsToBalance)
+FNDA:0,System.Threading.Tasks.Task`1<System.Collections.Generic.List`1<Systore.Domain.Entities.Product>> Systore.Services.ProductService::GetProductsForExportToBalance(Systore.Domain.Dtos.FilterProductsToBalance)
+DA:21,0
+DA:22,0
+DA:23,0
+FN:15,System.Void Systore.Services.ProductService::.ctor(Systore.Data.Abstractions.IProductRepository)
+FNDA:0,System.Void Systore.Services.ProductService::.ctor(Systore.Data.Abstractions.IProductRepository)
+DA:16,0
+DA:17,0
+DA:18,0
+FN:25,System.Void Systore.Services.ProductService/<GenerateFileContentItensToBalance>d__2::MoveNext()
+FNDA:0,System.Void Systore.Services.ProductService/<GenerateFileContentItensToBalance>d__2::MoveNext()
+DA:26,0
+DA:27,0
+DA:28,0
+DA:29,0
+DA:30,0
+DA:31,0
+DA:32,0
+DA:33,0
+DA:34,0
+DA:35,0
+DA:36,0
+DA:37,0
+DA:38,0
+DA:39,0
+DA:40,0
+DA:41,0
+DA:42,0
+DA:43,0
+DA:44,0
+DA:45,0
+DA:46,0
+DA:47,0
+DA:48,0
+DA:49,0
+DA:50,0
+DA:51,0
+DA:52,0
+DA:53,0
+DA:54,0
+DA:55,0
+DA:56,0
+DA:57,0
+DA:58,0
+DA:59,0
+DA:60,0
+DA:61,0
+DA:62,0
+DA:63,0
+DA:64,0
+DA:66,0
+DA:67,0
+DA:68,0
+DA:69,0
+BRDA:29,978,1,0
+BRDA:31,628,0,0
+BRDA:31,628,1,0
+BRDA:31,658,0,0
+BRDA:31,658,1,0
+BRDA:29,978,0,0
+FN:70,System.Void Systore.Services.ProductService/<GenerateFileContentInfoToBalance>d__3::MoveNext()
+FNDA:0,System.Void Systore.Services.ProductService/<GenerateFileContentInfoToBalance>d__3::MoveNext()
+DA:71,0
+DA:72,0
+DA:73,0
+DA:74,0
+DA:75,0
+DA:76,0
+DA:77,0
+DA:78,0
+DA:79,0
+DA:80,0
+DA:83,0
+DA:84,0
+DA:85,0
+DA:86,0
+DA:87,0
+DA:89,0
+DA:91,0
+DA:92,0
+DA:93,0
+DA:94,0
+BRDA:74,737,1,0
+BRDA:83,629,1,0
+BRDA:83,629,0,0
+BRDA:74,737,0,0
+FN:96,System.Void Systore.Services.ProductService/<UpdateProductsExportedToBalance>d__4::MoveNext()
+FNDA:0,System.Void Systore.Services.ProductService/<UpdateProductsExportedToBalance>d__4::MoveNext()
+DA:97,0
+DA:98,0
+DA:99,0
+DA:100,0
+DA:101,0
+DA:102,0
+DA:103,0
+DA:104,0
+DA:105,0
+BRDA:99,587,1,0
+BRDA:99,587,0,0
+LF:78
+LH:0
+BRF:12
+BRH:0
+FNF:5
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Services\SaleService.cs
+FN:18,System.Threading.Tasks.Task`1<Systore.Domain.Dtos.SaleDto> Systore.Services.SaleService::GetSaleFullById(System.Int32)
+FNDA:0,System.Threading.Tasks.Task`1<Systore.Domain.Dtos.SaleDto> Systore.Services.SaleService::GetSaleFullById(System.Int32)
+DA:19,0
+FN:13,System.Void Systore.Services.SaleService::.ctor(Systore.Data.Abstractions.ISaleRepository,Systore.Data.Abstractions.IItemSaleRepository)
+FNDA:0,System.Void Systore.Services.SaleService::.ctor(Systore.Data.Abstractions.ISaleRepository,Systore.Data.Abstractions.IItemSaleRepository)
+DA:14,0
+DA:15,0
+DA:16,0
+DA:17,0
+FN:21,System.Void Systore.Services.SaleService/<UpdateAsync>d__3::MoveNext()
+FNDA:0,System.Void Systore.Services.SaleService/<UpdateAsync>d__3::MoveNext()
+DA:22,0
+DA:23,0
+DA:25,0
+DA:26,0
+DA:27,0
+DA:28,0
+DA:29,0
+DA:30,0
+DA:31,0
+DA:32,0
+DA:34,0
+DA:36,0
+DA:37,0
+DA:38,0
+DA:39,0
+DA:40,0
+DA:41,0
+DA:43,0
+DA:44,0
+DA:45,0
+DA:46,0
+DA:47,0
+DA:48,0
+DA:49,0
+DA:50,0
+DA:51,0
+DA:52,0
+DA:53,0
+DA:54,0
+DA:55,0
+DA:56,0
+DA:57,0
+DA:58,0
+DA:59,0
+DA:60,0
+DA:61,0
+DA:62,0
+DA:63,0
+DA:64,0
+DA:65,0
+DA:66,0
+DA:67,0
+DA:68,0
+DA:70,0
+DA:71,0
+DA:72,0
+DA:73,0
+DA:75,0
+DA:76,0
+BRDA:22,16,0,0
+BRDA:36,299,0,0
+BRDA:22,16,1,0
+BRDA:38,1153,1,0
+BRDA:40,407,0,0
+BRDA:38,332,1,0
+BRDA:40,407,1,0
+BRDA:53,683,0,0
+BRDA:38,332,2,0
+BRDA:53,683,1,0
+BRDA:65,959,0,0
+BRDA:38,332,3,0
+BRDA:65,959,1,0
+BRDA:70,1130,1,0
+BRDA:38,332,0,0
+BRDA:70,1130,0,0
+BRDA:38,1153,0,0
+BRDA:36,299,1,0
+LF:54
+LH:0
+BRF:18
+BRH:0
+FNF:3
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\src\Systore.Services\UserService.cs
+FN:8,System.Void Systore.Services.UserService::.ctor(Systore.Data.Abstractions.IUserRepository)
+FNDA:0,System.Void Systore.Services.UserService::.ctor(Systore.Data.Abstractions.IUserRepository)
+DA:9,0
+DA:10,0
+DA:12,0
+LF:3
+LH:0
+BRF:0
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\tests\Systore.Tests.Common\Factories\BillReceiveFactory.cs
+FN:12,Bogus.Faker`1<Systore.Domain.Entities.BillReceive> Systore.Tests.Common.Factories.BillReceiveFactory::GetFaker()
+FNDA:19,Bogus.Faker`1<Systore.Domain.Entities.BillReceive> Systore.Tests.Common.Factories.BillReceiveFactory::GetFaker()
+DA:13,19
+DA:14,19
+DA:15,56
+DA:16,56
+DA:17,56
+DA:18,56
+DA:19,56
+DA:20,56
+DA:21,19
+DA:22,56
+DA:23,56
+DA:24,56
+DA:26,19
+FN:28,Systore.Domain.Entities.BillReceive Systore.Tests.Common.Factories.BillReceiveFactory::CreateDefault()
+FNDA:10,Systore.Domain.Entities.BillReceive Systore.Tests.Common.Factories.BillReceiveFactory::CreateDefault()
+DA:29,10
+DA:30,10
+DA:31,10
+FN:33,System.Collections.Generic.IEnumerable`1<Systore.Domain.Entities.BillReceive> Systore.Tests.Common.Factories.BillReceiveFactory::GenerateLazy(System.Int32)
+FNDA:9,System.Collections.Generic.IEnumerable`1<Systore.Domain.Entities.BillReceive> Systore.Tests.Common.Factories.BillReceiveFactory::GenerateLazy(System.Int32)
+DA:34,9
+DA:35,9
+DA:36,9
+FN:38,Systore.Domain.Entities.BillReceive Systore.Tests.Common.Factories.BillReceiveFactory::CreateNoPaid()
+FNDA:0,Systore.Domain.Entities.BillReceive Systore.Tests.Common.Factories.BillReceiveFactory::CreateNoPaid()
+DA:39,0
+DA:40,0
+DA:41,0
+DA:42,0
+DA:43,0
+FN:45,Systore.Domain.Entities.BillReceive Systore.Tests.Common.Factories.BillReceiveFactory::CreatePaidWithNoInterest()
+FNDA:0,Systore.Domain.Entities.BillReceive Systore.Tests.Common.Factories.BillReceiveFactory::CreatePaidWithNoInterest()
+DA:46,0
+DA:47,0
+DA:48,0
+DA:49,0
+DA:50,0
+DA:51,0
+FN:53,Systore.Domain.Entities.BillReceive Systore.Tests.Common.Factories.BillReceiveFactory::CreatePaidWithInterest()
+FNDA:0,Systore.Domain.Entities.BillReceive Systore.Tests.Common.Factories.BillReceiveFactory::CreatePaidWithInterest()
+DA:54,0
+DA:55,0
+DA:56,0
+DA:57,0
+DA:58,0
+LF:35
+LH:19
+BRF:0
+BRH:0
+FNF:6
+FNH:3
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\tests\Systore.Tests.Common\Factories\ClientFactory.cs
+FN:13,Bogus.Faker`1<Systore.Domain.Entities.Client> Systore.Tests.Common.Factories.ClientFactory::GetFaker()
+FNDA:37,Bogus.Faker`1<Systore.Domain.Entities.Client> Systore.Tests.Common.Factories.ClientFactory::GetFaker()
+DA:14,37
+DA:15,37
+DA:16,37
+DA:17,74
+DA:18,74
+DA:19,74
+DA:20,74
+DA:21,74
+DA:22,74
+DA:23,74
+DA:24,74
+DA:25,74
+DA:26,74
+DA:27,74
+DA:28,74
+DA:29,74
+DA:30,74
+DA:31,74
+DA:32,74
+DA:33,74
+DA:34,74
+DA:35,74
+DA:36,37
+DA:37,74
+DA:38,74
+DA:39,74
+DA:40,74
+DA:41,74
+DA:42,37
+FN:44,Systore.Domain.Entities.Client Systore.Tests.Common.Factories.ClientFactory::CreateDefault()
+FNDA:37,Systore.Domain.Entities.Client Systore.Tests.Common.Factories.ClientFactory::CreateDefault()
+DA:45,37
+DA:46,37
+DA:47,37
+LF:32
+LH:32
+BRF:0
+BRH:0
+FNF:2
+FNH:2
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\tests\Systore.Tests.Common\Factories\CreateBillReceivesDtoFactory.cs
+FN:13,Bogus.Faker`1<Systore.Domain.Dtos.CreateBillReceivesDto> Systore.Tests.Common.Factories.CreateBillReceivesDtoFactory::GetFaker(System.Int32)
+FNDA:9,Bogus.Faker`1<Systore.Domain.Dtos.CreateBillReceivesDto> Systore.Tests.Common.Factories.CreateBillReceivesDtoFactory::GetFaker(System.Int32)
+DA:14,9
+DA:40,9
+DA:41,9
+DA:42,9
+DA:43,9
+DA:44,18
+DA:45,9
+DA:46,9
+DA:47,9
+FN:49,Systore.Domain.Dtos.CreateBillReceivesDto Systore.Tests.Common.Factories.CreateBillReceivesDtoFactory::CreateDefault(System.Int32)
+FNDA:9,Systore.Domain.Dtos.CreateBillReceivesDto Systore.Tests.Common.Factories.CreateBillReceivesDtoFactory::CreateDefault(System.Int32)
+DA:50,9
+DA:51,9
+DA:52,9
+LF:12
+LH:12
+BRF:0
+BRH:0
+FNF:2
+FNH:2
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\tests\Systore.Tests.Common\Factories\DecimalFactory.cs
+FN:10,System.Decimal Systore.Tests.Common.Factories.DecimalFactory::Positive(System.Decimal)
+FNDA:83,System.Decimal Systore.Tests.Common.Factories.DecimalFactory::Positive(System.Decimal)
+DA:11,83
+DA:12,83
+DA:13,83
+FN:15,System.Decimal Systore.Tests.Common.Factories.DecimalFactory::Negative(System.Decimal)
+FNDA:0,System.Decimal Systore.Tests.Common.Factories.DecimalFactory::Negative(System.Decimal)
+DA:16,0
+DA:17,0
+DA:18,0
+LF:6
+LH:3
+BRF:0
+BRH:0
+FNF:2
+FNH:1
+end_of_record
+SF:C:\Users\DELL\Wagner\systore_backend\tests\Systore.Tests.Common\Factories\IntFactory.cs
+FN:10,System.Int32 Systore.Tests.Common.Factories.IntFactory::Positive(System.Int32)
+FNDA:94,System.Int32 Systore.Tests.Common.Factories.IntFactory::Positive(System.Int32)
+DA:11,94
+DA:12,94
+DA:13,94
+FN:15,System.Int32 Systore.Tests.Common.Factories.IntFactory::Negative(System.Int32)
+FNDA:0,System.Int32 Systore.Tests.Common.Factories.IntFactory::Negative(System.Int32)
+DA:16,0
+DA:17,0
+DA:18,0
+LF:6
+LH:3
+BRF:0
+BRH:0
+FNF:2
+FNH:1
+end_of_record

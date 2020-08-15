@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Bogus;
 using System.Linq;
-using System.Text;
 using Systore.Domain.Dtos;
 
 namespace Systore.Tests.Common.Builders
@@ -11,14 +9,18 @@ namespace Systore.Tests.Common.Builders
         private readonly FilterPaginateDto _instance;
         public FilterPaginateDtoBuilder()
         {
-            _instance = new FilterPaginateDto()
-            {
-                Limit = 10,
-                Order = Domain.Enums.Order.Asc,
-                Skip = 0,
-                SortPropertyName = "id",
-                filters = Enumerable.Empty<FilterDto>().Append(new FilterDtoBuilder().Build())
-            };
+            _instance = GetFaker().Generate();
+        }
+
+        private Faker<FilterPaginateDto> GetFaker()
+        {
+            return new Faker<FilterPaginateDto>()
+                .RuleFor(o => o.Limit, 10)
+                .RuleFor(o => o.Order, Domain.Enums.Order.Asc)
+                .RuleFor(o => o.Skip, 0)
+                .RuleFor(o => o.SortPropertyName, "id")
+                .RuleFor(o => o.filters, new FilterDtoBuilder().BuildList(3));
+
         }
 
         public FilterPaginateDto Build() => _instance;
