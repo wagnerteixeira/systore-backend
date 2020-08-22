@@ -1,19 +1,19 @@
-using Systore.Domain.Entities;
-using Systore.Data.Abstractions;
-using Systore.Infra.Context;
-using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
+using Systore.Data.Abstractions;
+using Systore.Domain.Entities;
+using Systore.Infra.Context;
 
 namespace Systore.Data.Repositories
 {
     public class ClientRepository : BaseRepository<Client>, IClientRepository
     {
-        
+
         public ClientRepository(SystoreContext context, IHeaderAuditRepository headerAuditRepository) : base(context, headerAuditRepository)
         {
-            
+
         }
 
         private async Task<string> Validate(Client entity, bool edit)

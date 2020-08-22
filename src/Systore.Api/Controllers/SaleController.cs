@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Systore.Domain.Entities;
-using Systore.Domain.Abstractions;
-using System;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.Authorization;
-using System.Threading.Tasks;
-using Systore.Domain.Dtos;
+using System;
 using System.Linq;
+using System.Threading.Tasks;
+using Systore.Domain.Abstractions;
+using Systore.Domain.Dtos;
+using Systore.Domain.Entities;
 
 namespace Systore.Api.Controllers
 {
@@ -16,13 +16,13 @@ namespace Systore.Api.Controllers
         public SaleController(ISaleService Service, ILogger<SaleController> logger)
             : base(Service, logger)
         {
-            
+
         }
 
         [Authorize]
         [HttpGet("GetSaleFullById/{id:int}")]
         public async Task<IActionResult> GetSaleFullById(int id)
-        {            
+        {
             try
             {
                 return Ok(await (_service as ISaleService).GetSaleFullById(id));
@@ -36,7 +36,7 @@ namespace Systore.Api.Controllers
         [Authorize]
         [HttpPost("post-dto")]
         // POST: api/Entity
-        public async Task<IActionResult> Post([FromBody]SaleDto entity)
+        public async Task<IActionResult> Post([FromBody] SaleDto entity)
         {
             try
             {
@@ -74,10 +74,10 @@ namespace Systore.Api.Controllers
         [Authorize]
         [HttpPut("put-dto")]
         // PUT: api/Entity
-        public async virtual Task<IActionResult> Put([FromBody]SaleDto entity)
+        public async virtual Task<IActionResult> Put([FromBody] SaleDto entity)
         {
             try
-            {                
+            {
                 string ret = await (_service as ISaleService).UpdateAsync(entity);
                 if (string.IsNullOrWhiteSpace(ret))
                     return Ok(entity);

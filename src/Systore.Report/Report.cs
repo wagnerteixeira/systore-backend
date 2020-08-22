@@ -1,10 +1,10 @@
-﻿using System;
+﻿using FastReport.Export.PdfSimple;
+using Microsoft.Extensions.Configuration;
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using Systore.Domain.Abstractions;
-using FastReport.Export.PdfSimple;
-using System.IO;
-using System.Collections.Generic;
-using Microsoft.Extensions.Configuration;
 
 namespace Systore.Report
 {
@@ -27,12 +27,13 @@ namespace Systore.Report
         {
             FastReport.Report report = new FastReport.Report();
             report.Load(Path.Combine("Reports", reportFile));
-            if (string.IsNullOrWhiteSpace(_configuration.GetConnectionString("Systore"))){
+            if (string.IsNullOrWhiteSpace(_configuration.GetConnectionString("Systore")))
+            {
                 throw new NotSupportedException("Connectionstring não informada");
             }
-            
+
             report.Dictionary.Connections[0].ConnectionString = _configuration.GetConnectionString("Systore");
-            
+
             foreach (var parameter in parameters)
             {
                 report.SetParameterValue(parameter.Key, parameter.Value);

@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Linq.Expressions;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
 using Systore.Domain.Dtos;
 
 namespace Systore.Data.Abstractions
@@ -20,9 +20,9 @@ namespace Systore.Data.Abstractions
         Task<int> CountWhereAsync(Expression<Func<TEntity, bool>> predicate);
         Task<int> CountWhereAsync(IEnumerable<FilterDto> filters);
         Task<string> UpdateAsync(TEntity entity);
-        Task<string> RemoveAsync(int id);                
+        Task<string> RemoveAsync(int id);
         bool BeginTransaction();
         bool Commit();
-        void Rollback();        
+        void Rollback();
     }
 }

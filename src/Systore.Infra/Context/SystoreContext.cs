@@ -1,8 +1,8 @@
-using Systore.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using Systore.Domain;
-using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
+using Systore.Domain;
+using Systore.Domain.Entities;
 using Systore.Infra.Mapping;
 
 namespace Systore.Infra.Context
@@ -18,7 +18,7 @@ namespace Systore.Infra.Context
             IConfiguration configuration)
             : base(options)
         {
-            _appSettings = settings.Value;      
+            _appSettings = settings.Value;
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

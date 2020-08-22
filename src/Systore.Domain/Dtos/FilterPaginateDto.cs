@@ -3,7 +3,7 @@ using Systore.Domain.Enums;
 
 namespace Systore.Domain.Dtos
 {
-    public class FilterPaginateDto 
+    public class FilterPaginateDto
     {
         public IEnumerable<FilterDto> filters { get; set; }
         public string SortPropertyName { get; set; }

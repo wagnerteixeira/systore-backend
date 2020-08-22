@@ -10,7 +10,7 @@ namespace FastReport.Export.PdfSimple.PdfCore
         #region Private Fields
 
         private PdfObjectBase contentForWriting;
-        private long number;
+        private readonly long number;
         private long offset;
 
         #endregion Private Fields

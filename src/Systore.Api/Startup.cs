@@ -1,25 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Systore.Infra.Context;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using Systore.Domain;
-using Microsoft.OpenApi.Models;
-using Microsoft.AspNetCore.Mvc.Authorization;
-using Microsoft.AspNetCore.Http;
-using Systore.Api.Extensions;
-using Systore.Report;
-using System.Globalization;
-using Newtonsoft.Json;
-using Microsoft.AspNetCore.Localization;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Text;
+using Systore.Api.Extensions;
+using Systore.Domain;
+using Systore.Infra.Context;
+using Systore.Report;
 
 
 namespace Systore.Api
@@ -105,7 +105,7 @@ namespace Systore.Api
 
 
 
-            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);           
+            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
 
             services.AddAuthentication(x =>
             {
@@ -155,7 +155,7 @@ namespace Systore.Api
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {            
+        {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

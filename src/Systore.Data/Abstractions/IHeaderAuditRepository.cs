@@ -6,7 +6,7 @@ using Systore.Domain.Entities;
 
 namespace Systore.Data.Abstractions
 {
-    public interface IHeaderAuditRepository 
+    public interface IHeaderAuditRepository
     {
         Task<string> AddAsync(HeaderAudit entity);
         Task<List<AuditDto>> GetAuditsByDateAsync(DateTime initialDate, DateTime finalDate);

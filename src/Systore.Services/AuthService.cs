@@ -1,15 +1,15 @@
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using System;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using Systore.Domain.Abstractions;
 using Systore.Data.Abstractions;
-using Systore.Dtos;
-using System.IdentityModel.Tokens.Jwt;
-using Microsoft.IdentityModel.Tokens;
-using System.Security.Claims;
-using Microsoft.Extensions.Options;
 using Systore.Domain;
+using Systore.Domain.Abstractions;
+using Systore.Dtos;
 
 namespace Systore.Services
 {
@@ -26,7 +26,7 @@ namespace Systore.Services
 
         public LoginResponseDto ValidateToken(string token)
         {
-            var handler = new JwtSecurityTokenHandler();            
+            var handler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
             var validations = new TokenValidationParameters
             {
@@ -58,10 +58,10 @@ namespace Systore.Services
         }
 
         public async Task<LoginResponseDto> Login(LoginRequestDto loginRequestDto)
-        {            
+        {
             var user = await _userRepository.GetUserByUsernameAndPassword(loginRequestDto.UserName, loginRequestDto.Password);
             if (user != null)
-            {                
+            {
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
                 var claims = new Claim[]{

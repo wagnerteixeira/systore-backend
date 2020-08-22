@@ -1,5 +1,4 @@
-﻿using Bogus;
-using AutoBogus;
+﻿using AutoBogus;
 
 namespace Systore.Tests.Common.Builders
 {

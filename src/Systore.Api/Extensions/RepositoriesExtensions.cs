@@ -4,7 +4,7 @@ using Systore.Data.Repositories;
 
 namespace Systore.Api.Extensions
 {
-   
+
     public static class RepositoriesExtensions
     {
         public static IServiceCollection UseRepositories(this IServiceCollection services)

@@ -1,9 +1,9 @@
 ﻿using FastReport.Data;
-using Microsoft.AspNetCore.Builder;
 using FastReport.Utils;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Systore.Domain.Abstractions;
-using Microsoft.Extensions.Configuration;
 
 namespace Systore.Report
 {

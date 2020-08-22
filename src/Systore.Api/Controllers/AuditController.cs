@@ -21,7 +21,7 @@ namespace Systore.Api.Controllers
         [Authorize]
         [HttpGet("")]
         // GET: api/Entity
-        public virtual async Task<IActionResult> GetAllAsync([FromQuery]DateTime initialDate, [FromQuery]DateTime finalDate)
+        public virtual async Task<IActionResult> GetAllAsync([FromQuery] DateTime initialDate, [FromQuery] DateTime finalDate)
         {
             try
             {
@@ -33,7 +33,7 @@ namespace Systore.Api.Controllers
             }
         }
 
-         protected IActionResult SendBadRequest(Exception e)
+        protected IActionResult SendBadRequest(Exception e)
         {
             _logger.LogError(e, "Exception error: ");
             string error = e.Message;

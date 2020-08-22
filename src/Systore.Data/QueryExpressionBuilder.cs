@@ -39,7 +39,7 @@ namespace Systore.Data
         private static Expression GetExpression(ParameterExpression param, FilterDto filter)
         {
             MemberExpression member = Expression.Property(param, filter.PropertyName);
-            var type = member.Type;                       
+            var type = member.Type;
             UnaryExpression constant;
 
             switch (type.Name)
@@ -71,7 +71,7 @@ namespace Systore.Data
                 default:
                     constant = Expression.Convert(Expression.Constant(filter.Value), type);
                     break;
-            }            
+            }
 
             switch (filter.Operation)
             {
@@ -106,7 +106,7 @@ namespace Systore.Data
         public static Expression GetOrderByExpression<TEntity>(string sortPropertyName)
         {
             var param = Expression.Parameter(typeof(TEntity), "t");
-            MemberExpression member = Expression.Property(param, sortPropertyName);            
+            MemberExpression member = Expression.Property(param, sortPropertyName);
             Expression expression;
             switch (member.Type.Name)
             {
@@ -137,7 +137,7 @@ namespace Systore.Data
                 default:
                     expression = Expression.Lambda<Func<TEntity, object>>(member, param);
                     break;
-            }            
+            }
 
             return expression;
 

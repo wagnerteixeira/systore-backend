@@ -1,15 +1,15 @@
-using System;
-using Microsoft.AspNetCore.Mvc;
-using Systore.Domain.Abstractions;
-using Systore.Dtos;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using RestSharp;
 using Newtonsoft.Json;
+using RestSharp;
+using System;
+using System.Threading.Tasks;
 using Systore.Api.Exceptions;
 using Systore.Domain;
+using Systore.Domain.Abstractions;
+using Systore.Dtos;
 
 namespace Systore.Api.Controllers
 {
@@ -36,7 +36,7 @@ namespace Systore.Api.Controllers
                 var validationRelease = await VerifyRelease();
 
                 if (!validationRelease.Release)
-                {                      
+                {
                     return StatusCode(402, new LoginResponseDto()
                     {
                         Valid = false,

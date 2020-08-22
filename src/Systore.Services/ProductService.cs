@@ -1,13 +1,13 @@
-﻿using Systore.Domain.Abstractions;
-using Systore.Domain.Entities;
-using Systore.Data.Abstractions;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using Systore.Domain.Dtos;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using Systore.Data.Abstractions;
+using Systore.Domain.Abstractions;
+using Systore.Domain.Dtos;
+using Systore.Domain.Entities;
 
 namespace Systore.Services
 {

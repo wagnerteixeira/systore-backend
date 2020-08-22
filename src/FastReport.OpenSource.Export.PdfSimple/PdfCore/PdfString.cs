@@ -166,7 +166,7 @@ namespace FastReport.Export.PdfSimple.PdfCore
             char[] chars = StringToPdfUnicode(text);
             foreach (char c in chars)
             {
-                if (c < 127 )
+                if (c < 127)
                 {
                     switch (c)
                     {

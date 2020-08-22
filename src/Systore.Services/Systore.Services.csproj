@@ -1,5 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
+    <AdditionalFiles Include="..\..\.sonarlint\wagnerteixeira_systore-backend\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Systore.Data\Systore.Data.csproj" />
     <ProjectReference Include="..\Systore.Domain\Systore.Domain.csproj" />
     <ProjectReference Include="..\Systore.Dtos\Systore.Dtos.csproj" />
@@ -10,5 +13,6 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <ProjectGuid>EEF799DD-AE75-4108-AD71-1F4B2001A4A1</ProjectGuid>
+    <CodeAnalysisRuleSet>..\..\.sonarlint\wagnerteixeira_systore-backendcsharp.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 </Project>

@@ -9,7 +9,7 @@ namespace FastReport.Export.PdfSimple.PdfObjects
     {
         #region Private Fields
 
-        private PdfArray kids;
+        private readonly PdfArray kids;
 
         #endregion Private Fields
 

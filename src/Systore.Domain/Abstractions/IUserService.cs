@@ -4,6 +4,6 @@ namespace Systore.Domain.Abstractions
 {
     public interface IUserService : IBaseService<User>
     {
-     
+
     }
 }

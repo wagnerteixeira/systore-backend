@@ -1,11 +1,11 @@
 using System;
-using Systore.Domain.Abstractions;
-using Systore.Domain.Entities;
-using Systore.Data.Abstractions;
-using System.Threading.Tasks;
 using System.Collections.Generic;
-using Systore.Domain.Dtos;
 using System.Linq;
+using System.Threading.Tasks;
+using Systore.Data.Abstractions;
+using Systore.Domain.Abstractions;
+using Systore.Domain.Dtos;
+using Systore.Domain.Entities;
 
 namespace Systore.Services
 {
@@ -25,7 +25,7 @@ namespace Systore.Services
                 _calculateValuesClothingStoreService.CalculateValues(c);
                 c.NumberOfQuotas = billReceives.Where(b => b.Code == c.Code).Count();
                 return c;
-            }).ToList();            
+            }).ToList();
         }
 
         public Task<List<BillReceive>> GetPaidBillReceivesByClient(int ClientId) =>
@@ -65,7 +65,7 @@ namespace Systore.Services
                 if (!string.IsNullOrWhiteSpace(ret))
                     throw new NotSupportedException(ret);
             }
-        }  
+        }
 
         public async Task<List<BillReceive>> CreateBillReceives(CreateBillReceivesDto createBillReceivesDto)
         {

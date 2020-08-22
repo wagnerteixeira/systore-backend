@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Systore.Domain.Abstractions;
 using Systore.Domain.Dtos;
 
@@ -35,7 +35,7 @@ namespace Systore.Api.Controllers
         }
 
         [Authorize]
-        [HttpGet("")]        
+        [HttpGet("")]
         // GET: api/Entity
         public virtual async Task<IActionResult> GetAllAsync()
         {
@@ -65,9 +65,9 @@ namespace Systore.Api.Controllers
         }
 
         [Authorize]
-        [HttpPost("")]        
+        [HttpPost("")]
         // POST: api/Entity
-        public virtual async Task<IActionResult> Post([FromBody]TEntity entity)
+        public virtual async Task<IActionResult> Post([FromBody] TEntity entity)
         {
             try
             {
@@ -85,9 +85,9 @@ namespace Systore.Api.Controllers
         }
 
         [Authorize]
-        [HttpPut("")]        
+        [HttpPut("")]
         // PUT: api/Entity
-        public async virtual Task<IActionResult> Put([FromBody]TEntity entity)
+        public async virtual Task<IActionResult> Put([FromBody] TEntity entity)
         {
             try
             {
@@ -104,9 +104,9 @@ namespace Systore.Api.Controllers
         }
 
         [Authorize]
-        [HttpDelete("{id:int}")]        
+        [HttpDelete("{id:int}")]
         // DELETE: api/Entity
-        public async virtual Task<IActionResult> Delete([FromRoute]int id)
+        public async virtual Task<IActionResult> Delete([FromRoute] int id)
         {
             try
             {
@@ -124,7 +124,7 @@ namespace Systore.Api.Controllers
 
         [Authorize]
         [HttpPost("count")]
-        public async virtual Task<IActionResult> Count([FromBody]IEnumerable<FilterDto> filterDto)
+        public async virtual Task<IActionResult> Count([FromBody] IEnumerable<FilterDto> filterDto)
         {
             try
             {
@@ -141,7 +141,7 @@ namespace Systore.Api.Controllers
 
         [Authorize]
         [HttpPost("getpaginate")]
-        public async virtual Task<IActionResult> GetPaginate([FromBody]FilterPaginateDto filterPaginateDto)
+        public async virtual Task<IActionResult> GetPaginate([FromBody] FilterPaginateDto filterPaginateDto)
         {
             try
             {

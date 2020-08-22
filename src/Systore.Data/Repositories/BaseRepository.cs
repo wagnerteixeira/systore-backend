@@ -1,17 +1,17 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.Win32.SafeHandles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using Systore.Data.Abstractions;
-using Systore.Domain.Enums;
+using Systore.Domain.Abstractions;
 using Systore.Domain.Dtos;
 using Systore.Domain.Entities;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Systore.Domain.Abstractions;
-using System.Runtime.InteropServices;
-using Microsoft.Win32.SafeHandles;
+using Systore.Domain.Enums;
 
 namespace Systore.Data.Repositories
 {
@@ -28,7 +28,7 @@ namespace Systore.Data.Repositories
         private readonly SafeHandle handle = new SafeFileHandle(IntPtr.Zero, true);
 
         protected BaseRepository(
-            DbContext context, 
+            DbContext context,
             IHeaderAuditRepository headerAuditRepository)
         {
             _context = context;

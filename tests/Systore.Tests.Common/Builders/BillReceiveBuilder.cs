@@ -1,7 +1,6 @@
 ﻿using Bogus;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using Systore.Domain.Entities;
 using Systore.Domain.Enums;
 
@@ -13,7 +12,7 @@ namespace Systore.Tests.Common.Factories
 
         public BillReceiveBuilder()
         {
-            _instance = GetFaker().Generate(); 
+            _instance = GetFaker().Generate();
         }
         private Faker<BillReceive> GetFaker()
         {
@@ -29,13 +28,13 @@ namespace Systore.Tests.Common.Factories
                 .RuleFor(c => c.Vendor, f => f.Person.FirstName)
                 .RuleFor(c => c.DueDate, f => f.Date.Soon(f.Random.Int(15, 60)));
 
-        }     
-        
+        }
+
         public BillReceive Build() => _instance;
-        
+
 
         public List<BillReceive> BuildList(int count) => GetFaker().GenerateLazy(count).ToList();
-        
+
 
 
         public BillReceiveBuilder WithBillReceiveSituation(BillReceiveSituation billReceiveSituation)
@@ -48,6 +47,6 @@ namespace Systore.Tests.Common.Factories
         {
             _instance.Interest = interest;
             return this;
-        }       
+        }
     }
 }

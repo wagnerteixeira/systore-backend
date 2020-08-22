@@ -2,5 +2,9 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <ProjectGuid>C6270199-8F63-4857-87BC-ECAD243D373D</ProjectGuid>
+    <CodeAnalysisRuleSet>..\..\.sonarlint\wagnerteixeira_systore-backendcsharp.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\.sonarlint\wagnerteixeira_systore-backend\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+  </ItemGroup>
 </Project>

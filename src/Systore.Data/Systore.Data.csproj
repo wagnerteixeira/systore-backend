@@ -1,11 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
+    <AdditionalFiles Include="..\..\.sonarlint\wagnerteixeira_systore-backend\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Systore.Domain\Systore.Domain.csproj" />
     <ProjectReference Include="..\Systore.Infra\Systore.Infra.csproj" />
   </ItemGroup>
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <ProjectGuid>1A873DCB-38CB-45ED-8947-C828D818E9BC</ProjectGuid>
+    <CodeAnalysisRuleSet>..\..\.sonarlint\wagnerteixeira_systore-backendcsharp.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />

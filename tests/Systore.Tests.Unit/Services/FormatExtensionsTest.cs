@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 using Systore.Services;
 using Xunit;
 
@@ -157,7 +155,7 @@ namespace Systore.Tests.Unit.Services
 
             // Act
             var exception = Record.Exception(() => ret = test.StringFormat(2));
-            
+
             // Assert
             Assert.NotNull(exception);
             Assert.Equal("Valor maior que o permitido", exception.Message);
@@ -248,7 +246,7 @@ namespace Systore.Tests.Unit.Services
             Assert.IsType<NotSupportedException>(exception);
         }
 
-        [Fact]        
+        [Fact]
         public void Should_Except_Format_Nullable_Decimal_With_N_Digits()
         {
             // Arragne            
@@ -509,7 +507,7 @@ namespace Systore.Tests.Unit.Services
 
         [Theory]
         [InlineData("true", true)]
-        [InlineData("false", false)]        
+        [InlineData("false", false)]
         public void Should_Convert_String_ToBoolean(string test, bool expected)
         {
             // Arragne            
@@ -590,11 +588,11 @@ namespace Systore.Tests.Unit.Services
         public static IEnumerable<object[]> StringTruncateData =
             new TheoryData<string, string, int>
             {
-                { null, null, 10 } ,                
+                { null, null, 10 } ,
                 { "1234567890", "12345", 5 },
                 { "1234567890", "1234567890", 10 },
                 { "1234567890", "123456", 6 },
-                { "1234567890", "12", 2 },                
+                { "1234567890", "12", 2 },
             };
 
 

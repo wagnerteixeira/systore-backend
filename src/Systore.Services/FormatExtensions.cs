@@ -57,7 +57,7 @@ namespace Systore.Services
 
         public static string StringFormat(this decimal value, int digits)
         {
-            string ret = ((long) Math.Round((Math.Round(value, 2) * 100), 0)).ToString($"D{digits}");
+            string ret = ((long)Math.Round((Math.Round(value, 2) * 100), 0)).ToString($"D{digits}");
             if (ret.Length > digits)
                 throw new NotSupportedException("Valor incorreto");
             return ret;
@@ -67,7 +67,7 @@ namespace Systore.Services
         {
             if (value.HasValue)
             {
-                string ret = ((long) Math.Round((Math.Round(value.Value, 2) * 100), 0)).ToString($"D{digits}");
+                string ret = ((long)Math.Round((Math.Round(value.Value, 2) * 100), 0)).ToString($"D{digits}");
                 if (ret.Length > digits)
                     throw new NotSupportedException("Valor incorreto");
                 return ret;

@@ -1,8 +1,8 @@
-﻿using Systore.Domain.Abstractions;
-using Systore.Domain.Entities;
+﻿using System.Threading.Tasks;
 using Systore.Data.Abstractions;
-using System.Threading.Tasks;
+using Systore.Domain.Abstractions;
 using Systore.Domain.Dtos;
+using Systore.Domain.Entities;
 using Systore.Domain.Enums;
 
 namespace Systore.Services
@@ -32,9 +32,9 @@ namespace Systore.Services
             };
 
             retorno = await _repository.UpdateAsync(sale);
-            
+
             if (retorno == "")
-            {             
+            {
                 foreach (ItemSaleDto item in entity.ItemSale)
                 {
                     if (item.Action == ActionItem.Insert)

@@ -2,7 +2,6 @@
 using Bogus.Extensions.Brazil;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using Systore.Domain.Entities;
 using Systore.Domain.Enums;
 
@@ -20,7 +19,7 @@ namespace Systore.Tests.Common.Factories
         private Faker<Client> GetFaker()
         {
             return new Faker<Client>("pt_BR")
-                .RuleFor(c=> c.Id, IntBuilder.Positive())
+                .RuleFor(c => c.Id, IntBuilder.Positive())
                 .RuleFor(c => c.Address, f => f.Address.StreetAddress())
                 .RuleFor(c => c.AddressNumber, f => f.Address.BuildingNumber())
                 .RuleFor(c => c.AdmissionDate, f => f.Date.Past(3))
@@ -48,6 +47,6 @@ namespace Systore.Tests.Common.Factories
                 .RuleFor(c => c.State, f => f.Address.State());
         }
 
-        public Client Build() => _instance;        
+        public Client Build() => _instance;
     }
 }

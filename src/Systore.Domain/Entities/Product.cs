@@ -3,9 +3,9 @@ using Systore.Domain.Enums;
 
 namespace Systore.Domain.Entities
 {
-   public class Product
+    public class Product
     {
-        public int Id { get; set; }            
+        public int Id { get; set; }
 
         public SaleType SaleType { get; set; }
 
@@ -22,7 +22,7 @@ namespace Systore.Domain.Entities
         public bool PrintDateOfPackaging { get; set; }
 
         public bool ExportToBalance { get; set; }
-        
+
         public ICollection<ItemSale> ItemSale { get; set; }
 
     }

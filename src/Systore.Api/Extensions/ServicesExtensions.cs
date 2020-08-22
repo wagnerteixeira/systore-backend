@@ -1,8 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using AutoMapper;
+using Microsoft.Extensions.DependencyInjection;
+using Systore.Api.AutoMapperProfiles;
 using Systore.Domain.Abstractions;
 using Systore.Services;
-using AutoMapper;
-using Systore.Api.AutoMapperProfiles;
 
 namespace Systore.Api.Extensions
 {
@@ -22,8 +22,8 @@ namespace Systore.Api.Extensions
             return services;
         }
 
-        public static IServiceCollection UseAutoMapper(this  IServiceCollection services)
-        {            
+        public static IServiceCollection UseAutoMapper(this IServiceCollection services)
+        {
             services.AddAutoMapper(typeof(Startup), typeof(SystoreApiProfile));
             return services;
         }

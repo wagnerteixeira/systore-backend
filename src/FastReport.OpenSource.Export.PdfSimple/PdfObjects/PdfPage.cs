@@ -10,7 +10,7 @@ namespace FastReport.Export.PdfSimple.PdfObjects
     {
         #region Private Fields
 
-        private PdfDictionary xObject;
+        private readonly PdfDictionary xObject;
 
         #endregion Private Fields
 

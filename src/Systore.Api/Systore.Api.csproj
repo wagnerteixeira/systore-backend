@@ -2,8 +2,12 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
-    <ProjectGuid>D89844A0-DEA7-471C-96A5-2C4EFE5AE3AA</ProjectGuid>    
+    <ProjectGuid>D89844A0-DEA7-471C-96A5-2C4EFE5AE3AA</ProjectGuid>
+    <CodeAnalysisRuleSet>..\..\.sonarlint\wagnerteixeira_systore-backendcsharp.ruleset</CodeAnalysisRuleSet>    
   </PropertyGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\.sonarlint\wagnerteixeira_systore-backend\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />

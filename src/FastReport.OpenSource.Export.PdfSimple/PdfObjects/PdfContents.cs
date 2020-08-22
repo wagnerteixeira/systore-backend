@@ -12,7 +12,7 @@ namespace FastReport.Export.PdfSimple.PdfObjects
         #region Private Fields
 
         private int realPrecision = 2;
-        private StringBuilder sb = new StringBuilder();
+        private readonly StringBuilder sb = new StringBuilder();
 
         #endregion Private Fields
 

@@ -1,6 +1,6 @@
-using Systore.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
+using Systore.Domain.Entities;
 
 namespace Systore.Infra.Mapping
 {
@@ -21,8 +21,8 @@ namespace Systore.Infra.Mapping
             builder.Property(p => p.SaleDate)
                 .HasColumnType("DATE")
                 .HasConversion(
-                    c => TimeZoneInfo.ConvertTimeFromUtc(c, TimeZoneInfo.FindSystemTimeZoneById(TimeZoneHelper.TimeZoneId)) ,
-                    c => TimeZoneInfo.ConvertTimeToUtc(c, TimeZoneInfo.FindSystemTimeZoneById(TimeZoneHelper.TimeZoneId)) 
+                    c => TimeZoneInfo.ConvertTimeFromUtc(c, TimeZoneInfo.FindSystemTimeZoneById(TimeZoneHelper.TimeZoneId)),
+                    c => TimeZoneInfo.ConvertTimeToUtc(c, TimeZoneInfo.FindSystemTimeZoneById(TimeZoneHelper.TimeZoneId))
                     );
 
 
@@ -34,7 +34,7 @@ namespace Systore.Infra.Mapping
               .WithMany(g => g.Sales)
               .HasForeignKey(s => s.ClientId)
               .OnDelete(DeleteBehavior.Restrict);
-           
+
 
         }
     }

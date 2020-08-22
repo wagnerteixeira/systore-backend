@@ -2,7 +2,11 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <ProjectGuid>030FBA95-54E1-4D41-BBB8-B19833290347</ProjectGuid>
+    <CodeAnalysisRuleSet>..\..\.sonarlint\wagnerteixeira_systore-backendcsharp.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\.sonarlint\wagnerteixeira_systore-backend\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.1" />

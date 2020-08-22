@@ -9,20 +9,20 @@ namespace Systore.Infra.Context
     public class AuditContext : DbContext
     {
         private AppSettings _appSettings { get; set; }
-        
+
         public AuditContext(
-            DbContextOptions<AuditContext> options, 
-            IOptions<AppSettings> settings, 
+            DbContextOptions<AuditContext> options,
+            IOptions<AppSettings> settings,
             IConfiguration configuration)
             : base(options)
         {
-            _appSettings = settings.Value;            
-        }       
+            _appSettings = settings.Value;
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new HeaderAuditMapping());
             modelBuilder.ApplyConfiguration(new ItemAuditMapping());
-        }        
+        }
     }
 }

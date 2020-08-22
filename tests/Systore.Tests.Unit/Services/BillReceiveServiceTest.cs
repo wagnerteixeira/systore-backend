@@ -1,18 +1,15 @@
-using System;
-using System.Threading.Tasks;
-using AutoBogus;
 using AutoMapper;
-using FluentAssertions;
 using Moq;
-using Xunit;
-using Systore.Domain.Abstractions;
-using Systore.Domain.Dtos;
-using Systore.Services;
-using Systore.Data.Abstractions;
-using Systore.Domain.Entities;
-using Systore.Tests.Common.Factories;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+using Systore.Data.Abstractions;
+using Systore.Domain.Abstractions;
+using Systore.Domain.Entities;
+using Systore.Services;
+using Systore.Tests.Common.Factories;
+using Xunit;
 
 namespace Systore.Tests.Unit.Services
 {
@@ -75,7 +72,7 @@ namespace Systore.Tests.Unit.Services
             _billReceiveRepositoryMock.Verify(v => v.NextCode(), Times.Exactly(1));
             _billReceiveRepositoryMock.Verify(v => v.AddAsync(It.IsAny<BillReceive>()), Times.Exactly(3));
         }
-        
+
         [Fact]
         public async Task Should_Throw_When_Valid_Bill_Receive_And_Exception_By_Repository()
         {
@@ -241,8 +238,8 @@ namespace Systore.Tests.Unit.Services
             _billReceiveRepositoryMock.Verify(v => v.NextCode(), Times.Exactly(0));
             _billReceiveRepositoryMock.Verify(v => v.AddAsync(It.IsAny<BillReceive>()), Times.Exactly(0));
         }
-        
-         [Fact]
+
+        [Fact]
         public async Task Should_Throw_Exception_By_DueDate_Less_Than_PurchaseDate_And_Sum_Of_OriginalValue_Different_Of_Total_OrignalValue()
         {
             // Arrange
@@ -360,7 +357,7 @@ namespace Systore.Tests.Unit.Services
             // Arrange
             _billReceiveRepositoryMock.Setup(x => x.RemoveBillReceivesByCode(It.IsAny<int>()))
                 .Returns(Task.CompletedTask);
-                
+
             // Act
             var exception = await Record.ExceptionAsync(async () => await _billReceiveService.RemoveBillReceivesByCode(1));
             // Assert

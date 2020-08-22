@@ -1,5 +1,4 @@
 ﻿using Bogus;
-using System.Linq;
 using Systore.Domain.Dtos;
 
 namespace Systore.Tests.Common.Builders

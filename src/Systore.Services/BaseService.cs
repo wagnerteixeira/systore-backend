@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Systore.Data.Abstractions;
 using Systore.Domain.Abstractions;
 using Systore.Domain.Dtos;
-using Systore.Data.Abstractions;
-using System.Linq.Expressions;
 
 
 namespace Systore.Services

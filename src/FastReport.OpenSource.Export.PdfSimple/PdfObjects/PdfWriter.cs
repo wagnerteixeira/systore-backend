@@ -19,10 +19,10 @@ namespace FastReport.Export.PdfSimple.PdfObjects
         #region Private Fields
 
         // mm to point
-        private Stream baseStream;
-        private List<PdfDirectObject> objects = new List<PdfDirectObject>();
-        private string pdfVersion = "%PDF-1.5";
-        private PdfDictionary trailer;
+        private readonly Stream baseStream;
+        private readonly List<PdfDirectObject> objects = new List<PdfDirectObject>();
+        private readonly string pdfVersion = "%PDF-1.5";
+        private readonly PdfDictionary trailer;
         private long xNumber = 1;
 
         #endregion Private Fields

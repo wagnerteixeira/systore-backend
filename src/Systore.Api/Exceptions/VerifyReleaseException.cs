@@ -23,7 +23,7 @@ namespace Systore.Api.Exceptions
         protected VerifyReleaseException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
-            
+
         }
     }
 }

@@ -1,8 +1,8 @@
-using Systore.Domain.Entities;
-using Systore.Data.Abstractions;
-using System.Threading.Tasks;
-using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Threading.Tasks;
+using Systore.Data.Abstractions;
+using Systore.Domain.Entities;
 using Systore.Infra.Context;
 
 namespace Systore.Data.Repositories

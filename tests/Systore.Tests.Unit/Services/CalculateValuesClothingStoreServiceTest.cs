@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xunit;
+using Systore.Domain.Abstractions;
+using Systore.Domain.Enums;
 using Systore.Services;
 using Systore.Tests.Common.Factories;
-using Systore.Domain.Enums;
-using Systore.Domain.Abstractions;
+using Xunit;
 
 namespace Systore.Tests.Unit.Services
 {
@@ -15,14 +13,14 @@ namespace Systore.Tests.Unit.Services
         public CalculateValuesClothingStoreServiceTest()
         {
             _calculateValuesClothingStoreService = new CalculateValuesClothingStoreService();
-        }       
+        }
 
         [Theory]
         [MemberData(nameof(Data))]
         public void Should_Calculate_Values(
             BillReceiveSituation billReceiveSituation,
-            decimal originalValue, 
-            int daysAgo, 
+            decimal originalValue,
+            int daysAgo,
             decimal interest,
             decimal finalValue,
             int expectedDaysDelay,
@@ -35,7 +33,7 @@ namespace Systore.Tests.Unit.Services
             billReceive.OriginalValue = originalValue;
             billReceive.DaysDelay = daysAgo;
             billReceive.FinalValue = finalValue;
-            billReceive.Interest = interest;            
+            billReceive.Interest = interest;
             billReceive.DueDate = DateTime.UtcNow.Date.AddDays(daysAgo * -1);
             // Act
             _calculateValuesClothingStoreService.CalculateValues(billReceive);
@@ -60,10 +58,10 @@ namespace Systore.Tests.Unit.Services
                     { BillReceiveSituation.Closed, 459.58M, 0, 0.0M, 459.58M, 0, 0.0M, 459.58M }, //should calculate paid 15 days, with interest, with diferente value
                                        
                 };
-      
+
         public void Dispose()
         {
-         
+
         }
     }
 }

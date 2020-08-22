@@ -87,7 +87,7 @@ namespace FastReport.Export.PdfSimple
                 {
                     pageBitmap = new Bitmap(width, height);
                     pageGraphics = Graphics.FromImage(pageBitmap);
-                    pageGraphics.TranslateTransform(this.scaleFactor * page.LeftMargin * Units.Millimeters, this.scaleFactor *  page.TopMargin * Units.Millimeters, System.Drawing.Drawing2D.MatrixOrder.Append);
+                    pageGraphics.TranslateTransform(this.scaleFactor * page.LeftMargin * Units.Millimeters, this.scaleFactor * page.TopMargin * Units.Millimeters, System.Drawing.Drawing2D.MatrixOrder.Append);
                     //pageGraphics.ScaleTransform(scale, scale, System.Drawing.Drawing2D.MatrixOrder.Append);
                 }
             }
@@ -190,7 +190,7 @@ namespace FastReport.Export.PdfSimple
             {
                 if (string.IsNullOrEmpty(page.Watermark.Text))
                     return;
-                
+
                 page.Watermark.DrawText(new FRPaintEventArgs(pageGraphics, scaleFactor, scaleFactor, Report.GraphicCache),
                     new RectangleF(-page.LeftMargin * Units.Millimeters, -page.TopMargin * Units.Millimeters, ExportUtils.GetPageWidth(page) * Units.Millimeters, ExportUtils.GetPageHeight(page) * Units.Millimeters),
                     page.Report, false);

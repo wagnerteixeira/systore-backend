@@ -1,17 +1,17 @@
-using Systore.Domain.Entities;
-using Systore.Data.Abstractions;
-using System.Threading.Tasks;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
-using Systore.Infra.Context;
-using System;
-using Microsoft.Extensions.Options;
-using Systore.Domain;
-using System.Security.Claims;
-using Systore.Domain.Dtos;
-using System.Collections.Generic;
-using Systore.Domain.Enums;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using Systore.Data.Abstractions;
+using Systore.Domain;
+using Systore.Domain.Dtos;
+using Systore.Domain.Entities;
+using Systore.Domain.Enums;
+using Systore.Infra.Context;
 
 namespace Systore.Data.Repositories
 {
@@ -21,11 +21,11 @@ namespace Systore.Data.Repositories
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly DbSet<HeaderAudit> _entities;
         public HeaderAuditRepository(
-            IOptions<AppSettings> options, 
-            IHttpContextAccessor httpContextAccessor, 
+            IOptions<AppSettings> options,
+            IHttpContextAccessor httpContextAccessor,
             AuditContext context)
         {
-            _context = context;            
+            _context = context;
             _httpContextAccessor = httpContextAccessor;
             _entities = _context.Set<HeaderAudit>();
         }
@@ -45,7 +45,7 @@ namespace Systore.Data.Repositories
         {
             switch (auditOperation)
             {
-                case AuditOperation.Add :
+                case AuditOperation.Add:
                     return "Cria��o";
                 case AuditOperation.Remove:
                     return "Exclus�o";
@@ -61,7 +61,7 @@ namespace Systore.Data.Repositories
             var ret = await _entities.
                     Include(c => c.ItemAudits).
                     Where(c => c.Date >= initialDate && c.Date <= finalDate)
-                    .SelectMany(c => 
+                    .SelectMany(c =>
                         c.ItemAudits.Select(
                             i => new AuditDto()
                             {

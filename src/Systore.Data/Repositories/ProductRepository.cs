@@ -1,12 +1,12 @@
-﻿using Systore.Domain.Entities;
-using Systore.Data.Abstractions;
-using Systore.Infra.Context;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using Systore.Domain.Dtos;
-using Systore.Domain.Enums;
 using System.Linq;
-using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
+using Systore.Data.Abstractions;
+using Systore.Domain.Dtos;
+using Systore.Domain.Entities;
+using Systore.Domain.Enums;
+using Systore.Infra.Context;
 
 namespace Systore.Data.Repositories
 {
@@ -37,7 +37,7 @@ namespace Systore.Data.Repositories
             string validations = "";
 
             if (await _itemSaleRepository.ExistsByProduct(id))
-                validations += "Não é possível excluir um produto que possua venda|"; 
+                validations += "Não é possível excluir um produto que possua venda|";
             return validations;
 
         }

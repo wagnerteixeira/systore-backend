@@ -2,13 +2,13 @@
 
 namespace Systore.Domain.Dtos
 {
-    public class ItemSaleDto 
+    public class ItemSaleDto
     {
         public int Id { get; set; }
 
         public int SaleId { get; set; }
 
-        public int ProductId { get; set; }        
+        public int ProductId { get; set; }
         public string ProductDescription { get; set; }
         public decimal Price { get; set; }
 

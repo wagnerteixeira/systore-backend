@@ -1,5 +1,5 @@
-﻿using Systore.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Systore.Domain.Entities;
 
 namespace Systore.Infra.Mapping
 {
@@ -35,7 +35,7 @@ namespace Systore.Infra.Mapping
               .HasForeignKey(s => s.ProductId)
               .OnDelete(DeleteBehavior.Restrict);
 
-            
+
         }
     }
 }

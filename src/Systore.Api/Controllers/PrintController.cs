@@ -19,23 +19,23 @@ namespace Systore.Api.Controllers
 
         //[Authorize]
         [HttpPost("printer-test-body")]
-        public async Task<IActionResult> PrinterTestBody([FromBody]JToken jsonbody)
+        public async Task<IActionResult> PrinterTestBody([FromBody] JToken jsonbody)
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>();
 
-            foreach(JToken children in jsonbody.Children())
+            foreach (JToken children in jsonbody.Children())
             {
                 if (children is JProperty)
                 {
                     var ch = (children as JProperty);
                     var key = ch.Name;
                     var value = ch.Value.ToString();
-                    
+
                     parameters.Add(key, value);
                 }
 
-            }            
-            
+            }
+
             var res = await _report.GenerateReport("RelatoriosInadimplentes.frx", parameters);
             return File(res, "application/pdf", "");
         }
@@ -47,12 +47,12 @@ namespace Systore.Api.Controllers
             Dictionary<string, string> parameters = new Dictionary<string, string>();
 
             var queryParams = HttpContext.Request.Query;
-            
-            foreach(var param in queryParams)
+
+            foreach (var param in queryParams)
             {
                 parameters.Add(param.Key, param.Value);
-            }            
-            
+            }
+
             var res = await _report.GenerateReport($"{queryParams.First().Value}.frx", parameters);
             return File(res, "application/pdf", "");
         }

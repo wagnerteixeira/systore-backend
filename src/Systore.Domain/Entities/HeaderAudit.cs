@@ -18,6 +18,6 @@ namespace Systore.Domain.Entities
         public string UserName { get; set; }
         public AuditOperation Operation { get; set; }
 
-        public ICollection<ItemAudit> ItemAudits { get; set; }        
+        public ICollection<ItemAudit> ItemAudits { get; set; }
     }
 }

@@ -1,15 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Systore.Domain.Entities;
-using Systore.Domain.Abstractions;
-using System;
-using System.Threading.Tasks;
-using Systore.Domain.Dtos;
-using Microsoft.AspNetCore.Authorization;
-using System.Text;
-using Microsoft.Extensions.Logging;
-using System.IO;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.Extensions.Logging;
+using System;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
+using Systore.Domain.Abstractions;
+using Systore.Domain.Dtos;
+using Systore.Domain.Entities;
 
 namespace Systore.Api.Controllers
 {
@@ -26,7 +26,7 @@ namespace Systore.Api.Controllers
 
         [Authorize]
         [HttpPost("get-products-for-export-to-balance")]
-        public async Task<IActionResult> GetProductsForExportToBalance([FromBody]FilterProductsToBalance filterProductsToBalance)
+        public async Task<IActionResult> GetProductsForExportToBalance([FromBody] FilterProductsToBalance filterProductsToBalance)
         {
             try
             {
@@ -46,7 +46,7 @@ namespace Systore.Api.Controllers
 
         [Authorize]
         [HttpPost("generate-files-to-balance")]
-        public async Task<IActionResult> GenerateFilesToBalance([FromBody]int[] productsId)
+        public async Task<IActionResult> GenerateFilesToBalance([FromBody] int[] productsId)
         {
             try
             {
@@ -57,7 +57,7 @@ namespace Systore.Api.Controllers
                 var itensFileContent = await (_service as IProductService).GenerateFileContentItensToBalance(productsId);
                 var infoFileContent = await (_service as IProductService).GenerateFileContentInfoToBalance(productsId);
                 await (_service as IProductService).UpdateProductsExportedToBalance(productsId);
-                
+
                 return Ok(new
                 {
                     itensFilecontent = Base64UrlTextEncoder.Encode(Encoding.UTF8.GetBytes(itensFileContent)),
@@ -78,7 +78,7 @@ namespace Systore.Api.Controllers
         }
         [Authorize]
         [HttpGet("download-temp-file/{folderGuid}/{fileNameBase64}")]
-        public async Task<IActionResult> DownloadFile([FromRoute]string folderGuid, [FromRoute]string fileNameBase64)
+        public async Task<IActionResult> DownloadFile([FromRoute] string folderGuid, [FromRoute] string fileNameBase64)
         {
             try
             {
@@ -99,7 +99,7 @@ namespace Systore.Api.Controllers
         }
         [Authorize]
         [HttpPost("generate-file-info-to-balance")]
-        public async Task<IActionResult> GenerateFileInfoToBalance([FromBody]int[] productsId)
+        public async Task<IActionResult> GenerateFileInfoToBalance([FromBody] int[] productsId)
         {
             try
             {

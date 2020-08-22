@@ -1,22 +1,19 @@
 ﻿using FluentAssertions;
 using Moq;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 using Systore.Data.Abstractions;
 using Systore.Services;
 using Systore.Tests.Common.Builders;
-using Systore.Tests.Common.Factories;
 using Xunit;
 
 namespace Systore.Tests.Unit.Services
 {
 
-    public class TestableService : BaseService<object> 
-    { 
+    public class TestableService : BaseService<object>
+    {
         public TestableService(IBaseRepository<object> repository) : base(repository)
         {
 
@@ -28,7 +25,7 @@ namespace Systore.Tests.Unit.Services
         public async Task Should_AddAsync()
         {
             #region arrange
-            var repositoryMock = new Mock<IBaseRepository<object>>();           
+            var repositoryMock = new Mock<IBaseRepository<object>>();
             repositoryMock.Setup(m => m.AddAsync(null)).ReturnsAsync("");
 
             var service = new TestableService(repositoryMock.Object);
@@ -42,7 +39,7 @@ namespace Systore.Tests.Unit.Services
             result.Should().Be("");
             repositoryMock.Verify(m => m.AddAsync(null), Times.Exactly(1));
             #endregion
-        }       
+        }
 
         [Fact]
         public async Task Should_GetAsync()
@@ -110,7 +107,7 @@ namespace Systore.Tests.Unit.Services
         public async Task Should_GetWhereAsync_With_Expression()
         {
             #region arrange
-            var repositoryMock = new Mock<IBaseRepository<object>>();            
+            var repositoryMock = new Mock<IBaseRepository<object>>();
             Expression<Func<object, bool>> expression = (obj) => true;
             var returnValue = Enumerable.Empty<object>().ToList();
             repositoryMock.Setup(m => m.GetWhereAsync(expression)).ReturnsAsync(returnValue);

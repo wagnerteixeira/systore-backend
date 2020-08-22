@@ -1,13 +1,12 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Threading.Tasks;
+using Systore.Domain.Abstractions;
+using Systore.Domain.Dtos;
 using Systore.Domain.Entities;
 using Systore.Domain.Enums;
-using Systore.Domain.Dtos;
-using Systore.Domain.Abstractions;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.Logging;
 
 namespace Systore.Api.Controllers
 {
@@ -36,7 +35,7 @@ namespace Systore.Api.Controllers
         }
 
         [Authorize]
-        [HttpGet("client/{clientId}/paid")]                
+        [HttpGet("client/{clientId}/paid")]
         public async Task<IActionResult> GetPaidBillReceivesByClient(int clientId)
         {
             try
@@ -66,7 +65,7 @@ namespace Systore.Api.Controllers
         }
 
         [Authorize]
-        [HttpGet("nextcode")]                
+        [HttpGet("nextcode")]
         public async Task<IActionResult> NextCode()
         {
             try
@@ -83,7 +82,7 @@ namespace Systore.Api.Controllers
 
         [Authorize]
         [HttpPost("createbillreceives")]
-        public async Task<IActionResult> CreateBillReceives([FromBody]CreateBillReceivesDto createBillReceivesDto)
+        public async Task<IActionResult> CreateBillReceives([FromBody] CreateBillReceivesDto createBillReceivesDto)
         {
             try
             {
@@ -101,8 +100,8 @@ namespace Systore.Api.Controllers
         }
 
         [Authorize]
-        [HttpDelete("{code:int}")]                
-        public override async Task<IActionResult> Delete([FromRoute]int id)
+        [HttpDelete("{code:int}")]
+        public override async Task<IActionResult> Delete([FromRoute] int id)
         {
             if (await (_service as IBillReceiveService).CountWhereAsync(c => c.Code == id) == 0)
                 return SendBadRequest("Carnê não encontrado!");

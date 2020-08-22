@@ -1,5 +1,5 @@
-using Systore.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Systore.Domain.Entities;
 
 namespace Systore.Infra.Mapping
 {
@@ -15,7 +15,7 @@ namespace Systore.Infra.Mapping
                       .ValueGeneratedOnAdd();
 
             builder.Property(p => p.Name)
-                .HasMaxLength(150);           
+                .HasMaxLength(150);
 
             builder.Property(p => p.RegistryDate)
                 .HasColumnType("DATE")

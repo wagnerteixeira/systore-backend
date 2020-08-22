@@ -13,7 +13,7 @@ namespace Systore.Infra
             try
             {
                 return TimeZoneInfo.ConvertTimeFromUtc(value, TimeZoneInfo.FindSystemTimeZoneById(TimeZoneHelper.TimeZoneId));
-                    
+
             }
             catch
             {
@@ -52,7 +52,7 @@ namespace Systore.Infra
                 return DateTime.SpecifyKind(value, DateTimeKind.Utc).AddHours(3);
             }
         }
-        
+
         public static DateTime? ConvertTimeToUtc(DateTime? value)
         {
             try

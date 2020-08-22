@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Linq.Expressions;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
 using Systore.Domain.Dtos;
 
 namespace Systore.Domain.Abstractions

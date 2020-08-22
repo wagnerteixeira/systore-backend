@@ -1,10 +1,10 @@
-using Systore.Domain.Entities;
-using Systore.Data.Abstractions;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using Systore.Domain.Enums;
-using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Systore.Data.Abstractions;
+using Systore.Domain.Entities;
+using Systore.Domain.Enums;
 using Systore.Infra.Context;
 
 namespace Systore.Data.Repositories
@@ -23,17 +23,17 @@ namespace Systore.Data.Repositories
         {
             var queryOpen = this._entities
                .Where(c => c.ClientId == ClientId && c.Situation == BillReceiveSituation.Open)
-               .OrderBy(c => c.Code)               
+               .OrderBy(c => c.Code)
                .ThenBy(c => c.Quota);
 
             var queryClose = this._entities
               .Where(c => c.ClientId == ClientId && c.Situation == BillReceiveSituation.Closed)
-              .OrderByDescending(c => c.Code)              
+              .OrderByDescending(c => c.Code)
               .ThenBy(c => c.Quota);
 
             var _billReceives = await queryOpen
               .Union(queryClose)
-              .ToListAsync();            
+              .ToListAsync();
 
             return _billReceives;
         }

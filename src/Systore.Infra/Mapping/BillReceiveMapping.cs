@@ -1,12 +1,12 @@
-using Systore.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Systore.Domain.Entities;
 
 namespace Systore.Infra.Mapping
 {
     public class BillReceiveMapping : IEntityTypeConfiguration<BillReceive>
     {
 
-         public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BillReceive> builder)
+        public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BillReceive> builder)
         {
             builder.HasKey(c => c.Id);
 

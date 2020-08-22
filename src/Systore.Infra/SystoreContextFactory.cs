@@ -1,11 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using Systore.Infra.Context;
-using Microsoft.Extensions.Options;
-using Systore.Domain;
 using Microsoft.Extensions.Configuration;
-using System.IO;
+using Microsoft.Extensions.Options;
 using System;
+using System.IO;
+using Systore.Domain;
+using Systore.Infra.Context;
 
 namespace Systore.Infra
 {
@@ -24,7 +24,7 @@ namespace Systore.Infra
             settingsSection.Bind(appSettings);
 
             var optionsBuilder = new DbContextOptionsBuilder<SystoreContext>();
-            optionsBuilder.UseMySql(Configuration.GetConnectionString("Systore"));           
+            optionsBuilder.UseMySql(Configuration.GetConnectionString("Systore"));
             IOptions<AppSettings> options = Options.Create(appSettings);
             return new SystoreContext(optionsBuilder.Options, options, Configuration);
         }

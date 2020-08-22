@@ -1,11 +1,11 @@
-using Microsoft.AspNetCore.Mvc;
-using Systore.Domain.Entities;
-using Systore.Domain.Abstractions;
-using System.Threading.Tasks;
-using System;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Threading.Tasks;
+using Systore.Domain.Abstractions;
 using Systore.Domain.Dtos;
+using Systore.Domain.Entities;
 
 namespace Systore.Api.Controllers
 {
@@ -20,8 +20,8 @@ namespace Systore.Api.Controllers
         }
 
         [Authorize]
-        [HttpDelete("{id:int}")]        
-        public override async Task<IActionResult> Delete([FromRoute]int id)
+        [HttpDelete("{id:int}")]
+        public override async Task<IActionResult> Delete([FromRoute] int id)
         {
 
             if (await (_service as IClientService).ExistBillReceiveForClient(id))
@@ -30,11 +30,11 @@ namespace Systore.Api.Controllers
             }
 
             return await base.Delete(id);
-        }      
+        }
 
         [Authorize]
-        [HttpGet("existcpf/{edit}/{id}/{cpf}")]        
-        public async Task<IActionResult> ExistCpf([FromRoute]int Edit, [FromRoute]int Id, [FromRoute]string Cpf)
+        [HttpGet("existcpf/{edit}/{id}/{cpf}")]
+        public async Task<IActionResult> ExistCpf([FromRoute] int Edit, [FromRoute] int Id, [FromRoute] string Cpf)
         {
             var _client = (Edit == 1) ?
                            await _service.FirstOrDefaultAsync(c => c.Cpf == Cpf && c.Id != Id) :
@@ -49,11 +49,11 @@ namespace Systore.Api.Controllers
 
         [Authorize]
         [HttpPost("getpaginate")]
-        public async override Task<IActionResult> GetPaginate([FromBody]FilterPaginateDto filterPaginateDto)
+        public async override Task<IActionResult> GetPaginate([FromBody] FilterPaginateDto filterPaginateDto)
         {
             try
             {
-                var count = await _service.GetWhereAsync(filterPaginateDto);                
+                var count = await _service.GetWhereAsync(filterPaginateDto);
 
                 return Ok(count);
 
