@@ -1,4 +1,5 @@
 ﻿using AutoBogus;
+using System.Collections.Generic;
 
 namespace Systore.Tests.Common.Builders
 {
@@ -17,5 +18,7 @@ namespace Systore.Tests.Common.Builders
         }
 
         public T BuildAuto() => _instance;
+
+        public IEnumerable<T> BuildListAuto(int count) => GetAutoFaker().GenerateLazy(count);
     }
 }

@@ -6,6 +6,6 @@ namespace Systore.Domain.Abstractions
     public interface IAuthService
     {
         Task<LoginResponseDto> Login(LoginRequestDto loginRequestDto);
-        LoginResponseDto ValidateToken(string token);
+        LoginResponseDto ValidateToken(string token, bool validateLifetime = true);
     }
 }

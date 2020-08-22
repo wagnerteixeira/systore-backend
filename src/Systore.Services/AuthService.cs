@@ -24,7 +24,7 @@ namespace Systore.Services
             _appSettings = appSettings.Value;
         }
 
-        public LoginResponseDto ValidateToken(string token)
+        public LoginResponseDto ValidateToken(string token, bool validateLifetime = true)
         {
             var handler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
@@ -33,7 +33,8 @@ namespace Systore.Services
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = new SymmetricSecurityKey(key),
                 ValidateIssuer = false,
-                ValidateAudience = false
+                ValidateAudience = false,
+                ValidateLifetime = validateLifetime
             };
 
             var claims = handler.ValidateToken(token, validations, out var tokenSecure);
@@ -82,7 +83,7 @@ namespace Systore.Services
                     Token = tokenHandler.WriteToken(token),
                     User = new UserLoginDto()
                     {
-                        Admin = false,
+                        Admin = user.Admin,
                         UserName = user.UserName
                     }
                 };
