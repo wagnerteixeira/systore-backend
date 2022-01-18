@@ -1,0 +1,14 @@
+version: '3.1'
+services:
+  mysql:
+    image: mysql/mysql-server:8.0.13
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345678
+      MYSQL_USER: systore
+      MYSQL_PASSWORD: 12345678
+      MYSQL_DATABASE: systore
+      MYSQL_ROOT_HOST: "%"
+    volumes:
+      - ../src/Systore.Repositories/scripts:/docker-entrypoint-initdb.d

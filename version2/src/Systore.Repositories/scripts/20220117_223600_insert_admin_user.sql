@@ -1,0 +1,1 @@
+insert into `user` ( `UserName`, `Password`, `Admin`) values('Admin', 'Senha123', 1);
