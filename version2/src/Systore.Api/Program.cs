@@ -1,11 +1,23 @@
 using System.Reflection;
 using Microsoft.OpenApi.Models;
+using Systore.Api.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// builder.AddLogging();
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+var applicationConfig =  builder.Services.AddAppConfig(builder.Configuration);
+
+builder.Services.AddSerilog(builder.Configuration);
+builder.Services.AddRepositories(applicationConfig);
+builder.Services.AddBusinessLogic();
+
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
@@ -60,7 +72,7 @@ builder.Services.AddSwaggerGen(options =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment() || app.Environment.IsEnvironment("Local"))
 {
     app.UseSwagger();
     app.UseSwaggerUI(c =>
