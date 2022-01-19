@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using Systore.BusinessLogic.Interfaces;
-using Systore.BusinessLogic.Models;
+using Systore.Business.Interfaces;
+using Systore.Business.Models;
 using ILogger = Serilog.ILogger;
 
 namespace Systore.Api.Controllers;
@@ -28,9 +28,9 @@ public class AuthenticationController : ControllerBase
     /// <param name="loginRequestDto"></param>
     /// <returns></returns>
     [HttpPost("login")]
-    public async Task<IActionResult> Login([FromServices] IAuthentication authentication, [FromBody] LoginRequestDto loginRequestDto)
+    public async Task<IActionResult> Login([FromServices] IAuthenticationBusiness authenticationBusiness, [FromBody] LoginRequestDto loginRequestDto)
     {
-        var result = await authentication.Login(loginRequestDto);
+        var result = await authenticationBusiness.Login(loginRequestDto);
         return Ok(result);
     }
 }

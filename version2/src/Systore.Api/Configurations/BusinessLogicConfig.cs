@@ -1,13 +1,13 @@
-using Systore.BusinessLogic;
-using Systore.BusinessLogic.Interfaces;
+using Systore.Business;
+using Systore.Business.Interfaces;
 
 namespace Systore.Api.Configurations;
 
-public static class BusinessLogicConfig
+public static class BusinessConfig
 {
-    public static IServiceCollection AddBusinessLogic(this IServiceCollection services)
+    public static IServiceCollection AddBusiness(this IServiceCollection services)
     {
         return services
-            .AddSingleton<IAuthentication, Authentication>();
+            .AddSingleton<IAuthenticationBusiness, AuthenticationBusiness>();
     }
 }

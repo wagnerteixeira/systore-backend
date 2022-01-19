@@ -14,7 +14,7 @@ var applicationConfig =  builder.Services.AddAppConfig(builder.Configuration);
 
 builder.Services.AddSerilog(builder.Configuration);
 builder.Services.AddRepositories(applicationConfig);
-builder.Services.AddBusinessLogic();
+builder.Services.AddBusiness();
 
 
 

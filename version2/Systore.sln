@@ -4,7 +4,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Systore.Api", "src\Systore.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Systore.Repositories", "src\Systore.Repositories\Systore.Repositories.csproj", "{F9398BE2-26B1-4E93-907B-A545163C14BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Systore.BusinessLogic", "src\Systore.BusinessLogic\Systore.BusinessLogic.csproj", "{D4304237-45EF-498A-8115-694897C29D19}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Systore.Business", "src\Systore.Business\Systore.Business.csproj", "{D4304237-45EF-498A-8115-694897C29D19}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Systore.CrossCutting", "src\Systore.CrossCutting\Systore.CrossCutting.csproj", "{C7F00BAC-2C03-46A3-A1EE-A3653D4CB5C5}"
 EndProject

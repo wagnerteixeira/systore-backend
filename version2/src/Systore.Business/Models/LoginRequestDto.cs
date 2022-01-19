@@ -1,2 +1,2 @@
-namespace Systore.BusinessLogic.Models;
+namespace Systore.Business.Models;
 public record LoginRequestDto(  string UserName,  string Password);

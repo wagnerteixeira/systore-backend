@@ -2,20 +2,20 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
-using Systore.BusinessLogic.Interfaces;
-using Systore.BusinessLogic.Models;
+using Systore.Business.Interfaces;
+using Systore.Business.Models;
 using Systore.CrossCutting;
 using Systore.Repositories.Interfaces;
 
-namespace Systore.BusinessLogic;
+namespace Systore.Business;
 
-public class Authentication : IAuthentication
+public class AuthenticationBusiness : IAuthenticationBusiness
 {
     private readonly IUserRepository _userRepository;
     private readonly IReleaseRepository _releaseRepository;
     private readonly ApplicationConfig _applicationConfig;
 
-    public Authentication(IUserRepository userRepository, IReleaseRepository releaseRepository, ApplicationConfig applicationConfig)
+    public AuthenticationBusiness(IUserRepository userRepository, IReleaseRepository releaseRepository, ApplicationConfig applicationConfig)
     {
         _userRepository = userRepository;
         _releaseRepository = releaseRepository;

@@ -2,30 +2,30 @@ using System;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Moq;
-using Systore.BusinessLogic;
-using Systore.BusinessLogic.Models;
+using Systore.Business;
+using Systore.Business.Models;
 using Systore.CrossCutting.Models;
 using Systore.Repositories.Interfaces;
 using Systore.Tests.Builders;
 using Xunit;
 
-namespace Systore.Tests.BusinessLogic;
+namespace Systore.Tests.authenticationBusiness;
 
-public class AuthenticationTest
+public class AuthenticationBusinessTest
 {
-    private class Setup
+    private class AuthenticationFactory
     {
         public Mock<IUserRepository> UserRepository { get; }
         public Mock<IReleaseRepository> ReleaseRepository { get; }
-        public Func<Authentication> GetObject { get; }
+        public Func<AuthenticationBusiness> Create { get; }
 
-        public Setup()
+        public AuthenticationFactory()
         {
             var applicationConfig = Builder.ApplicationConfig with { };
             
             UserRepository = new();
             ReleaseRepository = new();
-            GetObject = () => new(
+            Create = () => new(
                 userRepository: UserRepository.Object,
                 releaseRepository: ReleaseRepository.Object,
                 applicationConfig: applicationConfig);
@@ -36,9 +36,9 @@ public class AuthenticationTest
     public async Task ShouldBeLogin()
     {
        //Arrange
-       var setup = new Setup();
-       setup.ReleaseRepository.Setup(m => m.VerifyRelease(It.IsAny<string>())).ReturnsAsync(true);
-       setup.UserRepository.Setup(m => m.GetUserByUsernameAndPassword(It.IsAny<string>(), It.IsAny<string>()))
+       var factory = new AuthenticationFactory();
+       factory.ReleaseRepository.Setup(m => m.VerifyRelease(It.IsAny<string>())).ReturnsAsync(true);
+       factory.UserRepository.Setup(m => m.GetUserByUsernameAndPassword(It.IsAny<string>(), It.IsAny<string>()))
            .ReturnsAsync(new User()
            {
                Admin = true,
@@ -46,9 +46,9 @@ public class AuthenticationTest
                Password = "password",
                UserName = "Username"
            });
-       var businessLogic = setup.GetObject();
+       var authenticationBusiness = factory.Create();
        //Act
-       var result = await businessLogic.Login(new LoginRequestDto("Username", "password"));
+       var result = await authenticationBusiness.Login(new LoginRequestDto("Username", "password"));
        //Assert
        result.Should().NotBeNull();
        result.Relese.Should().BeTrue();
@@ -61,11 +61,11 @@ public class AuthenticationTest
     public async Task ShouldNotBeLoginWithNotRelease()
     {
         //Arrange
-        var setup = new Setup();
-        setup.ReleaseRepository.Setup(m => m.VerifyRelease(It.IsAny<string>())).ReturnsAsync(false);
-        var businessLogic = setup.GetObject();
+        var factory = new AuthenticationFactory();
+        factory.ReleaseRepository.Setup(m => m.VerifyRelease(It.IsAny<string>())).ReturnsAsync(false);
+        var authenticationBusiness = factory.Create();
         //Act
-        var result = await businessLogic.Login(new LoginRequestDto("Username", "password"));
+        var result = await authenticationBusiness.Login(new LoginRequestDto("Username", "password"));
         //Assert
         result.Should().NotBeNull();
         result.Relese.Should().BeFalse();
@@ -78,13 +78,13 @@ public class AuthenticationTest
     public async Task ShouldNotBeLoginWithNullUser()
     {
         //Arrange
-        var setup = new Setup();
-        setup.ReleaseRepository.Setup(m => m.VerifyRelease(It.IsAny<string>())).ReturnsAsync(true);
-        setup.UserRepository.Setup(m => m.GetUserByUsernameAndPassword(It.IsAny<string>(), It.IsAny<string>()))
+        var factory = new AuthenticationFactory();
+        factory.ReleaseRepository.Setup(m => m.VerifyRelease(It.IsAny<string>())).ReturnsAsync(true);
+        factory.UserRepository.Setup(m => m.GetUserByUsernameAndPassword(It.IsAny<string>(), It.IsAny<string>()))
             .ReturnsAsync((User)null!);
-        var businessLogic = setup.GetObject();
+        var authenticationBusiness = factory.Create();
         //Act
-        var result = await businessLogic.Login(new LoginRequestDto("Username", "password"));
+        var result = await authenticationBusiness.Login(new LoginRequestDto("Username", "password"));
         //Assert
         result.Should().NotBeNull();
         result.Relese.Should().BeTrue();

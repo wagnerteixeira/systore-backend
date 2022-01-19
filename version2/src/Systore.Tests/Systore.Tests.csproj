@@ -23,7 +23,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Systore.BusinessLogic\Systore.BusinessLogic.csproj" />
+      <ProjectReference Include="..\Systore.Business\Systore.Business.csproj" />
     </ItemGroup>
 
 </Project>
