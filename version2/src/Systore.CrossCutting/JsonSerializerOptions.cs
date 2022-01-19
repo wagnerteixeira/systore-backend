@@ -9,6 +9,9 @@ public static class StaticConfigurations
     {
         AllowTrailingCommas = true,
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-        Converters = { new JsonStringEnumConverter() }
+        Converters = { new JsonStringEnumConverter() },
+        NumberHandling =
+            JsonNumberHandling.AllowReadingFromString |
+            JsonNumberHandling.WriteAsString
     };
 }
