@@ -4,18 +4,34 @@ using Systore.Repositories.Interfaces;
 
 namespace Systore.Repositories;
 
-public partial class UserRepository : IUserRepository
+public partial class UserRepository : GenericCrudRepository<User, int>, IUserRepository
 {
-    private readonly IDatabaseFactory _databaseFactory;
     public UserRepository(IDatabaseFactory databaseFactory)
+        : base(
+            databaseFactory,
+            CreateSqlStatement,
+            SelectSingleSqlStatement,
+            SelectAllSqlStatement,
+            DeleteSqlStatement,
+            UpdateSqlStatement)
     {
-        _databaseFactory = databaseFactory;
+    }
+
+    public override object GetIdParam(int id)
+    {
+        return new {Id = id};
     }
     
+    public override object GetIdParam(User user)
+    {
+        return new {user.Id};
+    }
+
     public async Task<User?> GetUserByUsernameAndPassword(string userName, string password)
     {
-        using var connection = _databaseFactory.GetConnection();
-        var user = await connection.QueryFirstOrDefaultAsync<User>(GetUserByUsernameAndPasswordStatement, new {UserName = userName, Password = password});
+        using var connection = DatabaseFactory.GetConnection();
+        var user = await connection.QueryFirstOrDefaultAsync<User>(GetUserByUsernameAndPasswordStatement,
+            new {UserName = userName, Password = password});
         connection.Close();
         return user;
     }

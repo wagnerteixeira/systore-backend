@@ -6,7 +6,7 @@ using ILogger = Serilog.ILogger;
 namespace Systore.Api.Controllers;
 
 /// <summary>
-/// Athenttication Controller
+/// Authentication Controller
 /// </summary>
 [ApiController]
 [Route("[controller]")]
