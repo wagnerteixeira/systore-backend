@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Systore.Business.Interfaces;
 using Systore.CrossCutting.Models;
@@ -28,6 +29,7 @@ public class UserController : ControllerBase
     /// <param name="user"></param>
     /// <returns>User</returns>
     [HttpPost("")]
+    [Authorize]
     public async Task<IActionResult> Create([FromServices] IUserBusiness userBusiness, [FromBody] User user)
     {
         var result = await userBusiness.Create(user);
@@ -40,6 +42,7 @@ public class UserController : ControllerBase
     /// <param name="id"></param>
     /// <returns>User</returns>
     [HttpDelete("{id}")]
+    [Authorize]
     public async Task<IActionResult> Delete([FromServices] IUserBusiness userBusiness, [FromRoute] int id)
     {
         var result = await userBusiness.Delete(id);
@@ -51,6 +54,7 @@ public class UserController : ControllerBase
     /// </summary>
     /// <returns>User</returns>
     [HttpPut("")]
+    [Authorize]
     public async Task<IActionResult> Update([FromServices] IUserBusiness userBusiness, [FromBody] User user)
     {
         var result = await userBusiness.Update(user);
@@ -62,6 +66,7 @@ public class UserController : ControllerBase
     /// </summary>
     /// <returns>User</returns>
     [HttpGet("{id}")]
+    [Authorize]
     public async Task<IActionResult> Read([FromServices] IUserBusiness userBusiness, [FromRoute] int id)
     {
         var result = await userBusiness.Read(id);
@@ -73,6 +78,7 @@ public class UserController : ControllerBase
     /// </summary>
     /// <returns>User</returns>
     [HttpGet("")]
+    [Authorize]
     public async Task<IActionResult> Read([FromServices] IUserBusiness userBusiness)
     {
         var result = await userBusiness.Read();

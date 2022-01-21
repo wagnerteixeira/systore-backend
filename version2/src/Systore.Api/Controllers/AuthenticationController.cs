@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Systore.Business.Interfaces;
 using Systore.Business.Models;
@@ -27,6 +28,7 @@ public class AuthenticationController : ControllerBase
     /// </summary>
     /// <param name="loginRequestDto"></param>
     /// <returns></returns>
+    [AllowAnonymous]
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromServices] IAuthenticationBusiness authenticationBusiness, [FromBody] LoginRequestDto loginRequestDto)
     {
