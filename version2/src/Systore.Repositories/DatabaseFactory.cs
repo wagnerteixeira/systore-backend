@@ -20,6 +20,10 @@ public class DatabaseFactory : IDatabaseFactory
     public IDbConnection GetConnection()
     {
         var connection = _factory.CreateConnection();
+        if (connection == null)
+        {
+            throw new NotSupportedException("Invalid connection");
+        }
         connection.ConnectionString = _config.ConnectionStrings.DefaultConnection;
 
         return connection;

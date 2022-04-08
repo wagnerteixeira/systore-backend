@@ -1,6 +1,7 @@
 using System.Data.Common;
 using MySql.Data.MySqlClient;
 using Systore.CrossCutting;
+using Systore.CrossCutting.Models;
 using Systore.Repositories;
 using Systore.Repositories.Interfaces;
 
@@ -18,10 +19,18 @@ public static class RepositoriesConfig
         });
 
         services.AddSingleton<DbProviderFactory, MySqlClientFactory>();
-
+       
         return services
             .AddSingleton<IDatabaseFactory, DatabaseFactory>()
-            .AddSingleton<IUserRepository, UserRepository>();
-
+            .AddSingleton(_ =>
+                new SqlStatements<User>(
+                    UserSqlStatements.CreateSqlStatement,
+                    UserSqlStatements.SelectSingleSqlStatement,
+                    UserSqlStatements.SelectAllSqlStatement,
+                    UserSqlStatements.DeleteSqlStatement,
+                    UserSqlStatements.UpdateSqlStatement,
+                    UserSqlStatements.GetUserByUsernameAndPasswordStatement)
+            )
+            .AddScoped(typeof(IGenericCrudRepository<,>), typeof(GenericCrudRepository<,>));
     }
 }

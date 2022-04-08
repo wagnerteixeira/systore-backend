@@ -8,7 +8,7 @@ public static class BusinessConfig
     public static IServiceCollection AddBusiness(this IServiceCollection services)
     {
         return services
-            .AddSingleton<IAuthenticationBusiness, AuthenticationBusiness>()
-            .AddSingleton<IUserBusiness, UserBusiness>();
+            .AddScoped<IAuthenticationBusiness, AuthenticationBusiness>()
+            .AddScoped(typeof(IGenericCrudBusiness<,>), typeof(GenericCrudBusiness<,>));
     }
 }

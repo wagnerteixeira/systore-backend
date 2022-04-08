@@ -5,41 +5,31 @@ namespace Systore.Repositories;
 
 public class GenericCrudRepository<Type, IdType> : IGenericCrudRepository<Type, IdType>
 {
-    protected readonly IDatabaseFactory DatabaseFactory;
+    protected readonly IDatabaseFactory? DatabaseFactory;
     private const string _getIdentitySql = "SELECT LAST_INSERT_ID() AS Id";
     private readonly string _createSqlStatement;
     private readonly string _selectSingleSqlStatement;
     private readonly string _selectAllSqlStatement;
     private readonly string _deleteSqlStatement;
     private readonly string _updateSqlStatement;
-    
-    
+
+
     public GenericCrudRepository(
-        IDatabaseFactory databaseFactory, 
-        string createSqlStatement,
-        string selectSingleSqlStatement, 
-        string selectAllSqlStatement, 
-        string deleteSqlStatement, 
-        string updateSqlStatement)
+        IDatabaseFactory? databaseFactory,
+        SqlStatements<Type> sqlStatements)
     {
         DatabaseFactory = databaseFactory;
-        _createSqlStatement = createSqlStatement;
-        _selectSingleSqlStatement = selectSingleSqlStatement;
-        _selectAllSqlStatement = selectAllSqlStatement;
-        _deleteSqlStatement = deleteSqlStatement;
-        _updateSqlStatement = updateSqlStatement;
+        _createSqlStatement = sqlStatements.CreateSqlStatement;
+        _selectSingleSqlStatement = sqlStatements.SelectSingleSqlStatement;
+        _selectAllSqlStatement = sqlStatements.SelectAllSqlStatement;
+        _deleteSqlStatement = sqlStatements.DeleteSqlStatement;
+        _updateSqlStatement = sqlStatements.UpdateSqlStatement;
     }
-    
+
     public virtual object GetIdParam(IdType id)
     {
-        throw new NotImplementedException();
+        return new {Id = id};
     }
-
-    public virtual object GetIdParam(Type entity)
-    {
-        throw new NotImplementedException();
-    }
-
     public async Task<Type> Create(Type entity)
     {
         using var connection = DatabaseFactory.GetConnection();
@@ -58,14 +48,15 @@ public class GenericCrudRepository<Type, IdType> : IGenericCrudRepository<Type, 
         return (await connection.ExecuteAsync(_deleteSqlStatement, param)) == 1;
     }
 
-    public async Task<Type> Update(Type entity)
+    public async Task<Type> Update(IdType id, Type entity)
     {
         using var connection = DatabaseFactory.GetConnection();
         if ((await connection.ExecuteAsync(_updateSqlStatement, entity)) == 0)
         {
             throw new Exception("Update error");
         }
-        var param = GetIdParam(entity);
+
+        var param = GetIdParam(id);
         var resultEntity = await connection.QueryFirstAsync<Type>(_selectSingleSqlStatement, param);
         connection.Close();
         return resultEntity;
