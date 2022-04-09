@@ -5,15 +5,15 @@ using Systore.CrossCutting.Models;
 namespace Systore.Api.Controllers;
 
 /// <summary>
-/// User Controller
+/// Sale Controller
 /// </summary>
 [AllowAnonymous]
-public class UserController : GenericCrudController<User, int>
+public class SaleController : GenericCrudController<Sale, int>
 {
     /// <summary>
     /// 
     /// </summary>
-    public UserController(ILogger logger) : base(logger)
+    public SaleController(ILogger logger) : base(logger)
     {
     }
 }

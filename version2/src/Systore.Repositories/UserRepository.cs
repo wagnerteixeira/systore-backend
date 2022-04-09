@@ -20,7 +20,7 @@ public partial class UserRepository : GenericCrudRepository<User, int>, IUserRep
     public async Task<User?> GetUserByUsernameAndPassword(string userName, string password)
     {
         using var connection = DatabaseFactory.GetConnection();
-        var user = await connection.QueryFirstOrDefaultAsync<User>(GetUserByUsernameAndPasswordStatement,
+        var user = await connection.QueryFirstOrDefaultAsync<User>(UserSqlStatements.GetUserByUsernameAndPasswordStatement,
             new {UserName = userName, Password = password});
         connection.Close();
         return user;

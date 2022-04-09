@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Systore.Business.Interfaces;
@@ -7,6 +8,7 @@ namespace Systore.Api.Controllers;
 
 /// <summary>
 /// Type Controller
+/// <see cref="GenericCrudController{Type, IdType}"/> for more information.
 /// </summary>
 [ApiController]
 [Route("[controller]")]
@@ -37,7 +39,7 @@ public abstract class GenericCrudController<Type, IdType> : ControllerBase
     }
 
     /// <summary>
-    /// Create route
+    /// Delete route
     /// </summary>
     /// <param name="crudBusiness"></param>
     /// <param name="id"></param>
@@ -51,9 +53,10 @@ public abstract class GenericCrudController<Type, IdType> : ControllerBase
     }
     
     /// <summary>
-    /// Create route
+    /// Update route
     /// </summary>
     /// <param name="id"></param>
+    /// <param name="crudBusiness"></param>
     /// <returns>Type</returns>
     [HttpPut("{id}")]
     [Authorize]

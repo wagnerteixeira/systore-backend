@@ -5,5 +5,4 @@ public record SqlStatements<T>(
     string SelectSingleSqlStatement,
     string SelectAllSqlStatement,
     string DeleteSqlStatement,
-    string UpdateSqlStatement,
-    string GetUserByUsernameAndPasswordStatement);
+    string UpdateSqlStatement);

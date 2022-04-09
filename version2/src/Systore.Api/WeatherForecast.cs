@@ -1,3 +1,5 @@
+using System;
+
 namespace Systore.Api;
 
 /// <summary>
