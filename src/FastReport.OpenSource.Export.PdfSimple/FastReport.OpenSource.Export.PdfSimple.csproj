@@ -23,6 +23,6 @@
     <RepositoryUrl>https://github.com/FastReports/FastReport</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="FastReport.OpenSource" Version="2020.1.0" />
+    <PackageReference Include="FastReport.OpenSource" Version="2020.4.0" />
   </ItemGroup>
 </Project>
