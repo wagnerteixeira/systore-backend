@@ -1,9 +1,0 @@
-<Project Sdk="Microsoft.NET.Sdk">
-  <ItemGroup>
-    <ProjectReference Include="..\Systore.Dtos\Systore.Dtos.csproj" />
-  </ItemGroup>
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <ProjectGuid>179CF8A8-EFAF-4F37-BDFB-86C173A67BA2</ProjectGuid>
-  </PropertyGroup>
-</Project>
