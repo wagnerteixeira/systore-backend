@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  web:
+    build: 
+      context: ..
+      dockerfile: ./infra/Dockerfile
+    ports:
+      - "8085:80"
+      - "8086:443"
+    environment:
+      "ASPNETCORE_ENVIRONMENT": "Development"
+      ReleaseConfig__BaseUrl: http:\\example.com 
+      ReleaseConfig__ClientId: development-systore
+      Secret: "THIS IS USED TO SIGN AND VERIFY JWT TOKENS, REPLACE IT WITH YOUR OWN SECRET, IT CAN BE ANY STRING"
+      ConnectionStrings__DefaultConnection: "Server=host.docker.internal;User Id=root;Password=12345678;Database=systore" 
+ 

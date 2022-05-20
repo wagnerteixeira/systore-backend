@@ -1,78 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-using Serilog;
-using Serilog.Events;
-using Serilog.Configuration;
-using Serilog.AspNetCore;
+using System.Reflection;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
+using Systore.Api.Configurations;
 
+var builder = WebApplication.CreateBuilder(args);
 
-namespace Systore.Api
+// builder.AddLogging();
+
+// Add services to the container.
+
+builder.Services.AddControllers();
+
+var applicationConfig =  builder.Services.AddAppConfig(builder.Configuration);
+
+builder.Services
+    .AddSerilog(builder.Configuration)
+    .AddRepositories(applicationConfig)
+    .AddBusiness()
+    .AddJwtAuthentication(applicationConfig)
+    .AddSwagger()
+    .Configure<RouteOptions>(options => options.LowercaseUrls = true);
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment() || app.Environment.IsEnvironment("Local"))
 {
-    public class Program
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
     {
-
-        private static bool isProduction => Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production";
-        private static IConfiguration _configuration;
-
-
-        public static int Main(string[] args)
-        {
-
-            _configuration = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-            .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"}.json", optional: true)
-            .AddCommandLine(args)
-            .AddEnvironmentVariables()
-            .Build();
-
-            Log.Logger = new LoggerConfiguration()
-            .MinimumLevel.Debug()
-            .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-            .Enrich.FromLogContext()
-            .WriteTo.Console(
-                outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj} " +
-                    "{Properties:j}{NewLine}{Exception}"
-            )
-            .WriteTo.File(
-                "Log\\log.txt",
-                fileSizeLimitBytes: 1_000_000,
-                rollOnFileSizeLimit: true,
-                shared: true,
-                rollingInterval: RollingInterval.Day,
-                outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj} " +
-                    "{Properties:j}{NewLine}{Exception}",
-                flushToDiskInterval: TimeSpan.FromSeconds(1))
-            .CreateLogger();
-
-            try
-            {
-                Log.Information("Starting web host");
-                CreateWebHostBuilder(args, _configuration).Build().Run();
-                return 0;
-            }
-            catch (Exception ex)
-            {
-                Log.Fatal(ex, "Host terminated unexpectedly");
-                return 1;
-            }
-            finally
-            {
-                Log.CloseAndFlush();
-            }
-        }
-
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args, IConfiguration configuration) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
-                .UseConfiguration(configuration)
-                .UseSerilog();
-    }
+        c.SwaggerEndpoint("/swagger/v2/swagger.json", "Systore API");
+    });
 }
+
+app.UseHttpsRedirection();
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.Run();

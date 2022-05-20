@@ -1,18 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Systore.Domain.Entities;
-using Systore.Domain.Abstractions;
-using System;
-using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
+using Serilog;
+using Systore.CrossCutting.Models;
 
-namespace Systore.Api.Controllers
+namespace Systore.Api.Controllers;
+
+/// <summary>
+/// User Controller
+/// </summary>
+[AllowAnonymous]
+public class UserController : GenericCrudController<User, int>
 {
-  [Route("api/[controller]")]
-  public class UserController : BaseController<User>
-  {
-    public UserController(IUserService Service, ILogger<UserController> logger)
-        : base(Service, logger)
+    /// <summary>
+    /// 
+    /// </summary>
+    public UserController(ILogger logger) : base(logger)
     {
-
     }
-  }
 }
